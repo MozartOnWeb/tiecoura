@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
 
 const Theme = {
   mainFont: "Poppins",
-  linkFont: "Monument Extended Ultrabold",
+  linkFont: "Monument",
   red: "#E2293F",
   white: "#FFFDFF",
   black: "#161616",
