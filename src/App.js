@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 // Import Global Styles
 import { createGlobalStyle, ThemeProvider } from "styled-components";
@@ -22,6 +22,14 @@ const Theme = {
   red: "#E2293F",
   white: "#FFFDFF",
   black: "#161616",
+  breakpoints: {
+    s: "320px",
+    xs: "375px",
+    sm: "576px",
+    md: "768px",
+    lg: "992px",
+    xl: "1200px",
+  },
 };
 
 function App() {
@@ -30,10 +38,12 @@ function App() {
       <ThemeProvider theme={Theme}>
         <GlobalStyles />
         <Normalize />
-        <Header />
-        <Route component={Home} path="/" exact />
-        <Route component={Video} path="/video" />
-        <Route component={Photo} path="/photo" />
+        <Header/>
+        <Switch>
+          <Route component={Home} path="/" exact />
+          <Route component={Video} default path="/video" />
+          <Route component={Photo} path="/photo"/>
+        </Switch>
       </ThemeProvider>
     </>
   );

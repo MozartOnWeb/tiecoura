@@ -81,7 +81,7 @@ export const WhoParagraphe = styled.p`
   ${down("md")} {
     text-align: center;
   }
-  ${down("sm")} {
+  ${down("s")} {
     font-size: 12px;
   }
 `;

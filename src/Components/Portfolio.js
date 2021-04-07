@@ -60,7 +60,7 @@ const Portfolio = () => {
           </PortfolioImage>
         </PortfolioImages>
       </PortfolioWrapper>
-      <Button center="true" className="portfolio-button">
+      <Button center="true" className="portfolio-button" to="/">
         Voir Plus
         <svg
           className="arrow"

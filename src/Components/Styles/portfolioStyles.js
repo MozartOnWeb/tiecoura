@@ -69,7 +69,7 @@ export const PortfolioLinks = styled.div`
       font-size: 13px;
     }
   }
-  ${down("sm")} {
+  ${down("s")} {
     width: 100%;
     a {
       font-size: 13px;

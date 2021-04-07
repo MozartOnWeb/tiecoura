@@ -8,8 +8,9 @@ const Header = () => {
       <Container>
         <HeaderContainer>
           <Logo>Follio</Logo>
-          <div>
-            <svg className="svg2"
+          <div red="true">
+            <svg
+              className="svg2"
               xmlns="http://www.w3.org/2000/svg"
               width="101"
               height="101"
@@ -19,8 +20,8 @@ const Header = () => {
                 data-name="Ellipse 2"
                 fill="none"
                 stroke="#000"
-                stroke-width="4"
-                stroke-dasharray="1 15">
+                strokeWidth="4"
+                strokeDasharray="1 15">
                 <circle cx="50.5" cy="50.5" r="50.5" stroke="none" />
                 <circle cx="50.5" cy="50.5" r="48.5" fill="none" />
               </g>

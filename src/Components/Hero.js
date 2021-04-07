@@ -39,7 +39,7 @@ const Hero = () => {
                     transform="translate(1.656)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Ligne_3"
@@ -48,7 +48,7 @@ const Hero = () => {
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </g>
                 <g
@@ -62,7 +62,7 @@ const Hero = () => {
                     transform="translate(1.656 0)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Ligne_3-2"
@@ -85,7 +85,7 @@ const Hero = () => {
                     transform="translate(1.656 0)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Ligne_3-3"
@@ -94,7 +94,7 @@ const Hero = () => {
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </g>
                 <g
@@ -108,7 +108,7 @@ const Hero = () => {
                     transform="translate(1.656 0)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Ligne_3-4"
@@ -117,7 +117,7 @@ const Hero = () => {
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </g>
               </g>

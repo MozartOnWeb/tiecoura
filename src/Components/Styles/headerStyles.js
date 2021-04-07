@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { down } from "styled-breakpoints";
 
 export const HeaderWrapper = styled.div`
@@ -22,11 +22,11 @@ export const HeaderContainer = styled.div`
     align-items: center;
     justify-content: center;
     .svg1 {
+      width: 25px;
+      cursor: pointer;
       path {
         fill: ${(props) => props.theme.white};
       }
-      width: 25px;
-      cursor: pointer;
       ${down("xs")} {
         width: 18px;
       }

@@ -64,7 +64,7 @@ export const ExperienceInfo = styled.div`
     }
   }
 
-  ${down("sm")} {
+  ${down("s")} {
     a {
       font-size: 14px;
     }
@@ -103,7 +103,7 @@ export const ExperienceStats = styled.div`
     width: 250px;
     height: 280px;
   }
-  ${down("sm")} {
+  ${down("s")} {
     width: 230px;
     height: 280px;
   }
@@ -172,7 +172,7 @@ export const ExperienceBox = styled.div`
     ${down("xs")} {
       font-size: 16px;
     }
-    ${down("sm")} {
+    ${down("s")} {
       font-size: 14px;
     }
   }

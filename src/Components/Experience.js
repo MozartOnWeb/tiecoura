@@ -48,7 +48,7 @@ const Experience = () => {
                       transform="translate(1.656)"
                       fill="none"
                       stroke="#e2293f"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                     <line
                       id="Ligne_3"
@@ -57,7 +57,7 @@ const Experience = () => {
                       transform="translate(38.651 0.552) rotate(90)"
                       fill="none"
                       stroke="#e2293f"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                   </g>
                   <g
@@ -141,7 +141,7 @@ const Experience = () => {
               </ExperienceBox>
             </ExperienceBoxes>
           </ExperienceStats>
-          <Button arrow="false">
+          <Button arrow="false" to="/">
             Explorer
             <svg
               className="arrow"

@@ -114,7 +114,7 @@ export const HeroImages = styled.div`
       width: 100%;
       height: 250px;
     }
-    ${down("sm")} {
+    ${down("s")} {
       width: 100%;
       height: 210px;
     }

@@ -30,7 +30,7 @@ const WhoIAM = () => {
               deserunt atque iure asperiores itaque ullam consectetur error,
               earum harum. Aliquam officia accusantium ab maiores.
             </WhoParagraphe>
-            <Button>
+            <Button to="/">
               Contact
               <svg
                 className="arrow"
@@ -70,7 +70,7 @@ const WhoIAM = () => {
                     transform="translate(1.656)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Ligne_3"
@@ -79,7 +79,7 @@ const WhoIAM = () => {
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </g>
                 <g
@@ -93,7 +93,7 @@ const WhoIAM = () => {
                     transform="translate(1.656 0)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Ligne_3-2"
@@ -102,7 +102,7 @@ const WhoIAM = () => {
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </g>
                 <g
@@ -116,7 +116,7 @@ const WhoIAM = () => {
                     transform="translate(1.656 0)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Ligne_3-3"
@@ -125,7 +125,7 @@ const WhoIAM = () => {
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </g>
                 <g
@@ -139,7 +139,7 @@ const WhoIAM = () => {
                     transform="translate(1.656 0)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                   <line
                     id="Ligne_3-4"
@@ -148,7 +148,7 @@ const WhoIAM = () => {
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </g>
               </g>
