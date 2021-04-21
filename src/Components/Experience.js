@@ -1,7 +1,11 @@
 import React from "react";
+
+// Import CountUp
+import CountUp from "react-countup";
+
 import {
-    ExperienceBox,
-    ExperienceBoxes,
+  ExperienceBox,
+  ExperienceBoxes,
   ExperienceImage,
   ExperienceInfo,
   ExperienceStats,
@@ -132,16 +136,20 @@ const Experience = () => {
                 </g>
               </svg>
               <ExperienceBox>
-                <h3 className="headline">14 Ans</h3>
+                <h3 className="headline">
+                  <CountUp start={100} end={14} duration={5} /> Ans
+                </h3>
                 <p className="subline">d'Expérience</p>
               </ExperienceBox>
               <ExperienceBox>
-                <h3 className="headline">243</h3>
+                <h3 className="headline">
+                  <CountUp start={0} end={243} duration={5} />
+                </h3>
                 <p className="subline">Clients</p>
               </ExperienceBox>
             </ExperienceBoxes>
           </ExperienceStats>
-          <Button arrow="false" to="/">
+          <Button arrow="false" to="/photo">
             Explorer
             <svg
               className="arrow"

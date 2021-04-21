@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { down } from "styled-breakpoints";
 
 export const HeaderWrapper = styled.div`
@@ -6,7 +6,6 @@ export const HeaderWrapper = styled.div`
   width: 100vw;
   ${down("xs")} {
     height: 90px;
-    z-index: 1000;
   }
 `;
 
@@ -17,6 +16,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
 
   div {
+    z-index: 99;
     position: relative;
     display: flex;
     align-items: center;
@@ -42,9 +42,12 @@ export const HeaderContainer = styled.div`
         width: 60px;
       }
     }
-  }
-  ${down("md")} {
-    margin-right: 30px;
+    ${down("md")} {
+      margin-right: 80px;
+    }
+    ${down("sm")} {
+      margin-right: 60px;
+    }
   }
 `;
 
@@ -56,5 +59,10 @@ export const Logo = styled.h2`
   color: ${(props) => props.theme.red};
   ${down("md")} {
     font-size: 20px;
+    margin-left: 30px;
+  }
+  ${down("sm")} {
+    font-size: 20px;
+    margin-left: 20px;
   }
 `;

@@ -1,18 +1,21 @@
 import React from "react";
+import {image2} from '../data'
 
 import {
   PhotoImageWrapper,
   PhotoWrapper,
 } from "./Styles/photoStyles";
 
-const Video = () => {
+const About = () => {
   return (
     <>
       <PhotoWrapper>
-        <PhotoImageWrapper>MOI</PhotoImageWrapper>
+        <PhotoImageWrapper>
+          <img src={image2} alt=""/>
+        </PhotoImageWrapper>
       </PhotoWrapper>
     </>
   );
 };
 
-export default Video;
+export default About;

@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { down } from "styled-breakpoints";
+import { motion } from "framer-motion";
 
 export const Container = styled.div`
   max-width: 1140px;
@@ -10,7 +11,7 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const Arrow = styled.div`
+export const Arrow = styled(motion.div)`
   position: absolute;
 
   svg {
@@ -35,10 +36,10 @@ export const Arrow = styled.div`
       top: 3%;
       transform: translate(-50%, -50%);
       transform: rotate(180deg);
-      ${down('md')} {
+      ${down("md")} {
         left: 49%;
       }
-      ${down('sm')} {
+      ${down("sm")} {
         left: 47%;
       }
     `}
@@ -52,7 +53,7 @@ export const Arrow = styled.div`
     `}
 `;
 
-export const Button = styled(Link)`
+export const Button = styled(NavLink)`
   color: ${(props) => props.theme.red};
   font-family: ${(props) => props.theme.linkFont};
   text-transform: uppercase;
@@ -61,6 +62,7 @@ export const Button = styled(Link)`
   font-size: 14px;
   text-decoration: none;
   position: relative;
+  transition: hover 0.8s;
   svg {
     position: absolute;
     top: -55%;
@@ -81,12 +83,38 @@ export const Button = styled(Link)`
     `}
 
   ${(props) =>
+    props.small &&
+    css`
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+    `}
+    
+  ${(props) =>
     props.medium &&
     css`
       font-size: 22px;
       letter-spacing: 1.5px;
       font-weight: bold;
     `}
+
+  ${(props) =>
+    props.big &&
+    css`
+      font-size: 27px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    `}
+
+  ${(props) =>
+    props.social &&
+    css`
+      font-size: 11.5px;
+      letter-spacing: 1.4px;
+      font-weight: 400;
+      color: ${(props) => props.theme.white};
+    `}
+
 
   &::after {
     content: "";
@@ -97,6 +125,11 @@ export const Button = styled(Link)`
     border-width: 0 0 1px;
     border-style: solid;
     border-color: ${(props) => props.theme.red};
+  }
+
+  &:hover {
+    -webkit-text-stroke: 1px ${(props) => props.theme.red};
+    -webkit-text-fill-color: transparent;
   }
 `;
 
@@ -151,4 +184,14 @@ export const Submit = styled.button`
     border-style: solid;
     border-color: ${(props) => props.theme.red};
   }
+`;
+
+export const Pages = styled(motion.div)`
+  width: 100vw;
+  min-height: 100vh;
+  padding: 50px 10px;
+  position: relative;
+  display: block;
+  background-color: ${(props) => props.theme.black};
+  z-index: 100;
 `;

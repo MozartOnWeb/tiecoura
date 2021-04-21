@@ -1,20 +1,33 @@
-import React from 'react'
+import React, { useState } from "react";
 
 // Import Components
-import {Experience, Footer, Hero, Introducing, Portfolio, WhoIAM} from '../Components'
+import {
+  Experience,
+  Footer,
+  Hero,
+  Introducing,
+  Portfolio,
+  WhoIAM,
+  Menu,
+  Header,
+} from "../Components";
 
 
 const Home = () => {
-    return (
-        <div>
-            <Hero />
-            <Experience />
-            <Portfolio />
-            <Introducing />
-            <WhoIAM />
-            <Footer />
-        </div>
-    )
-}
+  const [open, setOpen] = useState(false);
 
-export default Home
+  return (
+    <div>
+      <Menu open={open} setOpen={setOpen} />
+      <Header open={open} setOpen={setOpen} />
+      <Hero />
+      <Experience />
+      <Portfolio />
+      <Introducing />
+      <WhoIAM />
+      <Footer />
+    </div>
+  );
+};
+
+export default Home;

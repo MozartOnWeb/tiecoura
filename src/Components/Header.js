@@ -2,13 +2,13 @@ import React from "react";
 import { HeaderContainer, HeaderWrapper, Logo } from "./Styles/headerStyles";
 import { Container } from "../layout";
 
-const Header = () => {
+const Header = ({open, setOpen}) => {
   return (
     <HeaderWrapper>
       <Container>
         <HeaderContainer>
           <Logo>Follio</Logo>
-          <div red="true">
+          <div onClick={() => setOpen(!open)} >
             <svg
               className="svg2"
               xmlns="http://www.w3.org/2000/svg"

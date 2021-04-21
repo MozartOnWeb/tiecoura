@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { only, down } from "styled-breakpoints";
+import { down } from "styled-breakpoints";
 
 
 export const WhoWrapper = styled.div`
