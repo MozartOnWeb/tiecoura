@@ -32,11 +32,15 @@ const Portfolio = () => {
         <PortfolioInfo>
           <PortfolioHeadline>Portfolio</PortfolioHeadline>
           <PortfolioLinks>
-            <Button to="/" medium="true" className="active">
+            <Button to="/" medium="true" activeClassName="active">
               Tout
             </Button>
-            <Button to="/" medium="true">Photos</Button>
-            <Button to="/" medium="true">Videos</Button>
+            <Button to="/" medium="true" activeClassName="active">
+              Photos
+            </Button>
+            <Button to="/" medium="true" activeClassName="active">
+              Videos
+            </Button>
           </PortfolioLinks>
         </PortfolioInfo>
         <PortfolioImages>

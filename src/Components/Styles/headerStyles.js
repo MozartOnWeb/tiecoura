@@ -43,10 +43,10 @@ export const HeaderContainer = styled.div`
       }
     }
     ${down("md")} {
-      margin-right: 80px;
+      margin-right: 50px;
     }
     ${down("sm")} {
-      margin-right: 60px;
+      margin-right: 30px;
     }
   }
 `;

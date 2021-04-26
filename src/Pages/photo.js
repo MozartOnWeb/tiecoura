@@ -1,34 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+
+import { motion } from "framer-motion";
+
+
+// Import Custom Hooks
+import useFirestore from "../hooks/useFirestore";
 
 // Import InfiniteScroll
 import InfiniteScroll from "react-infinite-scroll-component";
 
-// Import Axios
-import axios from "axios";
-
 // Import Components
 import { PhotoWrapper, PhotoImageWrapper } from "./Styles/photoStyles";
+import ImageUpload from "../Components/ImageUpload";
 import Loader from "../Components/Loader";
 
+// Masonry Grid Styles
 import Masonry from "react-masonry-css";
 
 const Photo = () => {
-  const [images, setImages] = useState([]);
+  const { docs } = useFirestore("images");
 
-  const fetchImages = () => {
-    const apiRoot = "https://api.unsplash.com";
-    const accessKey = "bvhHxrgccAB4jufk0o9CqMxbOwlckaxzatf22rZNZS8";
-
-    axios
-      .get(`${apiRoot}/photos/random?client_id=${accessKey}&count=4`)
-      .then((res) => setImages([...images, ...res.data]));
-  };
-
-  useEffect(() => {
-    setTimeout(() => {
-      fetchImages();
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     docs;
+  //   }, 2000);
+  // }, []);
 
   const breakPointColumnObj = {
     default: 3,
@@ -38,30 +34,35 @@ const Photo = () => {
   };
   return (
     <>
-      <>
-        <PhotoWrapper>
-          <InfiniteScroll
-            dataLength={images.length}
-            next={fetchImages}
-            hasMore="true"
-            loader={<Loader />}>
-            <PhotoImageWrapper>
-              <Masonry
-                breakpointCols={breakPointColumnObj}
-                className="my-masonry-grid"
-                columnClassName="my-masonry-grid_column">
-                {images.map(({ urls, alt_description,id }) => {
-                  return (
-                    <div key={id}>
-                      <img src={urls.thumb} alt={alt_description} key={id} />
-                    </div>
-                  );
-                })}
-              </Masonry>
-            </PhotoImageWrapper>
-          </InfiniteScroll>
-        </PhotoWrapper>
-      </>
+      <PhotoWrapper>
+        <ImageUpload />
+        <InfiniteScroll
+          dataLength={docs.length}
+          next={docs}
+          hasMore="true"
+          loader={<Loader />}
+          scrollThreshold={0.9}>
+          <PhotoImageWrapper>
+            <Masonry
+              breakpointCols={breakPointColumnObj}
+              className="my-masonry-grid"
+              columnClassName="my-masonry-grid_column">
+              {docs &&
+                docs.map((doc) => (
+                  <motion.div key={doc.id} layout>
+                    <motion.img
+                      src={doc.url}
+                      alt="uploded_image"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.5 }}
+                    />
+                  </motion.div>
+                ))}
+            </Masonry>
+          </PhotoImageWrapper>
+        </InfiniteScroll>
+      </PhotoWrapper>
     </>
   );
 };

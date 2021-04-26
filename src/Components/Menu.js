@@ -9,6 +9,7 @@ import {
   MenuWrapper,
 } from "./Styles/menuStyles";
 
+
 const Menu = ({ open, setOpen }) => {
   return (
     <>

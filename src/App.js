@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -8,9 +8,10 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 
 // Import Pages
-import  { Home, Video, Photo, About } from "./Pages";
+import { Home, Video, Photo, About } from "./Pages";
 import { CloseMenu, PageNav } from "./Components";
 import { Pages } from "./layout";
+
 import { down } from "styled-breakpoints";
 
 // Create Global Styles
@@ -35,7 +36,7 @@ const GlobalStyles = createGlobalStyle`
         }
     .menu-close {
     position: absolute;
-    right: 133px;
+    right: 135px;
     top: 46px;
     display: flex;
     align-items: center;
