@@ -20,12 +20,6 @@ import Masonry from "react-masonry-css";
 const Photo = () => {
   const { docs } = useFirestore("images");
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     docs;
-  //   }, 2000);
-  // }, []);
-
   const breakPointColumnObj = {
     default: 3,
     1100: 3,

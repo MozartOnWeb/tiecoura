@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 const CloseMenu = ({ visible, setVisible }) => {
+  // Close Menu Settings
   let history = useHistory();
 
   const redirect = () => {

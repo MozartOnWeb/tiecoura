@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { down } from "styled-breakpoints";
+import { motion } from "framer-motion";
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled(motion.div)`
   position: absolute;
   width: 100vw;
   ${down("xs")} {
@@ -9,7 +10,7 @@ export const HeaderWrapper = styled.div`
   }
 `;
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +52,8 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const Logo = styled.h2`
+export const Logo = styled(motion.h2)`
+  z-index: 99;
   cursor: pointer;
   font-family: ${(props) => props.theme.mainFont};
   font-weight: 400;

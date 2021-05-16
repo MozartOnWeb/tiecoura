@@ -1,11 +1,13 @@
 import styled, { css } from "styled-components";
 import { down, only } from "styled-breakpoints";
+import { motion } from 'framer-motion';
 
-export const ExperienceWrapper = styled.div`
+export const ExperienceWrapper = styled(motion.div)`
   width: 80%;
   padding: 50px 10px;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
   background-color: ${(props) => props.theme.black};
   color: ${(props) => props.theme.white};
   display: flex;
@@ -21,7 +23,7 @@ export const ExperienceWrapper = styled.div`
   }
 `;
 
-export const ExperienceImage = styled.div`
+export const ExperienceImage = styled(motion.div)`
   width: 350px;
   height: 500px;
   cursor: pointer;
@@ -41,7 +43,7 @@ export const ExperienceImage = styled.div`
   }
 `;
 
-export const ExperienceInfo = styled.div`
+export const ExperienceInfo = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,7 +91,7 @@ export const ExperienceInfo = styled.div`
   }
 `;
 
-export const ExperienceStats = styled.div`
+export const ExperienceStats = styled(motion.div)`
   position: relative;
   width: 400px;
   height: 200px;
@@ -117,7 +119,7 @@ export const ExperienceStats = styled.div`
   }
 `;
 
-export const ExperienceBoxes = styled.div`
+export const ExperienceBoxes = styled(motion.div)`
   width: 370px;
   height: 170px;
   position: absolute;
@@ -142,7 +144,7 @@ export const ExperienceBoxes = styled.div`
   }
 `;
 
-export const ExperienceBox = styled.div`
+export const ExperienceBox = styled(motion.div)`
   width: 90px;
   height: 90px;
   padding: 15px;

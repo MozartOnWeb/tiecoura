@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+// Scroll Behavior
+import { useInView } from "react-intersection-observer";
+import { useAnimation, motion } from "framer-motion";
 
 // Import CountUp
 import CountUp from "react-countup";
@@ -17,27 +21,143 @@ import { image5, video1 } from "../data";
 import { Arrow, Button } from "../layout";
 
 const Experience = () => {
+  // Scroll Animation Settings
+  const animation = useAnimation();
+  const [WrapperRef, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: "-320px",
+  });
+
+  useEffect(() => {
+    if (inView) {
+      animation.start("visible");
+    }
+  }, [animation, inView]);
 
   return (
     <div>
-      <ExperienceWrapper>
-        <ExperienceImage>
+      {/* Experience Container */}
+      <ExperienceWrapper
+        ref={WrapperRef}
+        animate={animation}
+        initial="hidden"
+        variants={{
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 0.8,
+              ease: "easeOut",
+              type: "spring",
+              stiffness: 80,
+            },
+          },
+          hidden: {
+            opacity: 0,
+            y: 75,
+          },
+        }}>
+        {/* Experience Big-Image */}
+        <ExperienceImage
+          animate={animation}
+          initial="hidden"
+          variants={{
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: {
+                type: "spring",
+                stiffness: 80,
+                delay: 0.7,
+                duration: 0.7,
+                ease: "easeOut",
+              },
+            },
+            hidden: {
+              opacity: 0,
+              x: -80,
+            },
+          }}>
           <video src={video1} autoPlay loop muted></video>
         </ExperienceImage>
+        {/* Experience Big-Image */}
+
+        {/* Experience Informations */}
         <ExperienceInfo>
-          <p>
+          <motion.p
+            animate={animation}
+            initial="hidden"
+            variants={{
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: {
+                  type: "spring",
+                  stiffness: 80,
+                  delay: 0.9,
+                  duration: 0.7,
+                  ease: "easeOut",
+                },
+              },
+              hidden: {
+                opacity: 0,
+                x: 100,
+              },
+            }}>
             Parce que vos plus belles histoires méritent les plus belles
             réalisations. Nous nous assurons de vous fournir un travail
             professionel à la hauteur de vos histoires.
-          </p>
-          <ExperienceStats>
+          </motion.p>
+
+          {/* Experience Stats */}
+          <ExperienceStats
+            animate={animation}
+            initial="hidden"
+            variants={{
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: {
+                  delay: 1.1,
+                  duration: 0.7,
+                  ease: "easeOut",
+                },
+              },
+              hidden: {
+                opacity: 0,
+                x: 100,
+              },
+            }}>
             <img src={image5} alt="" />
+
+            {/* Experience Boxes */}
             <ExperienceBoxes>
-              <svg
+              {/* Experience SVG */}
+              <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="791.246"
                 height="524.948"
-                viewBox="0 0 791.246 524.948">
+                viewBox="0 0 791.246 524.948"
+                animate={animation}
+                initial="hidden"
+                variants={{
+                  visible: {
+                    scale: 1,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                    transition: {
+                      delay: 2,
+                      duration: 0.7,
+                      type: "spring",
+                      stiffness: 80,
+                    },
+                  },
+                  hidden: {
+                    scale: 0,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                  },
+                }}>
                 <g
                   id="Groupe_5"
                   data-name="Groupe 5"
@@ -135,21 +255,63 @@ const Experience = () => {
                     />
                   </g>
                 </g>
-              </svg>
-              <ExperienceBox>
+              </motion.svg>
+              {/* Experience SVG */}
+              <ExperienceBox
+                animate={animation}
+                initial="hidden"
+                variants={{
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 80,
+                      delay: 1.3,
+                      duration: 0.7,
+                      ease: "easeOut",
+                    },
+                  },
+                  hidden: {
+                    opacity: 0,
+                    y: -75,
+                  },
+                }}>
                 <h3 className="headline">
                   <CountUp start={100} end={14} duration={5} /> Ans
                 </h3>
                 <p className="subline">d'Expérience</p>
               </ExperienceBox>
-              <ExperienceBox>
+              <ExperienceBox
+                animate={animation}
+                initial="hidden"
+                variants={{
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 80,
+                      delay: 1.5,
+                      duration: 0.7,
+                      ease: "easeOut",
+                    },
+                  },
+                  hidden: {
+                    opacity: 0,
+                    y: -75,
+                  },
+                }}>
                 <h3 className="headline">
                   <CountUp start={0} end={243} duration={5} />
                 </h3>
                 <p className="subline">Clients</p>
               </ExperienceBox>
             </ExperienceBoxes>
+            {/* Experience Boxes */}
           </ExperienceStats>
+          {/* Experience Stats */}
+
           <Button arrow="false" to="/photo">
             Explorer
             <svg
@@ -168,13 +330,29 @@ const Experience = () => {
             </svg>
           </Button>
         </ExperienceInfo>
+        {/* Experience Informations */}
+
         <Arrow top="true" red="true">
-          <svg
+          <motion.svg
             className="arrow"
             xmlns="http://www.w3.org/2000/svg"
             width="35"
             height="35.91"
-            viewBox="0 0 35 35.91">
+            viewBox="0 0 35 35.91"
+            initial={{
+              y: 25,
+              opacity: 0.2,
+            }}
+            animate={{
+              y: 0,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 1.5,
+              yoyo: Infinity,
+              type: "spring",
+              stiffness: 80,
+            }}>
             <path
               id="FontAwsome_arrow-down_"
               data-name="FontAwsome (arrow-down)"
@@ -182,9 +360,10 @@ const Experience = () => {
               transform="translate(-5.65 -32)"
               fill="#fffdff"
             />
-          </svg>
+          </motion.svg>
         </Arrow>
       </ExperienceWrapper>
+      {/* Experience Container */}
     </div>
   );
 };

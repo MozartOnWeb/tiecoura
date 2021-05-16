@@ -10,6 +10,10 @@ import image9 from "../Assets/images/image9.jpg";
 import image10 from "../Assets/images/image10.jpg";
 import image11 from "../Assets/images/image11.jpg";
 import image12 from "../Assets/images/image12.jpg";
+import image13 from "../Assets/images/image13.jpg";
+import image14 from "../Assets/images/image14.jpg";
+import image15 from "../Assets/images/image15.jpg";
+import image16 from "../Assets/images/image16.jpg";
 
 export const Files = [
   {
@@ -62,14 +66,18 @@ export const Files = [
   },
   {
     id: 12,
-    file: image1,
+    file: image13,
   },
   {
     id: 13,
-    file: image2,
+    file: image14,
   },
   {
     id: 14,
-    file: image2,
+    file: image15,
+  },
+  {
+    id: 15,
+    file: image16,
   },
 ];

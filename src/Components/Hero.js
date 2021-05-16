@@ -1,38 +1,92 @@
 import React from "react";
+
+// Import Styled Components
 import {
   BackgroundImage,
-  HeroImages,
   HeroInfo,
   HeroWrapper,
+  HeroImages,
 } from "./Styles/heroStyles";
 import { Arrow, Container } from "../layout";
 
+// Import Framer Motion
+import { motion } from "framer-motion";
+
 // Import images
-import { image1, image2, image4, video1 } from "../data";
+import { image1, image4, image8, image2, video1 } from "../data";
+
+// Import React Slick
+import Slider from "react-slick";
+import "./Styles/slick.css";
 
 const Hero = () => {
+  // Slider Settings
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 700,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    fade: true,
+    arrows: false,
+    autoplaySpeed: 10000,
+    swipeToSlide: true,
+  };
+
   return (
     <>
-      <BackgroundImage>
-        <img src={image1} alt="" />
-      </BackgroundImage>
+      {/* Slider Component */}
+      <Slider {...settings}>
+        <BackgroundImage
+          initial={{ y: "-100vh" }}
+          animate={{ y: "0" }}
+          transition={{ delay: 1, duration: 1 }}>
+          <img src={image1} alt="" />
+        </BackgroundImage>
+        <BackgroundImage
+          initial={{ y: "-100vh" }}
+          animate={{ y: "0" }}
+          transition={{ delay: 1, duration: 1 }}>
+          <img src={image4} alt="" />
+        </BackgroundImage>
+        <BackgroundImage
+          initial={{ y: "-100vh" }}
+          animate={{ y: "0" }}
+          transition={{ delay: 1, duration: 1 }}>
+          <img src={image8} alt="" />
+        </BackgroundImage>
+      </Slider>
+      {/* Slider Component */}
+
+      {/* Hero Informations Container */}
       <Container>
         <HeroWrapper>
+          
+          {/* Hero Informations */}
           <HeroInfo>
-            <svg
+            <motion.svg
+              initial={{ scale: 0, translateX: "-50%", translateY: "-50%" }}
+              animate={{ scale: 1, translateX: "-50%", translateY: "-50%" }}
+              transition={{
+                delay: 2.1,
+                duration: 0.7,
+                type: "spring",
+                stiffness: 120,
+              }}
               xmlns="http://www.w3.org/2000/svg"
               width="791.246"
               height="524.948"
               viewBox="0 0 791.246 524.948">
-              <g
+              <motion.g
                 id="Groupe_5"
                 data-name="Groupe 5"
                 transform="translate(-190 -344.052)">
-                <g
+                <motion.g
                   id="Groupe_1"
                   data-name="Groupe 1"
                   transform="translate(190 345)">
-                  <line
+                  <motion.line
                     id="Ligne_2"
                     data-name="Ligne 2"
                     y2="35.338"
@@ -50,7 +104,7 @@ const Hero = () => {
                     stroke="#e2293f"
                     strokeWidth="3"
                   />
-                </g>
+                </motion.g>
                 <g
                   id="Groupe_3"
                   data-name="Groupe 3"
@@ -120,31 +174,81 @@ const Hero = () => {
                     strokeWidth="3"
                   />
                 </g>
-              </g>
-            </svg>
-            <p className="outline">Tiecoura</p>
-            <h1>African</h1>
-            <h1>Studio.</h1>
+              </motion.g>
+            </motion.svg>
+            <motion.p
+              className="outline"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                delay: 2.1,
+                duration: 0.7,
+                type: "spring",
+                stiffness: 120,
+              }}>
+              Tiecoura
+            </motion.p>
+            <motion.h1
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                delay: 2.2,
+                duration: 0.7,
+                type: "spring",
+                stiffness: 120,
+              }}>
+              African
+            </motion.h1>
+            <motion.h1
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{
+                delay: 2.3,
+                duration: 0.7,
+                type: "spring",
+                stiffness: 120,
+              }}>
+              Studio.
+            </motion.h1>
           </HeroInfo>
+          {/* Hero Informations */}
+
+          {/* Hero Images */}
           <HeroImages>
-            <div className="squared1">
+            <motion.div className="squared1">
               <img src={image2} alt="" />
-            </div>
-            <div className="squared2">
+            </motion.div>
+            <motion.div className="squared2">
               <video src={video1} autoPlay muted loop></video>
-            </div>
-            <div className="rectangle">
+            </motion.div>
+            <motion.div className="rectangle">
               <img src={image4} alt="" />
-            </div>
+            </motion.div>
           </HeroImages>
+          {/* Hero Images */}
+
         </HeroWrapper>
         <Arrow bottom="true">
-          <svg
+          <motion.svg
             className="arrow"
             xmlns="http://www.w3.org/2000/svg"
             width="35"
             height="35.91"
-            viewBox="0 0 35 35.91">
+            viewBox="0 0 35 35.91"
+            initial={{
+              y: 25,
+              opacity: 0.2,
+            }}
+            animate={{
+              y: 0,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 1.5,
+              yoyo: Infinity,
+              type: "spring",
+              stiffness: 80,
+            }}>
             <path
               id="FontAwsome_arrow-down_"
               data-name="FontAwsome (arrow-down)"
@@ -152,9 +256,10 @@ const Hero = () => {
               transform="translate(-5.65 -32)"
               fill="#fffdff"
             />
-          </svg>
+          </motion.svg>
         </Arrow>
       </Container>
+      {/* Hero Information Container */}
     </>
   );
 };

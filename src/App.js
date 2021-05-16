@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+
+// Import React-Router-Dom
 import { Route, Switch, useLocation } from "react-router-dom";
 
+// Import Framer Motion
 import { AnimatePresence, motion } from "framer-motion";
 
 // Import Global Styles
@@ -8,7 +11,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 
 // Import Pages
-import { Home, Video, Photo, About } from "./Pages";
+import { Home, Video, Photo, About, Welcome } from "./Pages";
 import { CloseMenu, PageNav } from "./Components";
 import { Pages } from "./layout";
 
@@ -109,6 +112,7 @@ function App() {
         <AnimatePresence>
           <Switch location={location} key={location.key}>
             <Route component={Home} path="/" exact />
+            <Route component={Welcome} path="/welcome" default/>
             <motion.div
               className="bg"
               initial={{ x: "0%" }}

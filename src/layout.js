@@ -53,7 +53,7 @@ export const Arrow = styled(motion.div)`
     `}
 `;
 
-export const Button = styled(NavLink)`
+export const Button = styled(motion(NavLink))`
   color: ${(props) => props.theme.red};
   font-family: ${(props) => props.theme.linkFont};
   text-transform: uppercase;
@@ -104,6 +104,14 @@ export const Button = styled(NavLink)`
       font-size: 27px;
       letter-spacing: 2px;
       font-weight: bold;
+    `}
+
+  ${(props) =>
+    props.welcome &&
+    css`
+      font-size: 30px;
+      letter-spacing: 2px;
+      font-weight: bold;    
     `}
 
   ${(props) =>
