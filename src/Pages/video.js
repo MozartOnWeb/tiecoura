@@ -19,12 +19,6 @@ import Masonry from "react-masonry-css";
 const Video = () => {
   const { docs } = useFirestore("videos");
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     docs.;
-  //   }, 2000);
-  // }, []);
-
   const breakPointColumnObj = {
     default: 3,
     1100: 3,

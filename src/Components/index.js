@@ -9,6 +9,10 @@ import Menu from './Menu'
 import Header from './Header'
 import CloseMenu from './CloseMenu'
 import PageNav from './PageNav'
+import PhotoSeries from "./PhotoSeries";
+import NewSerieForm from "./NewSerieForm";
+import PhotoSerie from "./PhotoSerie";
+import NewPhotoForm from "./NewPhotoForm";
 
 
 export {
@@ -21,5 +25,9 @@ export {
   Menu,
   Header,
   CloseMenu,
-  PageNav
+  PageNav,
+  PhotoSeries,
+  NewSerieForm,
+  PhotoSerie,
+  NewPhotoForm,
 };

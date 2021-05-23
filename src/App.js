@@ -11,14 +11,17 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 
 // Import Pages
-import { Home, Video, Photo, About, Welcome } from "./Pages";
-import { CloseMenu, PageNav } from "./Components";
+import { Home, Video, Photo, About, Welcome, Dashboard } from "./Pages";
+import { CloseMenu, PageNav, PhotoSerie } from "./Components";
 import { Pages } from "./layout";
 
 import { down } from "styled-breakpoints";
 
 // Create Global Styles
 const GlobalStyles = createGlobalStyle`
+  * {
+    font-family: "Poppins";
+  }
   html, body {
     overflow-x: hidden;
     .bg {
@@ -112,7 +115,9 @@ function App() {
         <AnimatePresence>
           <Switch location={location} key={location.key}>
             <Route component={Home} path="/" exact />
-            <Route component={Welcome} path="/welcome" default/>
+            <Route component={Welcome} path="/welcome" />
+            <Route component={Dashboard} path="/dashboard" />
+            <Route path="/:serie" component={PhotoSerie} />
             <motion.div
               className="bg"
               initial={{ x: "0%" }}
