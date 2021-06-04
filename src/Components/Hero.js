@@ -1,5 +1,8 @@
 import React from "react";
 
+// Import React Router Dom
+import { Link } from "react-router-dom";
+
 // Import Styled Components
 import {
   BackgroundImage,
@@ -62,7 +65,6 @@ const Hero = () => {
       {/* Hero Informations Container */}
       <Container>
         <HeroWrapper>
-          
           {/* Hero Informations */}
           <HeroInfo>
             <motion.svg
@@ -215,18 +217,54 @@ const Hero = () => {
 
           {/* Hero Images */}
           <HeroImages>
-            <motion.div className="squared1">
-              <img src={image2} alt="" />
+            <motion.div
+              className="squared1"
+              initial={{ y: "-100vh" }}
+              animate={{ y: 0 }}
+              transition={{
+                delay: 2.5,
+                duration: 1,
+                type: "spring",
+                stiffness: 80,
+              }}>
+              <Link to="/photo">
+                <h2 >Voir les Photos</h2>
+                <img src={image2} alt="" />
+              </Link>
             </motion.div>
-            <motion.div className="squared2">
-              <video src={video1} autoPlay muted loop></video>
+            <motion.div
+              className="squared2"
+              initial={{ y: "-100vh" }}
+              animate={{ y: 0 }}
+              transition={{
+                delay: 2.7,
+                duration: 1,
+                type: "spring",
+                stiffness: 80,
+              }}>
+              <Link to="/video">
+                <h2>Voir les Vidéos</h2>
+                <video src={video1} autoPlay muted loop></video>
+              </Link>
             </motion.div>
-            <motion.div className="rectangle">
-              <img src={image4} alt="" />
+            <motion.div
+              className="rectangle"
+              initial={{ y: "-100vh" }}
+              animate={{ y: 0 }}
+              transition={{
+                delay: 2.9,
+                duration: 1,
+                type: "spring",
+                stiffness: 80,
+
+              }}>
+              <Link to="/about">
+                <h2>A Propos de moi</h2>
+                <img src={image4} alt="" />
+              </Link>
             </motion.div>
           </HeroImages>
           {/* Hero Images */}
-
         </HeroWrapper>
         <Arrow bottom="true">
           <motion.svg

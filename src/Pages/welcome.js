@@ -21,7 +21,7 @@ const Welcome = () => {
   return (
     <WelcomeWrapper>
       <Logo>Follio</Logo>
-      <Button welcome to="/">
+      <Button welcome to="/home">
         Entrez
         <svg
           className="arrow"

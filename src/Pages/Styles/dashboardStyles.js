@@ -12,8 +12,9 @@ export const DashContainer = styled.div`
 `;
 export const DashWrapper = styled.div`
   width: 90vw;
-  height: auto;
+  height: 80vh;
   margin: 0px auto;
+  position: relative;
 `;
 
 export const DashHeadrer = styled.div`

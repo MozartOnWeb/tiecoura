@@ -75,24 +75,61 @@ export const HeroImages = styled(motion.div)`
     width: 180px;
     height: 185px;
     cursor: pointer;
-    ${only("md")} {
-      width: 220px;
-      height: 190px;
-    }
-    ${down("xs")} {
-      width: 100%;
-      height: 250px;
-    }
-    ${down("s")} {
-      width: 100%;
-      height: 210px;
-    }
-    img,
-    video {
-      border-radius: 15px;
+    ::after {
+      transition: 1s ease-in-out;
+      content: "";
+      position: absolute;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      opacity: 0;
+    }
+    &:hover {
+      ::after {
+        opacity: 1;
+      }
+      h2 {
+        opacity: 1;
+      }
+    }
+    h2 {
+      z-index: 2;
+      transition: 1s ease-in-out .5s;
+      position: absolute;
+      color: ${(props) => props.theme.red};
+      font-family: ${(props) => props.theme.linkFont};
+      font-size: 20px;
+      text-transform: uppercase;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+    a {
+      text-decoration: none;
+      }
+      ${only("md")} {
+        width: 220px;
+        height: 190px;
+      }
+      ${down("xs")} {
+        width: 100%;
+        height: 250px;
+      }
+      ${down("s")} {
+        width: 100%;
+        height: 210px;
+      }
+      img,
+      video {
+        border-radius: 15px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
   .squared2 {
@@ -100,6 +137,42 @@ export const HeroImages = styled(motion.div)`
     width: 180px;
     height: 185px;
     cursor: pointer;
+    ::after {
+      transition: 1s ease-in-out;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      opacity: 0;
+    }
+    &:hover {
+      ::after {
+        opacity: 1;
+      }
+      h2 {
+        opacity: 1;
+      }
+    }
+    h2 {
+      z-index: 2;
+      transition: 1s ease-in-out .5s;
+      position: absolute;
+      color: ${(props) => props.theme.red};
+      font-family: ${(props) => props.theme.linkFont};
+      font-size: 20px;
+      text-transform: uppercase;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+    a {
+      text-decoration: none;
+    }
     ${only("md")} {
       width: 220px;
       height: 190px;
@@ -122,6 +195,42 @@ export const HeroImages = styled(motion.div)`
     width: 180px;
     height: 390px;
     cursor: pointer;
+    ::after {
+      transition: 1s ease-in-out;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      opacity: 0;
+    }
+    &:hover {
+      ::after {
+        opacity: 1;
+      }
+      h2 {
+        opacity: 1;
+      }
+    }
+    h2 {
+      z-index: 2;
+      transition: 1s ease-in-out .5s;
+      position: absolute;
+      color: ${(props) => props.theme.red};
+      font-family: ${(props) => props.theme.linkFont};
+      font-size: 20px;
+      text-transform: uppercase;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+    a {
+      text-decoration: none;
+    }
     ${only("md")} {
       width: 240px;
       height: 395px;
@@ -136,7 +245,6 @@ export const HeroImages = styled(motion.div)`
       height: 100%;
       object-fit: cover;
     }
-  }
 `;
 
 export const HeroInfo = styled(motion.div)`
