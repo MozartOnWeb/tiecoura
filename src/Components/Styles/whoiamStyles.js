@@ -113,4 +113,7 @@ export const WhoImage = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  .introducing2 {
+    height: 250px;
+  }
 `;

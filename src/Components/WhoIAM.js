@@ -1,5 +1,8 @@
 import React from "react";
 
+// ImageModal Component
+import ModalImage from "react-modal-image";
+
 // Import Components
 import { Button } from "../layout";
 
@@ -49,7 +52,13 @@ const WhoIAM = () => {
             </Button>
           </WhoInfo>
           <WhoImage>
-            <img src={image1} alt="" />
+            <ModalImage
+              small={image1}
+              large={image1}
+              alt=""
+              className="introducing2"
+            />
+            {/* <img src={image1} alt="" /> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="791.246"

@@ -65,4 +65,7 @@ export const IntroduceImage = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  .introducing {
+    height: 350px;
+  }
 `;

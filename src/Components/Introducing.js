@@ -1,5 +1,8 @@
 import React from 'react'
 
+// ImageModal Component
+import ModalImage from "react-modal-image";
+
 // Import Components
 import { Arrow } from '../layout'
 
@@ -10,6 +13,7 @@ import { IntroduceImage, IntroduceWrapper } from './Styles/introducingStyles'
 import {image8} from '../data'
 
 const Introducing = () => {
+
     return (
       <div>
         <IntroduceWrapper>
@@ -19,7 +23,8 @@ const Introducing = () => {
             corrupti? Dolore?
           </p>
           <IntroduceImage>
-              <img src={image8} alt=""/>
+            <ModalImage small={image8} large={image8} alt="" className="introducing"/>
+            {/* <img src={image8} alt="" /> */}
           </IntroduceImage>
           <Arrow bottom="true" red="true">
             <svg
