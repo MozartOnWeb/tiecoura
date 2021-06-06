@@ -17,7 +17,7 @@ const Header = ({ open, setOpen }) => {
           <Logo 
             initial={{ y: "-100vh" }}
             animate={{ y: "0" }}
-            transition={{ delay: 1.5, duration: 1 }}>
+            transition={{ delay: 2.8, duration: 1 }}>
             Follio
           </Logo>
           {/* Logo Component */}
@@ -26,7 +26,7 @@ const Header = ({ open, setOpen }) => {
           <motion.div
             initial={{ y: "-100vh" }}
             animate={{ y: "0" }}
-            transition={{ delay: 1.8, duration: 1 }}
+            transition={{ delay: 2.9, duration: 1 }}
             onClick={() => setOpen(!open)}>
             <svg
               className="svg2"

@@ -14,6 +14,13 @@ export const BackgroundImage = styled(motion.div)`
   }
 `;
 
+export const HeroContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin-bottom: 50px;
+`;
+
 export const HeroWrapper = styled(motion.div)`
   display: flex;
   justify-content: space-between;

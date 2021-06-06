@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Import React Router Dom
 import { Link } from "react-router-dom";
+
+// Import firestore
+import { fs } from "../firebase/config";
 
 // Import Styled Components
 import {
@@ -9,20 +12,52 @@ import {
   HeroInfo,
   HeroWrapper,
   HeroImages,
+  HeroContainer,
 } from "./Styles/heroStyles";
 import { Arrow, Container } from "../layout";
 
 // Import Framer Motion
 import { motion } from "framer-motion";
 
-// Import images
-import { image1, image4, image8, image2, video1 } from "../data";
-
 // Import React Slick
 import Slider from "react-slick";
 import "./Styles/slick.css";
 
 const Hero = () => {
+  const [BG, setBG] = useState([]);
+  const [images, setImages] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const [first, setFirst] = useState([]);
+
+  useEffect(() => {
+    fs.collection("videos").onSnapshot((snap) => {
+      const tempVideos = [];
+      snap.forEach((doc) => {
+        tempVideos.push({ ...doc.data(), id: doc.id });
+      });
+      setVideos(tempVideos);
+    });
+
+    // Background Images
+    fs.collection("BGImages").onSnapshot((snap) => {
+      const tempBG = [];
+      snap.forEach((doc) => {
+        tempBG.push({ ...doc.data(), id: doc.id });
+      });
+      setBG(tempBG);
+    });
+
+    fs.collection("OtherImages").onSnapshot((snapshot) => {
+      const tempImages = [];
+      snapshot.forEach((doc) => {
+        tempImages.push({ ...doc.data(), id: doc.id });
+      });
+      setImages(tempImages);
+    });
+  }, []);
+
+  useEffect(() => {}, []);
+
   // Slider Settings
   const settings = {
     dots: false,
@@ -38,28 +73,20 @@ const Hero = () => {
   };
 
   return (
-    <>
+    <HeroContainer>
       {/* Slider Component */}
+
       <Slider {...settings}>
-        <BackgroundImage
-          initial={{ y: "-100vh" }}
-          animate={{ y: "0" }}
-          transition={{ delay: 1, duration: 1 }}>
-          <img src={image1} alt="" />
-        </BackgroundImage>
-        <BackgroundImage
-          initial={{ y: "-100vh" }}
-          animate={{ y: "0" }}
-          transition={{ delay: 1, duration: 1 }}>
-          <img src={image4} alt="" />
-        </BackgroundImage>
-        <BackgroundImage
-          initial={{ y: "-100vh" }}
-          animate={{ y: "0" }}
-          transition={{ delay: 1, duration: 1 }}>
-          <img src={image8} alt="" />
-        </BackgroundImage>
+        {BG.map((bg) => (
+          <BackgroundImage
+            initial={{ y: "-100vh" }}
+            animate={{ y: "0" }}
+            transition={{ delay: 1, duration: 1 }}>
+            <img src={bg.url} alt="" />
+          </BackgroundImage>
+        ))}
       </Slider>
+
       {/* Slider Component */}
 
       {/* Hero Informations Container */}
@@ -71,7 +98,7 @@ const Hero = () => {
               initial={{ scale: 0, translateX: "-50%", translateY: "-50%" }}
               animate={{ scale: 1, translateX: "-50%", translateY: "-50%" }}
               transition={{
-                delay: 2.1,
+                delay: 3.5,
                 duration: 0.7,
                 type: "spring",
                 stiffness: 120,
@@ -183,7 +210,7 @@ const Hero = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{
-                delay: 2.1,
+                delay: 3.2,
                 duration: 0.7,
                 type: "spring",
                 stiffness: 120,
@@ -194,7 +221,7 @@ const Hero = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{
-                delay: 2.2,
+                delay: 3.1,
                 duration: 0.7,
                 type: "spring",
                 stiffness: 120,
@@ -205,7 +232,7 @@ const Hero = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{
-                delay: 2.3,
+                delay: 3,
                 duration: 0.7,
                 type: "spring",
                 stiffness: 120,
@@ -222,14 +249,16 @@ const Hero = () => {
               initial={{ y: "-100vh" }}
               animate={{ y: 0 }}
               transition={{
-                delay: 2.5,
+                delay: 3.6,
                 duration: 1,
                 type: "spring",
                 stiffness: 80,
               }}>
               <Link to="/photo">
-                <h2 >Voir les Photos</h2>
-                <img src={image2} alt="" />
+                <h2>Voir les Photos</h2>
+                {images.slice(0, 1).map((image) => (
+                  <img src={image.url} alt="" />
+                ))}
               </Link>
             </motion.div>
             <motion.div
@@ -237,14 +266,16 @@ const Hero = () => {
               initial={{ y: "-100vh" }}
               animate={{ y: 0 }}
               transition={{
-                delay: 2.7,
+                delay: 3.8,
                 duration: 1,
                 type: "spring",
                 stiffness: 80,
               }}>
               <Link to="/video">
                 <h2>Voir les Vidéos</h2>
-                <video src={video1} autoPlay muted loop></video>
+                {videos.slice(0, 1).map((video) => (
+                  <video src={video.url}  loop autoPlay muted/>
+                ))}
               </Link>
             </motion.div>
             <motion.div
@@ -252,15 +283,16 @@ const Hero = () => {
               initial={{ y: "-100vh" }}
               animate={{ y: 0 }}
               transition={{
-                delay: 2.9,
+                delay: 4,
                 duration: 1,
                 type: "spring",
                 stiffness: 80,
-
               }}>
               <Link to="/about">
                 <h2>A Propos de moi</h2>
-                <img src={image4} alt="" />
+                {images.slice(1, 2).map((image) => (
+                  <img src={image.url} alt="" />
+                ))}
               </Link>
             </motion.div>
           </HeroImages>
@@ -298,7 +330,7 @@ const Hero = () => {
         </Arrow>
       </Container>
       {/* Hero Information Container */}
-    </>
+    </HeroContainer>
   );
 };
 
