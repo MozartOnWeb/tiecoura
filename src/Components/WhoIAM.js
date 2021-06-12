@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-// ImageModal Component
-import ModalImage from "react-modal-image";
+// Import firestore
+import { fs } from "../firebase/config";
 
 // Import Components
 import { Button } from "../layout";
@@ -21,6 +21,16 @@ import {
 import { image1 } from "../data";
 
 const WhoIAM = () => {
+  const [profile, setProfile] = useState([]);
+
+  fs.collection("Profile").onSnapshot((snapshot) => {
+    const tempProfile = [];
+    snapshot.forEach((doc) => {
+      tempProfile.push({ ...doc.data(), id: doc.id });
+    });
+    setProfile(tempProfile);
+  });
+
   return (
     <div>
       <WhoWrapper>
@@ -52,13 +62,9 @@ const WhoIAM = () => {
             </Button>
           </WhoInfo>
           <WhoImage>
-            <ModalImage
-              small={image1}
-              large={image1}
-              alt=""
-              className="introducing2"
-            />
-            {/* <img src={image1} alt="" /> */}
+            {profile.map((image) => (
+              <img src={image.url} alt="profile_image" />
+            ))}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="791.246"

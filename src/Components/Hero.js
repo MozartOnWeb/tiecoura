@@ -27,9 +27,10 @@ const Hero = () => {
   const [BG, setBG] = useState([]);
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
-  const [first, setFirst] = useState([]);
 
   useEffect(() => {
+
+    // Boxe Video
     fs.collection("videos").onSnapshot((snap) => {
       const tempVideos = [];
       snap.forEach((doc) => {
@@ -47,6 +48,7 @@ const Hero = () => {
       setBG(tempBG);
     });
 
+    // Boxe Images
     fs.collection("OtherImages").onSnapshot((snapshot) => {
       const tempImages = [];
       snapshot.forEach((doc) => {

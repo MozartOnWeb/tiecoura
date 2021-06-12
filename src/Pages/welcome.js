@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 // Import Framer Motion
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
+
+// Import firestore
+import { fs } from "../firebase/config";
 
 // Import Styled Components
 import {
@@ -18,6 +21,17 @@ import { Logo, WelcomeDesc } from "./Styles/welcomeStyles";
 import {Button} from "../layout"
 
 const Welcome = () => {
+
+  const [image, setImage] = useState([]);
+
+      fs.collection("Welcome").onSnapshot((snapshot) => {
+        const tempImage = [];
+        snapshot.forEach((doc) => {
+          tempImage.push({ ...doc.data(), id: doc.id });
+        });
+        setImage(tempImage);
+      });
+
   return (
     <WelcomeWrapper>
       <Logo>Follio</Logo>
@@ -45,7 +59,9 @@ const Welcome = () => {
       </WelcomeDesc>
       <WelcomeGradient />
       <WelcomeImage>
-        <motion.img src={image1} alt="" />
+        {image.map((img) => (
+          <motion.img src={img.url} alt="welcome_img" />
+        ))}
       </WelcomeImage>
     </WelcomeWrapper>
   );

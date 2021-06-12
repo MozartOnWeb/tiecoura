@@ -1,4 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+// Import firestore
+import { fs } from "../firebase/config";
 
 // Scroll Behavior
 import { useInView } from "react-intersection-observer";
@@ -21,6 +24,9 @@ import { image5, video1 } from "../data";
 import { Arrow, Button } from "../layout";
 
 const Experience = () => {
+  const [images, setImages] = useState([]);
+  const [videos, setVideos] = useState([]);
+
   // Scroll Animation Settings
   const animation = useAnimation();
   const [WrapperRef, inView] = useInView({
@@ -33,6 +39,26 @@ const Experience = () => {
       animation.start("visible");
     }
   }, [animation, inView]);
+
+  useEffect(() => {
+   
+   fs.collection("videos").onSnapshot((snap) => {
+     const tempVideos = [];
+     snap.forEach((doc) => {
+       tempVideos.push({ ...doc.data(), id: doc.id });
+     });
+     setVideos(tempVideos);
+   });
+
+   fs.collection("OtherImages").onSnapshot((snapshot) => {
+     const tempImages = [];
+     snapshot.forEach((doc) => {
+       tempImages.push({ ...doc.data(), id: doc.id });
+     });
+     setImages(tempImages);
+   });
+
+ }, [])
 
   return (
     <div>
@@ -78,7 +104,9 @@ const Experience = () => {
               x: -80,
             },
           }}>
-          <video src={video1} autoPlay loop muted></video>
+          {videos.slice(1, 2).map((video) => (
+                  <video src={video.url}  loop autoPlay muted/>
+                ))}
         </ExperienceImage>
         {/* Experience Big-Image */}
 
@@ -128,7 +156,9 @@ const Experience = () => {
                 x: 100,
               },
             }}>
-            <img src={image5} alt="" />
+            {images.slice(2, 3).map((image) => (
+                  <img src={image.url} alt="" />
+                ))}
 
             {/* Experience Boxes */}
             <ExperienceBoxes>

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-// ImageModal Component
-import ModalImage from "react-modal-image";
+
+// Import firestore
+import { fs } from "../firebase/config";
 
 // Import Components
 import { Arrow } from '../layout'
@@ -9,10 +10,19 @@ import { Arrow } from '../layout'
 // Import Styles
 import { IntroduceImage, IntroduceWrapper } from './Styles/introducingStyles'
 
-// Import Image
-import {image8} from '../data'
-
 const Introducing = () => {
+
+    const [images, setImages] = useState([]);
+
+  useEffect(() => {
+      fs.collection("OtherImages").onSnapshot((snapshot) => {
+        const tempImages = [];
+        snapshot.forEach((doc) => {
+          tempImages.push({ ...doc.data(), id: doc.id });
+        });
+        setImages(tempImages);
+      });
+  }, [])
 
     return (
       <div>
@@ -23,8 +33,9 @@ const Introducing = () => {
             corrupti? Dolore?
           </p>
           <IntroduceImage>
-            <ModalImage small={image8} large={image8} alt="" className="introducing"/>
-            {/* <img src={image8} alt="" /> */}
+            {images.slice(3, 4).map((image) => (
+              <img src={image.url} alt="" />
+            ))}
           </IntroduceImage>
           <Arrow bottom="true" red="true">
             <svg
