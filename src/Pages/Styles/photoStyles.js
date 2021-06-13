@@ -5,7 +5,7 @@ import { down } from "styled-breakpoints";
 export const PhotoWrapper = styled(motion.div)`
   width: 80%;
   height: 100%;
-  margin: 40px auto;
+  margin: 20px auto;
   z-index: 500;
   overflow-x: hidden;
 `;
@@ -29,7 +29,8 @@ export const PhotoImageWrapper = styled(motion.div)`
     overflow: hidden;
     position: relative;
     margin-bottom: 30px;
-    img, video {
+    img,
+    video {
       cursor: pointer;
       overflow: hidden;
       border-radius: 15px;
@@ -79,10 +80,42 @@ export const AboutImage = styled.div`
   width: 100%;
   height: 350px;
   margin-bottom: 15px;
-  img, video {
+  img,
+  video {
     border-radius: 15px;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+`;
+
+export const SeriesName = styled.div`
+  width: 80vw;
+  margin: 0 auto;
+  margin: 30px auto 30px auto;
+`;
+
+export const SingleName = styled.div`
+  position: relative;
+  text-align: center;
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: ${(props) => props.theme.red};
+    font-family: ${(props) => props.theme.bodyFont};
+    text-transform: uppercase;
+  }
+  .active {
+    font-weight: bold;
+  }
+`;
+
+export const SerieInfo = styled.p`
+  color: ${(props) => props.theme.white};
+  font-family: ${(props) => props.theme.bodyFont};
+  font-weight: 300;
+  width: 60vw;
+  text-align: left;
+  margin: 0 auto;
+  line-height: 23px;
 `;

@@ -8,7 +8,7 @@ const CloseMenu = ({ visible, setVisible }) => {
   const redirect = () => {
     setVisible(!visible);
     setTimeout(() => {
-      history.push("/");
+      history.push("/home");
     }, 50);
   };
 
