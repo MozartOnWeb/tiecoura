@@ -115,7 +115,7 @@ function App() {
         <AnimatePresence>
           <Switch location={location} key={location.key}>
             <Route component={Home} path="/home" exact />
-            <Route component={Welcome} path="/" />
+            <Route component={Welcome} path="/" exact/>
             <motion.div
               className="bg"
               initial={{ x: "0%" }}
@@ -142,7 +142,7 @@ function App() {
                 <PageNav />
                 <CloseMenu visible={visible} setVisible={setVisible} />
                 <Route component={Video} path="/video" />
-                <Route component={Photo} path="/photo" />
+                <Route component={Photo} path="/photo/:serie" />
                 <Route component={About} path="/about" />
               </Pages>
             </motion.div>
