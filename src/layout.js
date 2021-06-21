@@ -111,7 +111,7 @@ export const Button = styled(motion(NavLink))`
     css`
       font-size: 30px;
       letter-spacing: 2px;
-      font-weight: bold;    
+      font-weight: bold;
     `}
 
   ${(props) =>

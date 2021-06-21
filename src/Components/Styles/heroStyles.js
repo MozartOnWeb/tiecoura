@@ -21,7 +21,7 @@ export const HeroContainer = styled.div`
   margin-bottom: 50px;
 `;
 
-export const HeroWrapper = styled(motion.div)`
+export const HeroWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,7 +62,7 @@ export const HeroWrapper = styled(motion.div)`
   }
 `;
 
-export const HeroImages = styled(motion.div)`
+export const HeroImages = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
@@ -82,6 +82,7 @@ export const HeroImages = styled(motion.div)`
     width: 180px;
     height: 185px;
     cursor: pointer;
+    position: relative;
     ::after {
       transition: 1s ease-in-out;
       content: "";
@@ -95,10 +96,10 @@ export const HeroImages = styled(motion.div)`
       opacity: 0;
     }
     &:hover {
-      ::after {
+      h2 {
         opacity: 1;
       }
-      h2 {
+      ::after {
         opacity: 1;
       }
     }
@@ -144,6 +145,7 @@ export const HeroImages = styled(motion.div)`
     width: 180px;
     height: 185px;
     cursor: pointer;
+    position: relative;
     ::after {
       transition: 1s ease-in-out;
       content: "";
@@ -202,6 +204,7 @@ export const HeroImages = styled(motion.div)`
     width: 180px;
     height: 390px;
     cursor: pointer;
+    position: relative;
     ::after {
       transition: 1s ease-in-out;
       content: "";
@@ -215,10 +218,10 @@ export const HeroImages = styled(motion.div)`
       opacity: 0;
     }
     &:hover {
-      ::after {
+      h2 {
         opacity: 1;
       }
-      h2 {
+      ::after {
         opacity: 1;
       }
     }
@@ -254,7 +257,7 @@ export const HeroImages = styled(motion.div)`
     }
 `;
 
-export const HeroInfo = styled(motion.div)`
+export const HeroInfo = styled.div`
   font-family: ${(props) => props.theme.mainFont};
   position: relative;
   margin-left: 11%;
@@ -307,7 +310,7 @@ export const HeroInfo = styled(motion.div)`
   }
 `;
 
-// export const HeroImages = styled(motion.div)`
+// export const HeroImages = styled.div`
 //   display: grid;
 //   grid-template-columns: repeat(2, 1fr);
 //   grid-template-rows: 1fr;

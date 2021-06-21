@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 // Import Framer Motion
 import { motion } from "framer-motion"
@@ -12,9 +12,6 @@ import {
   WelcomeImage,
   WelcomeGradient,
 } from "./Styles/welcomeStyles";
-
-// Import Images
-import { image1 } from "../data";
 
 // Import Styled Components
 import { Logo, WelcomeDesc } from "./Styles/welcomeStyles";

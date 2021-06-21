@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
+// Import firestore
+import { fs } from "../firebase/config";
+
+import { AnimatePresence } from "framer-motion";
 import { Button } from "../layout";
 import {
   MenuContainer,
@@ -9,8 +12,19 @@ import {
   MenuWrapper,
 } from "./Styles/menuStyles";
 
-
 const Menu = ({ open, setOpen }) => {
+  const [serieName, setSerieName] = useState([]);
+
+  fs.collection("series")
+    .orderBy("timestamp", "desc")
+    .onSnapshot((snapshot) => {
+      const tempNames = [];
+      snapshot.forEach((doc) => {
+        tempNames.push({ ...doc.data(), id: doc.id });
+      });
+      setSerieName(tempNames);
+    });
+
   return (
     <>
       <AnimatePresence>
@@ -20,23 +34,9 @@ const Menu = ({ open, setOpen }) => {
             exit={{ x: "100%" }}
             animate={{ x: "0%" }}
             transition={{
-              duration: 1.3,
-              ease: "easeOut",
-              type: "spring",
-              stiffness: 50,
+              duration: .8,
+              ease: "easeIn",
             }}>
-            <motion.div
-              className="bg"
-              initial={{ x: "100%" }}
-              exit={{ x: "100%" }}
-              animate={{ x: "0%" }}
-              transition={{
-                duration: 1.3,
-                ease: "easeOut",
-                delay: -4,
-                type: "spring",
-                stiffness: 50,
-              }}></motion.div>
             <div className="menu-close" onClick={() => setOpen(!open)}>
               <svg
                 className="svg2"
@@ -72,7 +72,7 @@ const Menu = ({ open, setOpen }) => {
             </div>
             <MenuWrapper>
               <MenuLinks>
-                <Button big="true" to="/photo">
+                <Button big="true" to={`/photo/${serieName[0].name}`}>
                   photos
                   <svg
                     className="arrow menu-link-arrow"

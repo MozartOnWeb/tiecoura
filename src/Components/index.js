@@ -9,6 +9,7 @@ import Menu from "./Menu";
 import Header from "./Header";
 import CloseMenu from "./CloseMenu";
 import PageNav from "./PageNav";
+import Preloader from "./Preloader";
 
 export {
   Experience,
@@ -21,4 +22,5 @@ export {
   Header,
   CloseMenu,
   PageNav,
+  Preloader,
 };

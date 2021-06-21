@@ -63,7 +63,7 @@ const WhoIAM = () => {
           </WhoInfo>
           <WhoImage>
             {profile.map((image) => (
-              <img src={image.url} alt="profile_image" />
+              <img src={image.url} alt="profile_image" loading="lazy" />
             ))}
             <svg
               xmlns="http://www.w3.org/2000/svg"

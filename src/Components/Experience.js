@@ -3,10 +3,6 @@ import React, { useEffect, useState } from "react";
 // Import firestore
 import { fs } from "../firebase/config";
 
-// Scroll Behavior
-import { useInView } from "react-intersection-observer";
-import { useAnimation, motion } from "framer-motion";
-
 // Import CountUp
 import CountUp from "react-countup";
 
@@ -19,175 +15,77 @@ import {
   ExperienceWrapper,
 } from "./Styles/experienceStyles";
 
-// Import Images
-import { image5, video1 } from "../data";
+// Import Components
 import { Arrow, Button } from "../layout";
 
 const Experience = () => {
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
-
-  // Scroll Animation Settings
-  const animation = useAnimation();
-  const [WrapperRef, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: "-320px",
-  });
+  const [serieName, setSerieName] = useState([]);
 
   useEffect(() => {
-    if (inView) {
-      animation.start("visible");
-    }
-  }, [animation, inView]);
+    fs.collection("videos").onSnapshot((snap) => {
+      const tempVideos = [];
+      snap.forEach((doc) => {
+        tempVideos.push({ ...doc.data(), id: doc.id });
+      });
+      setVideos(tempVideos);
+    });
 
-  useEffect(() => {
-   
-   fs.collection("videos").onSnapshot((snap) => {
-     const tempVideos = [];
-     snap.forEach((doc) => {
-       tempVideos.push({ ...doc.data(), id: doc.id });
-     });
-     setVideos(tempVideos);
-   });
+    fs.collection("OtherImages").onSnapshot((snapshot) => {
+      const tempImages = [];
+      snapshot.forEach((doc) => {
+        tempImages.push({ ...doc.data(), id: doc.id });
+      });
+      setImages(tempImages);
+    });
+    
+  }, []);
 
-   fs.collection("OtherImages").onSnapshot((snapshot) => {
-     const tempImages = [];
-     snapshot.forEach((doc) => {
-       tempImages.push({ ...doc.data(), id: doc.id });
-     });
-     setImages(tempImages);
-   });
-
- }, [])
+ fs.collection("series")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        const tempNames = [];
+        snapshot.forEach((doc) => {
+          tempNames.push({ ...doc.data(), id: doc.id });
+        });
+        setSerieName(tempNames);
+      });
 
   return (
     <div>
       {/* Experience Container */}
-      <ExperienceWrapper
-        ref={WrapperRef}
-        animate={animation}
-        initial="hidden"
-        variants={{
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-              duration: 0.8,
-              ease: "easeOut",
-              type: "spring",
-              stiffness: 80,
-            },
-          },
-          hidden: {
-            opacity: 0,
-            y: 75,
-          },
-        }}>
+      <ExperienceWrapper>
         {/* Experience Big-Image */}
-        <ExperienceImage
-          animate={animation}
-          initial="hidden"
-          variants={{
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: {
-                type: "spring",
-                stiffness: 80,
-                delay: 0.7,
-                duration: 0.7,
-                ease: "easeOut",
-              },
-            },
-            hidden: {
-              opacity: 0,
-              x: -80,
-            },
-          }}>
+        <ExperienceImage>
           {videos.slice(1, 2).map((video) => (
-                  <video src={video.url}  loop autoPlay muted/>
-                ))}
+            <video src={video.url} loop autoPlay muted />
+          ))}
         </ExperienceImage>
         {/* Experience Big-Image */}
 
         {/* Experience Informations */}
         <ExperienceInfo>
-          <motion.p
-            animate={animation}
-            initial="hidden"
-            variants={{
-              visible: {
-                opacity: 1,
-                x: 0,
-                transition: {
-                  type: "spring",
-                  stiffness: 80,
-                  delay: 0.9,
-                  duration: 0.7,
-                  ease: "easeOut",
-                },
-              },
-              hidden: {
-                opacity: 0,
-                x: 100,
-              },
-            }}>
+          <p>
             Parce que vos plus belles histoires méritent les plus belles
             réalisations. Nous nous assurons de vous fournir un travail
             professionel à la hauteur de vos histoires.
-          </motion.p>
+          </p>
 
           {/* Experience Stats */}
-          <ExperienceStats
-            animate={animation}
-            initial="hidden"
-            variants={{
-              visible: {
-                opacity: 1,
-                x: 0,
-                transition: {
-                  delay: 1.1,
-                  duration: 0.7,
-                  ease: "easeOut",
-                },
-              },
-              hidden: {
-                opacity: 0,
-                x: 100,
-              },
-            }}>
+          <ExperienceStats>
             {images.slice(2, 3).map((image) => (
-                  <img src={image.url} alt="" />
-                ))}
+              <img src={image.url} alt="" />
+            ))}
 
             {/* Experience Boxes */}
             <ExperienceBoxes>
               {/* Experience SVG */}
-              <motion.svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="791.246"
                 height="524.948"
-                viewBox="0 0 791.246 524.948"
-                animate={animation}
-                initial="hidden"
-                variants={{
-                  visible: {
-                    scale: 1,
-                    translateX: "-50%",
-                    translateY: "-50%",
-                    transition: {
-                      delay: 2,
-                      duration: 0.7,
-                      type: "spring",
-                      stiffness: 80,
-                    },
-                  },
-                  hidden: {
-                    scale: 0,
-                    translateX: "-50%",
-                    translateY: "-50%",
-                  },
-                }}>
+                viewBox="0 0 791.246 524.948">
                 <g
                   id="Groupe_5"
                   data-name="Groupe 5"
@@ -285,53 +183,15 @@ const Experience = () => {
                     />
                   </g>
                 </g>
-              </motion.svg>
+              </svg>
               {/* Experience SVG */}
-              <ExperienceBox
-                animate={animation}
-                initial="hidden"
-                variants={{
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      type: "spring",
-                      stiffness: 80,
-                      delay: 1.3,
-                      duration: 0.7,
-                      ease: "easeOut",
-                    },
-                  },
-                  hidden: {
-                    opacity: 0,
-                    y: -75,
-                  },
-                }}>
+              <ExperienceBox>
                 <h3 className="headline">
                   <CountUp start={100} end={14} duration={5} /> Ans
                 </h3>
                 <p className="subline">d'Expérience</p>
               </ExperienceBox>
-              <ExperienceBox
-                animate={animation}
-                initial="hidden"
-                variants={{
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      type: "spring",
-                      stiffness: 80,
-                      delay: 1.5,
-                      duration: 0.7,
-                      ease: "easeOut",
-                    },
-                  },
-                  hidden: {
-                    opacity: 0,
-                    y: -75,
-                  },
-                }}>
+              <ExperienceBox>
                 <h3 className="headline">
                   <CountUp start={0} end={243} duration={5} />
                 </h3>
@@ -342,47 +202,35 @@ const Experience = () => {
           </ExperienceStats>
           {/* Experience Stats */}
 
-          <Button arrow="false" to="/photo">
-            Explorer
-            <svg
-              className="arrow"
-              xmlns="http://www.w3.org/2000/svg"
-              width="35"
-              height="35.91"
-              viewBox="0 0 35 35.91">
-              <path
-                id="FontAwsome_arrow-down_"
-                data-name="FontAwsome (arrow-down)"
-                d="M38.306,47.268l1.779,1.779a1.916,1.916,0,0,1,0,2.717L24.512,67.345a1.916,1.916,0,0,1-2.717,0L6.215,51.764a1.916,1.916,0,0,1,0-2.717l1.779-1.779a1.926,1.926,0,0,1,2.749.032l9.2,9.658V33.924A1.919,1.919,0,0,1,21.868,32h2.565a1.919,1.919,0,0,1,1.924,1.924V56.958l9.2-9.658a1.912,1.912,0,0,1,2.749-.032Z"
-                transform="translate(-5.65 -32)"
-                fill="#fffdff"
-              />
-            </svg>
-          </Button>
+          {serieName.slice(0, 1).map((link) => (
+            <Button arrow="false" to={`/photo/${link.name}`}>
+              Explorer
+              <svg
+                className="arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35.91"
+                viewBox="0 0 35 35.91">
+                <path
+                  id="FontAwsome_arrow-down_"
+                  data-name="FontAwsome (arrow-down)"
+                  d="M38.306,47.268l1.779,1.779a1.916,1.916,0,0,1,0,2.717L24.512,67.345a1.916,1.916,0,0,1-2.717,0L6.215,51.764a1.916,1.916,0,0,1,0-2.717l1.779-1.779a1.926,1.926,0,0,1,2.749.032l9.2,9.658V33.924A1.919,1.919,0,0,1,21.868,32h2.565a1.919,1.919,0,0,1,1.924,1.924V56.958l9.2-9.658a1.912,1.912,0,0,1,2.749-.032Z"
+                  transform="translate(-5.65 -32)"
+                  fill="#fffdff"
+                />
+              </svg>
+            </Button>
+          ))}
         </ExperienceInfo>
         {/* Experience Informations */}
 
         <Arrow top="true" red="true">
-          <motion.svg
+          <svg
             className="arrow"
             xmlns="http://www.w3.org/2000/svg"
             width="35"
             height="35.91"
-            viewBox="0 0 35 35.91"
-            initial={{
-              y: 25,
-              opacity: 0.2,
-            }}
-            animate={{
-              y: 0,
-              opacity: 1,
-            }}
-            transition={{
-              duration: 1.5,
-              yoyo: Infinity,
-              type: "spring",
-              stiffness: 80,
-            }}>
+            viewBox="0 0 35 35.91">
             <path
               id="FontAwsome_arrow-down_"
               data-name="FontAwsome (arrow-down)"
@@ -390,7 +238,7 @@ const Experience = () => {
               transform="translate(-5.65 -32)"
               fill="#fffdff"
             />
-          </motion.svg>
+          </svg>
         </Arrow>
       </ExperienceWrapper>
       {/* Experience Container */}

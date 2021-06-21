@@ -10,21 +10,11 @@ export const MenuContainer = styled(motion.div)`
   display: block;
   left: 0;
   top: 0;
-  background-color: ${(props) => props.theme.red};
+  background-color: ${(props) => props.theme.black};
   z-index: 100;
   ${down("md")} {
     padding: 50px 0px;
     width: 100%;
-  }
-  .bg {
-    z-index: -50;
-    display: block;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: ${(props) => props.theme.black};
-    left: 0;
-    top: 0;
   }
   .menu-close {
     position: absolute;
@@ -54,12 +44,12 @@ export const MenuContainer = styled(motion.div)`
         width: 60px;
       }
     }
-      ${down("md")} {
-        margin-right: -50px;
-      }
-      ${down("sm")} {
-        margin-right: -60px;
-      }
+    ${down("md")} {
+      margin-right: -50px;
+    }
+    ${down("sm")} {
+      margin-right: -60px;
+    }
   }
 `;
 
