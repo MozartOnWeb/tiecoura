@@ -14,20 +14,11 @@ const Header = ({ open, setOpen }) => {
         {/* Header Container */}
         <HeaderContainer>
           {/* Logo Component */}
-          <Logo 
-            initial={{ y: "-100vh" }}
-            animate={{ y: "0" }}
-            transition={{ delay: 2.8, duration: 1 }}>
-            Follio
-          </Logo>
+          <Logo>Follio</Logo>
           {/* Logo Component */}
 
           {/* Humburger Components */}
-          <motion.div
-            initial={{ y: "-100vh" }}
-            animate={{ y: "0" }}
-            transition={{ delay: 2.9, duration: 1 }}
-            onClick={() => setOpen(!open)}>
+          <motion.div onClick={() => setOpen(!open)}>
             <svg
               className="svg2"
               xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +52,6 @@ const Header = ({ open, setOpen }) => {
             </svg>
           </motion.div>
           {/* Humburger Components */}
-          
         </HeaderContainer>
         {/* Header Container */}
       </Container>

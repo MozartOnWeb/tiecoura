@@ -27,9 +27,9 @@ const Hero = () => {
   const [BG, setBG] = useState([]);
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [serieName, setSerieName] = useState([]);
 
   useEffect(() => {
-
     // Boxe Video
     fs.collection("videos").onSnapshot((snap) => {
       const tempVideos = [];
@@ -58,7 +58,15 @@ const Hero = () => {
     });
   }, []);
 
-  useEffect(() => {}, []);
+  fs.collection("series")
+    .orderBy("timestamp", "desc")
+    .onSnapshot((snapshot) => {
+      const tempNames = [];
+      snapshot.forEach((doc) => {
+        tempNames.push({ ...doc.data(), id: doc.id });
+      });
+      setSerieName(tempNames);
+    });
 
   // Slider Settings
   const settings = {
@@ -80,10 +88,7 @@ const Hero = () => {
 
       <Slider {...settings}>
         {BG.map((bg) => (
-          <BackgroundImage
-            initial={{ y: "-100vh" }}
-            animate={{ y: "0" }}
-            transition={{ delay: 1, duration: 1 }}>
+          <BackgroundImage>
             <img src={bg.url} alt="" />
           </BackgroundImage>
         ))}
@@ -96,28 +101,20 @@ const Hero = () => {
         <HeroWrapper>
           {/* Hero Informations */}
           <HeroInfo>
-            <motion.svg
-              initial={{ scale: 0, translateX: "-50%", translateY: "-50%" }}
-              animate={{ scale: 1, translateX: "-50%", translateY: "-50%" }}
-              transition={{
-                delay: 3.5,
-                duration: 0.7,
-                type: "spring",
-                stiffness: 120,
-              }}
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               width="791.246"
               height="524.948"
               viewBox="0 0 791.246 524.948">
-              <motion.g
+              <g
                 id="Groupe_5"
                 data-name="Groupe 5"
                 transform="translate(-190 -344.052)">
-                <motion.g
+                <g
                   id="Groupe_1"
                   data-name="Groupe 1"
                   transform="translate(190 345)">
-                  <motion.line
+                  <line
                     id="Ligne_2"
                     data-name="Ligne 2"
                     y2="35.338"
@@ -135,7 +132,7 @@ const Hero = () => {
                     stroke="#e2293f"
                     strokeWidth="3"
                   />
-                </motion.g>
+                </g>
                 <g
                   id="Groupe_3"
                   data-name="Groupe 3"
@@ -205,98 +202,42 @@ const Hero = () => {
                     strokeWidth="3"
                   />
                 </g>
-              </motion.g>
-            </motion.svg>
-            <motion.p
-              className="outline"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 3.2,
-                duration: 0.7,
-                type: "spring",
-                stiffness: 120,
-              }}>
-              Tiecoura
-            </motion.p>
-            <motion.h1
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 3.1,
-                duration: 0.7,
-                type: "spring",
-                stiffness: 120,
-              }}>
-              African
-            </motion.h1>
-            <motion.h1
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                delay: 3,
-                duration: 0.7,
-                type: "spring",
-                stiffness: 120,
-              }}>
-              Studio.
-            </motion.h1>
+              </g>
+            </svg>
+            <p className="outline">Tiecoura</p>
+            <h1>African</h1>
+            <h1>Studio.</h1>
           </HeroInfo>
           {/* Hero Informations */}
 
           {/* Hero Images */}
           <HeroImages>
-            <motion.div
-              className="squared1"
-              initial={{ y: "-100vh" }}
-              animate={{ y: 0 }}
-              transition={{
-                delay: 3.6,
-                duration: 1,
-                type: "spring",
-                stiffness: 80,
-              }}>
-              <Link to="/photo">
-                <h2>Voir les Photos</h2>
-                {images.slice(0, 1).map((image) => (
-                  <img src={image.url} alt="" />
-                ))}
-              </Link>
-            </motion.div>
-            <motion.div
-              className="squared2"
-              initial={{ y: "-100vh" }}
-              animate={{ y: 0 }}
-              transition={{
-                delay: 3.8,
-                duration: 1,
-                type: "spring",
-                stiffness: 80,
-              }}>
+            <div className="squared1">
+              {serieName.slice(0, 1).map((link) => (
+                <Link to={`/photo/${link.name}`}>
+                  <h2>Voir les Photos</h2>
+                  {images.slice(0, 1).map((image) => (
+                    <img src={image.url} alt="" />
+                  ))}
+                </Link>
+              ))}
+            </div>
+            <div className="squared2">
               <Link to="/video">
                 <h2>Voir les Vidéos</h2>
                 {videos.slice(0, 1).map((video) => (
-                  <video src={video.url}  loop autoPlay muted/>
+                  <video src={video.url} loop autoPlay muted />
                 ))}
               </Link>
-            </motion.div>
-            <motion.div
-              className="rectangle"
-              initial={{ y: "-100vh" }}
-              animate={{ y: 0 }}
-              transition={{
-                delay: 4,
-                duration: 1,
-                type: "spring",
-                stiffness: 80,
-              }}>
+            </div>
+            <div className="rectangle">
               <Link to="/about">
                 <h2>A Propos de moi</h2>
                 {images.slice(1, 2).map((image) => (
                   <img src={image.url} alt="" />
                 ))}
               </Link>
-            </motion.div>
+            </div>
           </HeroImages>
           {/* Hero Images */}
         </HeroWrapper>

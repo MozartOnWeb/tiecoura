@@ -1,14 +1,12 @@
 import styled from "styled-components";
-import {only, down} from 'styled-breakpoints'
+import { only, down } from "styled-breakpoints";
 
 export const PortfolioContainer = styled.div`
-
-.portfolio-button {
-  ${down("xs")} {
-  left: 35%;
+  .portfolio-button {
+    ${down("xs")} {
+      left: 35%;
+    }
   }
-}
-
 `;
 
 export const PortfolioWrapper = styled.div`
@@ -42,6 +40,7 @@ export const PortfolioHeadline = styled.h1`
   letter-spacing: 1.5px;
   font-weight: bold;
   text-transform: uppercase;
+  margin: 0px;
   ${only("md")} {
     font-size: 28px;
   }
@@ -51,27 +50,31 @@ export const PortfolioHeadline = styled.h1`
 `;
 
 export const PortfolioLinks = styled.div`
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  h2 {
+    text-transform: uppercase;
+    color: ${(props) => props.theme.red};
+    border-bottom: 1px solid ${(props) => props.theme.red};
+  }
   ${only("md")} {
-    a {
+    h2 {
       font-size: 20px;
     }
   }
   ${down("xs")} {
     justify-content: space-between;
     width: 80%;
-    a {
+    h2 {
       font-size: 13px;
     }
   }
   ${down("s")} {
     width: 100%;
-    a {
+    h2 {
       font-size: 13px;
     }
   }
@@ -104,6 +107,7 @@ export const PortfolioImages = styled.div`
 export const PortfolioImage = styled.div`
   width: 250px;
   height: 250px;
+  position: relative;
   ${only("md")} {
     width: 130px;
     height: 180px;
@@ -120,4 +124,42 @@ export const PortfolioImage = styled.div`
     object-fit: cover;
     border-radius: 15px;
   }
+  &:first-child {
+    grid-column: 1 / 3;
+    width: 100%;
+  }
+  &:last-child {
+    grid-column: 3 / 5;
+    width: 100%;
+  }
+  a {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    text-decoration: none;
+    border-bottom: 1px solid ${(props) => props.theme.red};
+    color: ${(props) => props.theme.red};
+    text-transform: uppercase;
+  }
+`;
+
+export const SingleName = styled.div`
+  position: relative;
+  text-align: center;
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: ${(props) => props.theme.red};
+    font-family: ${(props) => props.theme.bodyFont};
+    text-transform: uppercase;
+  }
+  .active {
+    font-weight: bold;
+  }
+`;
+
+export const SeriesName = styled.div`
+  width: 80vw;
+  margin: 0 auto;
+  margin: 30px auto 30px auto;
 `;

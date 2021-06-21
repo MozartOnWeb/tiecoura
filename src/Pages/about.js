@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+// Import firestore
+import { fs } from "../firebase/config";
 
 import {
   PhotoImageWrapper,
@@ -13,6 +16,19 @@ import {
 import { image1 } from "../data";
 
 const About = () => {
+
+    const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    fs.collection("Profile").onSnapshot((snapshot) => {
+      const tempImages = [];
+      snapshot.forEach((doc) => {
+        tempImages.push({ ...doc.data(), id: doc.id });
+      });
+      setImages(tempImages);
+    });
+  }, []);  
+  
   return (
     <>
       <PhotoWrapper>
@@ -26,7 +42,9 @@ const About = () => {
           <Line />
           <AboutInfo>
             <AboutImage>
-              <img src={image1} alt="" />
+              {images.slice(0, 1).map((image) => (
+                <img src={image.url} alt="" />
+              ))}
             </AboutImage>
           </AboutInfo>
           <Line />

@@ -38,32 +38,37 @@ const Photo = () => {
   const match = useRouteMatch("/photo/:serie");
   const { serie } = match.params;
 
-  useEffect(() => {
-    fs.collection("series").onSnapshot((snapshot) => {
+  fs.collection("series")
+    .orderBy("timestamp", "desc")
+    .onSnapshot((snapshot) => {
       const tempNames = [];
       snapshot.forEach((doc) => {
         tempNames.push({ ...doc.data(), id: doc.id });
       });
       setSerieName(tempNames);
     });
-  }, []);
 
   useEffect(() => {
+    fetchMore();
+  }, []);
+
+  const fetchMore = () => {
     fs.collection("series")
       .doc(serie)
-      .onSnapshot((doc) => {
+      .get()
+      .then((doc) => {
         if (doc.exists) {
-          setImages(doc.data().images || []);
+          setImages(doc.data().images);
           setSerieDesc(doc.data().desc);
         }
       });
-  }, [serie]);
+  };
 
   // Slider Settings
   const setting = {
     dots: false,
     infinite: true,
-    speed: 300,
+    speed: 700,
     slidesToScroll: 4,
     slidesToShow: 4,
     autoplay: false,
@@ -96,10 +101,10 @@ const Photo = () => {
       <PhotoWrapper>
         <InfiniteScroll
           dataLength={images.length}
-          next={images}
-          hasMore="true"
+          next={() => fetchMore()}
+          hasMore={true}
           loader={<Loader />}
-          scrollThreshold={1}>
+          scrollThreshold={0.9}>
           <PhotoImageWrapper>
             <Masonry
               breakpointCols={breakPointColumnObj}

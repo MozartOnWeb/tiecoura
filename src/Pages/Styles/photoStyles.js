@@ -30,7 +30,8 @@ export const PhotoImageWrapper = styled(motion.div)`
     position: relative;
     margin-bottom: 30px;
     img,
-    video {
+    video,
+    iframe {
       cursor: pointer;
       overflow: hidden;
       border-radius: 15px;
@@ -81,7 +82,8 @@ export const AboutImage = styled.div`
   height: 350px;
   margin-bottom: 15px;
   img,
-  video {
+  video,
+  iframe {
     border-radius: 15px;
     width: 100%;
     height: 100%;
