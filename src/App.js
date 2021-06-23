@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // Import React-Router-Dom
 import { Route, Switch, useLocation } from "react-router-dom";
@@ -12,7 +12,7 @@ import { Normalize } from "styled-normalize";
 
 // Import Pages
 import { Home, Video, Photo, About, Welcome } from "./Pages";
-import { CloseMenu, PageNav, Preloader } from "./Components";
+import { CloseMenu, PageNav } from "./Components";
 import { Pages } from "./layout";
 
 import { down } from "styled-breakpoints";
@@ -24,15 +24,6 @@ const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
-    .bg {
-    z-index: -50;
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: ${(props) => props.theme.red};
-    left: 0;
-    top: 0;
     .pages {
       position: relative;
       ${down("md")} {
@@ -40,49 +31,48 @@ const GlobalStyles = createGlobalStyle`
           padding-left: 0px;
           padding-right: 0px;
         }
-    .menu-close {
-    position: absolute;
-    right: 135px;
-    top: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 200;
-    ${down("md")} {
-      margin-right: -50px;
-    }
-    ${down("sm")} {
-      margin-right: -80px;
-    }
-    .svg1 {
-      width: 25px;
-      cursor: pointer;
-      path {
-        fill: ${(props) => props.theme.white};
-      }
-      ${down("xs")} {
-        width: 18px;
-      }
-      ${down("s")} {
-        width: 16px;
-      }
-    }
-    .svg2 {
-      #Ellipse_2 {
-        stroke: ${(props) => props.theme.white};
-      }
+      .menu-close {
       position: absolute;
-      width: 70px;
-      cursor: pointer;
-      ${down("xs")} {
-        width: 60px;
+      right: 135px;
+      top: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      ${down("md")} {
+        margin-right: -50px;
       }
-      ${down("s")} {
-        width: 55px;
+      ${down("sm")} {
+        margin-right: -80px;
       }
-    }
-  }
-    }
+      .svg1 {
+        width: 25px;
+        cursor: pointer;
+        path {
+          fill: ${(props) => props.theme.white};
+        }
+        ${down("xs")} {
+          width: 18px;
+        }
+        ${down("s")} {
+          width: 16px;
+        }
+      }
+      .svg2 {
+        #Ellipse_2 {
+          stroke: ${(props) => props.theme.white};
+        }
+        position: absolute;
+        width: 70px;
+        cursor: pointer;
+        ${down("xs")} {
+          width: 60px;
+        }
+        ${down("s")} {
+          width: 55px;
+        }
+      }
+      }
     }
   }
 `;
@@ -117,15 +107,13 @@ function App() {
           <Switch location={location} key={location.key}>
             <Route component={Home} path="/home" exact />
             <Route component={Welcome} path="/" exact />
-            <motion.div className="bg">
-              <Pages className="pages">
-                <PageNav />
-                <CloseMenu visible={visible} setVisible={setVisible} />
-                <Route component={Video} path="/video" />
-                <Route component={Photo} path="/photo/:serie" />
-                <Route component={About} path="/about" />
-              </Pages>
-            </motion.div>
+            <Pages className="pages">
+              <PageNav />
+              <CloseMenu visible={visible} setVisible={setVisible} />
+              <Route component={Video} path="/video" />
+              <Route component={Photo} path="/photo/:serie" />
+              <Route component={About} path="/about" />
+            </Pages>
           </Switch>
         </AnimatePresence>
       </ThemeProvider>

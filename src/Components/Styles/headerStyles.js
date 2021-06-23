@@ -22,6 +22,7 @@ export const HeaderContainer = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 20px;
     .svg1 {
       width: 25px;
       cursor: pointer;
@@ -47,7 +48,7 @@ export const HeaderContainer = styled(motion.div)`
       margin-right: 50px;
     }
     ${down("sm")} {
-      margin-right: 30px;
+      margin-right: 50px;
     }
   }
 `;

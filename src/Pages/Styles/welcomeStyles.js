@@ -46,11 +46,12 @@ export const WelcomeGradient = styled.div`
     rgba(0, 0, 0, 1) 45%,
     rgba(0, 0, 0, 0) 100%
   );
-  z-index: 6;
+
+  z-index: 7;
 `;
 
 export const WelcomeImage = styled.div`
-  width: auto;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
   position: absolute;

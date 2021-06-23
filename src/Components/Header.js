@@ -1,13 +1,46 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+
+import gsap from "gsap";
 
 // Import Styled-Components
 import { HeaderContainer, HeaderWrapper, Logo } from "./Styles/headerStyles";
 import { Container } from "../layout";
 
-// Import Framer MOtion
-import { motion } from "framer-motion";
+const Header = ({ state, handleMenu }) => {
+  useEffect(() => {
+    const menuContainer = window.document.querySelector(".menu-container");
 
-const Header = ({ open, setOpen }) => {
+    console.log(menuContainer);
+    if (state.clicked === false) {
+      // Close Menu
+
+      gsap.to(menuContainer, {
+        duration: 0.8,
+        y: "-100%",
+        ease: "power6.inOut",
+        stagger: {
+          amount: 0.08,
+        },
+      });
+    } else if (
+      state.clicked === true ||
+      (state.clicked === true && state.initial === null)
+    ) {
+      // Open Menu
+      gsap.to(menuContainer, {
+        duration: 0,
+        y: "0%",
+      });
+      gsap.from(menuContainer, {
+        duration: 0.8,
+        y: "-100%",
+        ease: "power6.inOut",
+        transformOrigin: "right top",
+        skewY: 2,
+      });
+    }
+  });
+
   return (
     <HeaderWrapper>
       <Container>
@@ -18,7 +51,7 @@ const Header = ({ open, setOpen }) => {
           {/* Logo Component */}
 
           {/* Humburger Components */}
-          <motion.div onClick={() => setOpen(!open)}>
+          <div onClick={handleMenu}>
             <svg
               className="svg2"
               xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +83,7 @@ const Header = ({ open, setOpen }) => {
                 fill="#000"
               />
             </svg>
-          </motion.div>
+          </div>
           {/* Humburger Components */}
         </HeaderContainer>
         {/* Header Container */}

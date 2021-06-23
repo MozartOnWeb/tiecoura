@@ -11,6 +11,24 @@ export const PhotoWrapper = styled(motion.div)`
 `;
 
 export const PhotoImageWrapper = styled(motion.div)`
+
+  
+  .video {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    iframe,
+    video {
+      height: 250px;
+      width: 500px;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 15px;
+      object-fit: cover;
+      margin-bottom: 30px;
+    }
+  }
   .my-masonry-grid {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -29,9 +47,7 @@ export const PhotoImageWrapper = styled(motion.div)`
     overflow: hidden;
     position: relative;
     margin-bottom: 30px;
-    img,
-    video,
-    iframe {
+    img {
       cursor: pointer;
       overflow: hidden;
       border-radius: 15px;
@@ -118,6 +134,12 @@ export const SerieInfo = styled.p`
   font-weight: 300;
   width: 60vw;
   text-align: left;
+  word-break: break-all;
   margin: 0 auto;
   line-height: 23px;
+  ${down("xs")} {
+    width: 80vw;
+    font-size: 16px;
+    word-break: break-all;
+  }
 `;

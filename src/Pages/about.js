@@ -13,8 +13,6 @@ import {
   AboutImage,
 } from "./Styles/photoStyles";
 
-import { image1 } from "../data";
-
 const About = () => {
 
     const [images, setImages] = useState([]);

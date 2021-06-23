@@ -52,10 +52,7 @@ const Video = () => {
           loader={<Loader />}
           scrollThreshold={1}>
           <PhotoImageWrapper>
-            <Masonry
-              breakpointCols={breakPointColumnObj}
-              className="my-masonry-grid"
-              columnClassName="my-masonry-grid_column">
+            <div className="video">
               {videos &&
                 videos.map((video) => (
                   <motion.div key={video.name} layout>
@@ -68,7 +65,7 @@ const Video = () => {
                     />
                   </motion.div>
                 ))}
-            </Masonry>
+            </div>
           </PhotoImageWrapper>
         </InfiniteScroll>
       </PhotoWrapper>

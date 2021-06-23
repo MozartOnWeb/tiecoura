@@ -88,7 +88,7 @@ const Hero = () => {
 
       <Slider {...settings}>
         {BG.map((bg) => (
-          <BackgroundImage>
+          <BackgroundImage key={bg.name} >
             <img src={bg.url} alt="" />
           </BackgroundImage>
         ))}
@@ -153,7 +153,7 @@ const Hero = () => {
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
                     stroke="#e2293f"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </g>
                 <g
@@ -214,10 +214,10 @@ const Hero = () => {
           <HeroImages>
             <div className="squared1">
               {serieName.slice(0, 1).map((link) => (
-                <Link to={`/photo/${link.name}`}>
+                <Link key={link.name} to={`/photo/${link.name}`}>
                   <h2>Voir les Photos</h2>
                   {images.slice(0, 1).map((image) => (
-                    <img src={image.url} alt="" />
+                    <img key={image.name} src={image.url} alt="" />
                   ))}
                 </Link>
               ))}
@@ -226,7 +226,7 @@ const Hero = () => {
               <Link to="/video">
                 <h2>Voir les Vidéos</h2>
                 {videos.slice(0, 1).map((video) => (
-                  <video src={video.url} loop autoPlay muted />
+                  <video key={video.name} src={video.url} loop autoPlay muted />
                 ))}
               </Link>
             </div>
@@ -234,7 +234,7 @@ const Hero = () => {
               <Link to="/about">
                 <h2>A Propos de moi</h2>
                 {images.slice(1, 2).map((image) => (
-                  <img src={image.url} alt="" />
+                  <img key={image.name} src={image.url} alt="" />
                 ))}
               </Link>
             </div>

@@ -140,6 +140,7 @@ export const PortfolioImage = styled.div`
     border-bottom: 1px solid ${(props) => props.theme.red};
     color: ${(props) => props.theme.red};
     text-transform: uppercase;
+    font-size: 13px;
   }
 `;
 

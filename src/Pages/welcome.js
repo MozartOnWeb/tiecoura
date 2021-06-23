@@ -57,7 +57,7 @@ const Welcome = () => {
       <WelcomeGradient />
       <WelcomeImage>
         {image.map((img) => (
-          <motion.img src={img.url} alt="welcome_img" />
+          <img key={img.name} src={img.url} alt="welcome_img" />
         ))}
       </WelcomeImage>
     </WelcomeWrapper>

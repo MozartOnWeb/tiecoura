@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const MenuContainer = styled(motion.div)`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   padding: 50px 10px;
   position: fixed;
-  display: block;
+  transform: translateY(-100%);
   left: 0;
   top: 0;
   background-color: ${(props) => props.theme.black};
@@ -18,7 +18,7 @@ export const MenuContainer = styled(motion.div)`
   }
   .menu-close {
     position: absolute;
-    right: 115px;
+    right: 135px;
     top: 46px;
     display: flex;
     align-items: center;
@@ -54,10 +54,13 @@ export const MenuContainer = styled(motion.div)`
 `;
 
 export const MenuWrapper = styled.div`
-  width: 50%;
-  margin: 0 auto;
+  width: 90%;
+  margin: 30px auto 0 auto;
   position: relative;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   ${only("md")} {
     margin: 210px auto;
     height: 70%;
@@ -67,8 +70,9 @@ export const MenuWrapper = styled.div`
     margin: 90px auto;
     height: 60%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    flex-direction: column;
   }
   ${down("s")} {
     margin: 90px auto;
@@ -77,10 +81,10 @@ export const MenuWrapper = styled.div`
 `;
 
 export const MenuLinks = styled.div`
-  height: 450px;
-  width: 300px;
+  height: 360px;
+  width: 40%;
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
   flex-direction: column;
   margin: 90px auto;
@@ -90,13 +94,14 @@ export const MenuLinks = styled.div`
 
   ${down("sm")} {
     height: 300px;
-    width: 250px;
+    width: 100%;
+    margin: 50px auto;
   }
 
   a {
     ${down("sm")} {
       font-size: 18px;
-      margin-top: 0px;
+      margin-top: 40px;
     }
     ${down("s")} {
       font-size: 16px;
@@ -121,7 +126,20 @@ export const MenuLinks = styled.div`
   }
 `;
 
-export const MenuImage = styled.div``;
+export const MenuImage = styled.div`
+  height: 360px;
+  width: 40%;
+  margin: 90px auto;
+  ${down("sm")} {
+    width: 100%;
+    margin: 50px auto;
+  }
+  img, video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
 
 export const MenuSocials = styled.div`
   position: absolute;
@@ -144,6 +162,28 @@ export const MenuSocials = styled.div`
     }
     &::after {
       border-color: ${(props) => props.theme.white};
+    }
+  }
+`;
+
+export const MenuDesc = styled.div`
+  height: 360px;
+  width: 40%;
+  margin: 90px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ${down("sm")} {
+    width: 100%;
+    margin: 50px auto;
+  }
+  p {
+    width: 70%;
+    color: ${(props) => props.theme.white};
+    line-height: 22px;
+    word-break: break-all;
+    ${down("sm")} {
+      width: 90%;
     }
   }
 `;
