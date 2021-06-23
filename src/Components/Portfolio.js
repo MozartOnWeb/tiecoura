@@ -9,11 +9,6 @@ import { Link } from "react-router-dom";
 // Import firestore
 import { fs } from "../firebase/config";
 
-// Import React Slick
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 // Import Styles
 import {
   PortfolioHeadline,
@@ -23,13 +18,10 @@ import {
   PortfolioLinks,
   PortfolioWrapper,
   PortfolioContainer,
-  SingleName,
-  SeriesName,
 } from "./Styles/portfolioStyles";
 
 const Portfolio = () => {
   const [serieName, setSerieName] = useState([]);
-  const [images, setImages] = useState([]);
 
   fs.collection("series")
     .orderBy("timestamp", "desc")
@@ -39,15 +31,6 @@ const Portfolio = () => {
         tempNames.push({ ...doc.data(), id: doc.id });
       });
       setSerieName(tempNames);
-    });
-
-  fs.collection("series")
-    .doc("serie3")
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        setImages(doc.data().images);
-      }
     });
 
   return (
@@ -61,7 +44,7 @@ const Portfolio = () => {
         </PortfolioInfo>
         <PortfolioImages>
           {serieName.slice(0, 6).map((image) => (
-            <PortfolioImage>
+            <PortfolioImage key={image.name}>
               <img src={image.images[0].url} alt={image.name} />
               <Link to={`/photo/${image.name}`}>{image.name}</Link>
             </PortfolioImage>
@@ -69,7 +52,7 @@ const Portfolio = () => {
         </PortfolioImages>
       </PortfolioWrapper>
       {serieName.slice(0, 1).map((link) => (
-        <Button center="true" to={`/photo/${link.name}`}>
+        <Button key={link.name} center="true" to={`/photo/${link.name}`}>
           VOIR PLUS
           <svg
             className="arrow"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // Import firestore
 import { fs } from "../firebase/config";
@@ -16,9 +16,6 @@ import {
   WhoSubline,
   WhoWrapper,
 } from "./Styles/whoiamStyles";
-
-// Import Image
-import { image1 } from "../data";
 
 const WhoIAM = () => {
   const [profile, setProfile] = useState([]);
@@ -63,7 +60,12 @@ const WhoIAM = () => {
           </WhoInfo>
           <WhoImage>
             {profile.map((image) => (
-              <img src={image.url} alt="profile_image" loading="lazy" />
+              <img
+                key={image.name}
+                src={image.url}
+                alt="profile_image"
+                loading="lazy"
+              />
             ))}
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -59,7 +59,7 @@ const Experience = () => {
         {/* Experience Big-Image */}
         <ExperienceImage>
           {videos.slice(1, 2).map((video) => (
-            <video src={video.url} loop autoPlay muted />
+            <video key={video.name} src={video.url} loop autoPlay muted />
           ))}
         </ExperienceImage>
         {/* Experience Big-Image */}
@@ -75,7 +75,7 @@ const Experience = () => {
           {/* Experience Stats */}
           <ExperienceStats>
             {images.slice(2, 3).map((image) => (
-              <img src={image.url} alt="" />
+              <img key={image.name} src={image.url} alt="" />
             ))}
 
             {/* Experience Boxes */}
@@ -124,7 +124,7 @@ const Experience = () => {
                       transform="translate(1.656 0)"
                       fill="none"
                       stroke="#e2293f"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                     <line
                       id="Ligne_3-2"
@@ -133,7 +133,7 @@ const Experience = () => {
                       transform="translate(38.651 0.552) rotate(90)"
                       fill="none"
                       stroke="#e2293f"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                   </g>
                   <g
@@ -147,7 +147,7 @@ const Experience = () => {
                       transform="translate(1.656 0)"
                       fill="none"
                       stroke="#e2293f"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                     <line
                       id="Ligne_3-3"
@@ -156,7 +156,7 @@ const Experience = () => {
                       transform="translate(38.651 0.552) rotate(90)"
                       fill="none"
                       stroke="#e2293f"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                   </g>
                   <g
@@ -170,7 +170,7 @@ const Experience = () => {
                       transform="translate(1.656 0)"
                       fill="none"
                       stroke="#e2293f"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                     <line
                       id="Ligne_3-4"
@@ -179,7 +179,7 @@ const Experience = () => {
                       transform="translate(38.651 0.552) rotate(90)"
                       fill="none"
                       stroke="#e2293f"
-                      stroke-width="3"
+                      strokeWidth="3"
                     />
                   </g>
                 </g>
@@ -203,7 +203,7 @@ const Experience = () => {
           {/* Experience Stats */}
 
           {serieName.slice(0, 1).map((link) => (
-            <Button arrow="false" to={`/photo/${link.name}`}>
+            <Button key={link.name} arrow="false" to={`/photo/${link.name}`}>
               Explorer
               <svg
                 className="arrow"

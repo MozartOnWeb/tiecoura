@@ -34,7 +34,7 @@ const Introducing = () => {
           </p>
           <IntroduceImage>
             {images.slice(3, 4).map((image) => (
-              <img src={image.url} alt=""/>
+              <img key={image.name} src={image.url} alt=""/>
             ))}
           </IntroduceImage>
           <Arrow bottom="true" red="true">
