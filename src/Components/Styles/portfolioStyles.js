@@ -41,6 +41,7 @@ export const PortfolioHeadline = styled.h1`
   font-weight: bold;
   text-transform: uppercase;
   margin: 0px;
+  font-family: ${props => props.theme.linkFont};
   ${only("md")} {
     font-size: 28px;
   }
@@ -59,6 +60,8 @@ export const PortfolioLinks = styled.div`
     text-transform: uppercase;
     color: ${(props) => props.theme.red};
     border-bottom: 1px solid ${(props) => props.theme.red};
+    font-family: ${props => props.theme.linkFont};
+
   }
   ${only("md")} {
     h2 {

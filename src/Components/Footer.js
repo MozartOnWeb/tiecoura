@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+
+// import EmailJS
+import emailjs from "emailjs-com";
 
 // Import SVGS
 import {
@@ -22,6 +25,44 @@ import {
 import { Submit } from "../layout";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [name, setName] = useState("");
+
+  const onEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const onName = (e) => {
+    setName(e.target.value);
+  };
+  const onMessage = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const tempParams = {
+    name: name,
+    message: message,
+    email: email,
+  };
+
+  const sendEmail = () => {
+    emailjs
+      .send(
+        "service_vtmcx0w",
+        "template_795uobf",
+        tempParams,
+        "user_IIuS4KGyfguClJ5SOMIMs",
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        (err) => {
+          console.log("FAILED...", err);
+        },
+      );
+  };
+
   return (
     <div>
       <FooterWrapper>
@@ -58,7 +99,9 @@ const Footer = () => {
                 <FaInstagramSquare className="red" />
               </SvgContainer>
             </FooterInfos>
-            <FooterInfos className="dot"><span>-</span></FooterInfos>
+            <FooterInfos className="dot">
+              <span>-</span>
+            </FooterInfos>
           </FooterInfoContainer>
 
           <FooterInfoContainer className="form">
@@ -67,23 +110,35 @@ const Footer = () => {
               <p className="lowercase">Parolons-en !</p>
             </FooterInfos>
             <FooterForm>
-              <form action="">
+              <form>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="votre nom"
+                  value={name}
+                  onChange={onName}
+                />
                 <input
                   type="email"
                   name="email"
                   id="email"
                   placeholder="votre e-mail"
+                  value={email}
+                  onChange={onEmail}
                 />
                 <textarea
-                  name="msg"
-                  id="msg"
+                  name="message"
+                  id="message"
                   cols="23"
                   rows="7"
-                  placeholder="votre message"></textarea>
+                  placeholder="votre message"
+                  value={message}
+                  onChange={onMessage}></textarea>
               </form>
+              
             </FooterForm>
-            <FooterInfos>
-              <Submit>
+            <FooterInfos><Submit onClick={sendEmail}>
                 Envoyer{" "}
                 <svg
                   className="arrow"
@@ -99,8 +154,7 @@ const Footer = () => {
                     fill="#fffdff"
                   />
                 </svg>
-              </Submit>
-            </FooterInfos>
+              </Submit></FooterInfos>
           </FooterInfoContainer>
         </FooterInfoWrapper>
       </FooterWrapper>

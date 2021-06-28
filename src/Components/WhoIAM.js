@@ -19,6 +19,7 @@ import {
 
 const WhoIAM = () => {
   const [profile, setProfile] = useState([]);
+  const [desc, setDesc] = useState("");
 
   fs.collection("Profile").onSnapshot((snapshot) => {
     const tempProfile = [];
@@ -28,6 +29,15 @@ const WhoIAM = () => {
     setProfile(tempProfile);
   });
 
+  fs.collection("Descriptions")
+    .doc("Profile-Desc")
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        setDesc(doc.data().desc);
+      }
+    });
+
   return (
     <div>
       <WhoWrapper>
@@ -35,11 +45,7 @@ const WhoIAM = () => {
         <WhoInfoWrapper>
           <WhoInfo>
             <WhoSubline>Tiècoura n'daou</WhoSubline>
-            <WhoParagraphe>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam saepe
-              deserunt atque iure asperiores itaque ullam consectetur error,
-              earum harum. Aliquam officia accusantium ab maiores.
-            </WhoParagraphe>
+            <WhoParagraphe>{desc}</WhoParagraphe>
             <Button to="/">
               Contact
               <svg

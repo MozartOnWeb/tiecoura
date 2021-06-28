@@ -83,8 +83,10 @@ export const FooterInfos = styled.div`
     color: ${(props) => props.theme.white};
     font-weight: 300;
     letter-spacing: 1.2px;
-      position: absolute;
+    position: absolute;
+    margin-top: 10px;
     ${down("md")} {
+    margin-top: 0px;
       font-size: 8px;
     }
     ${down("xs")} {
@@ -92,6 +94,9 @@ export const FooterInfos = styled.div`
       left: 50%;
       transform: translateX(-50%);
     }
+  }
+  button {
+    margin-top: 20px;
   }
 `;
 export const FooterHeadline = styled.h4`
@@ -180,7 +185,13 @@ export const FooterForm = styled.div`
       }
     }
     input[type="email"]::placeholder {
-      font-size: 13px;
+      font-size: 12px;
+      ${only("md")} {
+        font-size: 10px;
+      }
+    }
+    input[type="text"]::placeholder {
+      font-size: 12px;
       ${only("md")} {
         font-size: 10px;
       }

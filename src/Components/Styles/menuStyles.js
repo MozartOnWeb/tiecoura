@@ -55,7 +55,7 @@ export const MenuContainer = styled(motion.div)`
 
 export const MenuWrapper = styled.div`
   width: 90%;
-  margin: 30px auto 0 auto;
+  margin: 40px auto 0 auto;
   position: relative;
   z-index: 100;
   display: flex;
@@ -81,13 +81,13 @@ export const MenuWrapper = styled.div`
 `;
 
 export const MenuLinks = styled.div`
-  height: 360px;
+  height: 350px;
   width: 40%;
   display: flex;
   align-items: left;
   justify-content: space-between;
   flex-direction: column;
-  margin: 90px auto;
+  margin: 50px auto;
   ${down("md")} {
     margin: 150px auto;
   }
@@ -134,7 +134,8 @@ export const MenuImage = styled.div`
     width: 100%;
     margin: 50px auto;
   }
-  img, video {
+  img,
+  video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -169,7 +170,7 @@ export const MenuSocials = styled.div`
 export const MenuDesc = styled.div`
   height: 360px;
   width: 40%;
-  margin: 90px auto;
+  margin: 50px auto;
   display: flex;
   align-items: center;
   justify-content: center;
