@@ -19,38 +19,69 @@ import {
 import { Arrow, Button } from "../layout";
 
 const Experience = () => {
-  const [images, setImages] = useState([]);
-  const [videos, setVideos] = useState([]);
   const [serieName, setSerieName] = useState([]);
+  const [secondVid, setSecondVid] = useState([]);
+  const [thirdImg, setThirdImg] = useState([]);
+  const [desc, setDesc] = useState("");
+  const [clients, setClients] = useState("");
+  const [years, setYears] = useState("");
 
   useEffect(() => {
-    fs.collection("videos").onSnapshot((snap) => {
-      const tempVideos = [];
-      snap.forEach((doc) => {
-        tempVideos.push({ ...doc.data(), id: doc.id });
+    fs.collection("OtherImages")
+      .doc("03")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setThirdImg(doc.data().url);
+        }
       });
-      setVideos(tempVideos);
-    });
 
-    fs.collection("OtherImages").onSnapshot((snapshot) => {
-      const tempImages = [];
-      snapshot.forEach((doc) => {
-        tempImages.push({ ...doc.data(), id: doc.id });
+    fs.collection("OtherVideos")
+      .doc("02")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setSecondVid(doc.data().url);
+        }
       });
-      setImages(tempImages);
-    });
-    
+
+    fs.collection("Descriptions")
+      .doc("Experience-Desc")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setDesc(doc.data().desc);
+        }
+      });
+
+    fs.collection("Experiences")
+      .doc("Clients")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setClients(doc.data().number);
+        }
+      });
+
+    fs.collection("Experiences")
+      .doc("Years")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setYears(doc.data().number);
+        }
+      });
   }, []);
 
- fs.collection("series")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
-        const tempNames = [];
-        snapshot.forEach((doc) => {
-          tempNames.push({ ...doc.data(), id: doc.id });
-        });
-        setSerieName(tempNames);
+  fs.collection("series")
+    .orderBy("timestamp", "desc")
+    .onSnapshot((snapshot) => {
+      const tempNames = [];
+      snapshot.forEach((doc) => {
+        tempNames.push({ ...doc.data(), id: doc.id });
       });
+      setSerieName(tempNames);
+    });
 
   return (
     <div>
@@ -58,26 +89,17 @@ const Experience = () => {
       <ExperienceWrapper>
         {/* Experience Big-Image */}
         <ExperienceImage>
-          {videos.slice(1, 2).map((video) => (
-            <video key={video.name} src={video.url} loop autoPlay muted />
-          ))}
+          <video src={secondVid} loop autoPlay muted />
         </ExperienceImage>
         {/* Experience Big-Image */}
 
         {/* Experience Informations */}
         <ExperienceInfo>
-          <p>
-            Parce que vos plus belles histoires méritent les plus belles
-            réalisations. Nous nous assurons de vous fournir un travail
-            professionel à la hauteur de vos histoires.
-          </p>
+          <p>{desc}</p>
 
           {/* Experience Stats */}
           <ExperienceStats>
-            {images.slice(2, 3).map((image) => (
-              <img key={image.name} src={image.url} alt="" />
-            ))}
-
+            <img src={thirdImg} alt="third_img" />
             {/* Experience Boxes */}
             <ExperienceBoxes>
               {/* Experience SVG */}
@@ -186,15 +208,11 @@ const Experience = () => {
               </svg>
               {/* Experience SVG */}
               <ExperienceBox>
-                <h3 className="headline">
-                  <CountUp start={100} end={14} duration={5} /> Ans
-                </h3>
+                <h3 className="headline">{years} Ans</h3>
                 <p className="subline">d'Expérience</p>
               </ExperienceBox>
               <ExperienceBox>
-                <h3 className="headline">
-                  <CountUp start={0} end={243} duration={5} />
-                </h3>
+                <h3 className="headline">{clients}</h3>
                 <p className="subline">Clients</p>
               </ExperienceBox>
             </ExperienceBoxes>

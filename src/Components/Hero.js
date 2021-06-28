@@ -25,21 +25,12 @@ import "./Styles/slick.css";
 
 const Hero = () => {
   const [BG, setBG] = useState([]);
-  const [images, setImages] = useState([]);
-  const [videos, setVideos] = useState([]);
   const [serieName, setSerieName] = useState([]);
-  const [fist, setFirst] = useState([]);
+  const [firstImg, setFirstImg] = useState([]);
+  const [secondImg, setSecondImg] = useState([]);
+  const [firstVid, setFirstVid] = useState([]);
 
   useEffect(() => {
-    // Boxe Video
-    fs.collection("videos").onSnapshot((snap) => {
-      const tempVideos = [];
-      snap.forEach((doc) => {
-        tempVideos.push({ ...doc.data(), id: doc.id });
-      });
-      setVideos(tempVideos);
-    });
-
     // Background Images
     fs.collection("BGImages").onSnapshot((snap) => {
       const tempBG = [];
@@ -49,21 +40,35 @@ const Hero = () => {
       setBG(tempBG);
     });
 
-    // Boxe Images
-    fs.collection("OtherImages").onSnapshot((snapshot) => {
-      const tempImages = [];
-      snapshot.forEach((doc) => {
-        tempImages.push({ ...doc.data(), id: doc.id });
+    // Boxes Images
+    fs.collection("OtherImages")
+      .doc("01")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setFirstImg(doc.data().url);
+        }
       });
-      setImages(tempImages);
-    });
-  }, []);
 
-  fs.collection('OtherImages').doc("01").get().then((doc) => {
-    if (doc.exists) {
-      setFirst(doc.data().url)
-    }
-  })
+    fs.collection("OtherImages")
+      .doc("02")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setSecondImg(doc.data().url);
+        }
+      });
+
+    // Boxes Video
+    fs.collection("OtherVideos")
+      .doc("01")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setFirstVid(doc.data().url);
+        }
+      });
+  }, []);
 
   fs.collection("series")
     .orderBy("timestamp", "desc")
@@ -95,7 +100,7 @@ const Hero = () => {
 
       <Slider {...settings}>
         {BG.map((bg) => (
-          <BackgroundImage key={bg.name} >
+          <BackgroundImage key={bg.name}>
             <img src={bg.url} alt="" />
           </BackgroundImage>
         ))}
@@ -223,26 +228,20 @@ const Hero = () => {
               {serieName.slice(0, 1).map((link) => (
                 <Link key={link.name} to={`/photo/${link.name}`}>
                   <h2>Voir les Photos</h2>
-                  {images.slice(0, 1).map((image) => (
-                    <img key={image.name} src={image.url} alt="" />
-                  ))}
+                  <img src={firstImg} alt="" />
                 </Link>
               ))}
             </div>
             <div className="squared2">
               <Link to="/video">
                 <h2>Voir les Vidéos</h2>
-                {videos.slice(0, 1).map((video) => (
-                  <video key={video.name} src={video.url} loop autoPlay muted />
-                ))}
+                <video src={firstVid} loop autoPlay muted />
               </Link>
             </div>
             <div className="rectangle">
               <Link to="/about">
                 <h2>A Propos de moi</h2>
-                {images.slice(1, 2).map((image) => (
-                  <img key={image.name} src={image.url} alt="" />
-                ))}
+                <img src={secondImg} alt="" />
               </Link>
             </div>
           </HeroImages>
