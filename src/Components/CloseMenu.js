@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-const CloseMenu = ({ visible, setVisible }) => {
+import gsap from "gsap";
+
+const CloseMenu = () => {
   // Close Menu Settings
   let history = useHistory();
 
-  const redirect = () => {
-    setVisible(!visible);
+  const close = () => {
+    const menuContainer = window.document.querySelector(".pages");
+    gsap.to(menuContainer, {
+      duration: 0.8,
+      y: "-100%",
+      ease: "power6.inOut",
+      stagger: {
+        amount: 0.08,
+      },
+    });
+
     setTimeout(() => {
       history.push("/home");
-    }, 50);
+    }, 850);
+    
   };
 
+  useEffect(() => {});
+
   return (
-    <div className="menu-close" onClick={() => redirect()}>
+    <div className="menu-close" onClick={close}>
       <svg
         className="svg2"
         xmlns="http://www.w3.org/2000/svg"

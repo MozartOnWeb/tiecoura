@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 
 // Import Framer Motion
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 // Import Global Styles
 import { createGlobalStyle, ThemeProvider } from "styled-components";
@@ -79,7 +79,7 @@ const GlobalStyles = createGlobalStyle`
 
 const Theme = {
   mainFont: "Poppins",
-  linkFont: "Monument",
+  linkFont: "Poppins",
   menuFont: "Jura",
   red: "#E2293F",
   white: "#FFFDFF",
@@ -96,7 +96,6 @@ const Theme = {
 
 function App() {
   const location = useLocation();
-  const [visible, setVisible] = useState(true);
 
   return (
     <>
@@ -109,7 +108,7 @@ function App() {
             <Route component={Welcome} path="/" exact />
             <Pages className="pages">
               <PageNav />
-              <CloseMenu visible={visible} setVisible={setVisible} />
+              <CloseMenu />
               <Route component={Video} path="/video" />
               <Route component={Photo} path="/photo/:serie" />
               <Route component={About} path="/about" />

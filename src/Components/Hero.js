@@ -28,6 +28,7 @@ const Hero = () => {
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
   const [serieName, setSerieName] = useState([]);
+  const [fist, setFirst] = useState([]);
 
   useEffect(() => {
     // Boxe Video
@@ -57,6 +58,12 @@ const Hero = () => {
       setImages(tempImages);
     });
   }, []);
+
+  fs.collection('OtherImages').doc("01").get().then((doc) => {
+    if (doc.exists) {
+      setFirst(doc.data().url)
+    }
+  })
 
   fs.collection("series")
     .orderBy("timestamp", "desc")

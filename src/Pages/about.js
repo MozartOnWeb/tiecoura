@@ -14,8 +14,8 @@ import {
 } from "./Styles/photoStyles";
 
 const About = () => {
-
-    const [images, setImages] = useState([]);
+  const [images, setImages] = useState([]);
+  const [desc, setDesc] = useState("");
 
   useEffect(() => {
     fs.collection("Profile").onSnapshot((snapshot) => {
@@ -25,18 +25,23 @@ const About = () => {
       });
       setImages(tempImages);
     });
-  }, []);  
-  
+  }, []);
+
+  fs.collection("Descriptions")
+    .doc("About-Desc")
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        setDesc(doc.data().desc);
+      }
+    });
+
   return (
     <>
       <PhotoWrapper>
         <PhotoImageWrapper>
           <AboutHeader>Tiecoura n'daou</AboutHeader>
-          <AboutContent>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
-            assumenda dignissimos! Exercitationem nesciunt officiis blanditiis
-            nobis. Praesentium voluptatibus nobis expedita.
-          </AboutContent>
+          <AboutContent>{desc}</AboutContent>
           <Line />
           <AboutInfo>
             <AboutImage>

@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 // Import Framer Motion
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 // Import firestore
 import { fs } from "../firebase/config";
@@ -15,19 +15,28 @@ import {
 
 // Import Styled Components
 import { Logo, WelcomeDesc } from "./Styles/welcomeStyles";
-import {Button} from "../layout"
+import { Button } from "../layout";
 
 const Welcome = () => {
-
   const [image, setImage] = useState([]);
+  const [desc, setDesc] = useState("");
 
-      fs.collection("Welcome").onSnapshot((snapshot) => {
-        const tempImage = [];
-        snapshot.forEach((doc) => {
-          tempImage.push({ ...doc.data(), id: doc.id });
-        });
-        setImage(tempImage);
-      });
+  fs.collection("Welcome").onSnapshot((snapshot) => {
+    const tempImage = [];
+    snapshot.forEach((doc) => {
+      tempImage.push({ ...doc.data(), id: doc.id });
+    });
+    setImage(tempImage);
+  });
+
+  fs.collection("Descriptions")
+    .doc("Welcome-Desc")
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        setDesc(doc.data().desc);
+      }
+    });
 
   return (
     <WelcomeWrapper>
@@ -51,8 +60,7 @@ const Welcome = () => {
       </Button>
       <WelcomeDesc>
         <motion.h3>Tiècoura N'Daou</motion.h3>
-        <motion.p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, ullam est distinctio quod dolore quas aspernatur ipsa ipsam facere fuga nesciunt, iste, cum id iusto minima. Culpa esse, nobis nostrum veniam accusamus dolorem ipsa ex.</motion.p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, eum odio. Mollitia perspiciatis quia vitae.</p>
+        <motion.p>{desc}</motion.p>
       </WelcomeDesc>
       <WelcomeGradient />
       <WelcomeImage>

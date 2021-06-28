@@ -105,6 +105,6 @@ export const WelcomeDesc = styled.div`
   p {
     font-family: ${(props) => props.theme.mainFont};
     font-size: 14px;
-    line-height: 18px;
+    line-height: 20px;
   }
 `;

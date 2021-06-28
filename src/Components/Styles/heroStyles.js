@@ -289,7 +289,11 @@ export const HeroInfo = styled.div`
     font-size: 40px;
     text-transform: uppercase;
     font-weight: 800;
+    margin-bottom: -40px;
+    margin-top: -40px;
     ${only("md")} {
+      margin-bottom: 0px;
+      margin-top: 0px;
       font-size: 35px;
     }
     ${down("xs")} {
@@ -301,7 +305,9 @@ export const HeroInfo = styled.div`
     color: ${(props) => props.theme.red};
     text-transform: uppercase;
     font-weight: 800;
+    margin-bottom: -30px;
     ${only("md")} {
+      margin-bottom: 0px;
       font-size: 60px;
     }
     ${down("xs")} {
