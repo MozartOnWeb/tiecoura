@@ -10,6 +10,10 @@ import { AnimatePresence } from "framer-motion";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 
+// Import Toastify
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // Import Pages
 import { Home, Video, Photo, About, Welcome } from "./Pages";
 import { CloseMenu, PageNav } from "./Components";
@@ -24,6 +28,9 @@ const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
+    .toast_conatiner {
+      text-transform: uppercase;
+    }
     .pages {
       position: relative;
       ${down("md")} {
@@ -101,6 +108,11 @@ function App() {
     <>
       <ThemeProvider theme={Theme}>
         <GlobalStyles />
+        <ToastContainer
+          autoClose={2000}
+          position="bottom-right"
+          className="toast_conatiner"
+        />
         <Normalize />
         <AnimatePresence>
           <Switch location={location} key={location.key}>
