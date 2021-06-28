@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Import firestore
 import { fs } from "../firebase/config";
@@ -21,22 +21,25 @@ const WhoIAM = () => {
   const [profile, setProfile] = useState([]);
   const [desc, setDesc] = useState("");
 
-  fs.collection("Profile").onSnapshot((snapshot) => {
-    const tempProfile = [];
-    snapshot.forEach((doc) => {
-      tempProfile.push({ ...doc.data(), id: doc.id });
-    });
-    setProfile(tempProfile);
-  });
+  useEffect(() => {
+    fs.collection("Profile")
+      .doc("01")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setProfile(doc.data().url);
+        }
+      });
 
-  fs.collection("Descriptions")
-    .doc("Profile-Desc")
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        setDesc(doc.data().desc);
-      }
-    });
+    fs.collection("Descriptions")
+      .doc("Profile-Desc")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setDesc(doc.data().desc);
+        }
+      });
+  }, []);
 
   return (
     <div>
@@ -65,14 +68,7 @@ const WhoIAM = () => {
             </Button>
           </WhoInfo>
           <WhoImage>
-            {profile.map((image) => (
-              <img
-                key={image.name}
-                src={image.url}
-                alt="profile_image"
-                loading="lazy"
-              />
-            ))}
+            <img src={profile} alt="profile_image" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="791.246"
