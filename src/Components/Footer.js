@@ -10,6 +10,9 @@ import {
   SiAdobelightroomclassic,
 } from "react-icons/si";
 
+// Import Toastify
+import { toast } from "react-toastify";
+
 import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
 
 // Import Styles
@@ -29,6 +32,10 @@ const Footer = () => {
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
 
+  const notifyError = () => toast.error(" 🔥 IMPOSSIBLE D'ENVOYER LE MESSAGE");
+
+  const notifySuccess = () => toast(" ✔️ MESSAGE ENVOYé");
+
   const onEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -45,22 +52,29 @@ const Footer = () => {
     email: email,
   };
 
-  const sendEmail = () => {
-    emailjs
-      .send(
-        "service_vtmcx0w",
-        "template_795uobf",
-        tempParams,
-        "user_IIuS4KGyfguClJ5SOMIMs",
-      )
-      .then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-        },
-        (err) => {
-          console.log("FAILED...", err);
-        },
-      );
+  const sendEmail = (e) => {
+    if (email === "" || message === "" || name === "") {
+      notifyError();
+    } else {
+      emailjs
+        .send(
+          "service_vtmcx0w",
+          "template_795uobf",
+          tempParams,
+          "user_IIuS4KGyfguClJ5SOMIMs",
+        )
+        .then(
+          (response) => {
+            notifySuccess();
+            setEmail((e.target.value = ""));
+            setName((e.target.value = ""));
+            setMessage((e.target.value = ""));
+          },
+          (err) => {
+            notifyError();
+          },
+        );
+    }
   };
 
   return (
@@ -118,6 +132,7 @@ const Footer = () => {
                   placeholder="votre nom"
                   value={name}
                   onChange={onName}
+                  required
                 />
                 <input
                   type="email"
@@ -126,6 +141,7 @@ const Footer = () => {
                   placeholder="votre e-mail"
                   value={email}
                   onChange={onEmail}
+                  required
                 />
                 <textarea
                   name="message"
@@ -134,11 +150,12 @@ const Footer = () => {
                   rows="7"
                   placeholder="votre message"
                   value={message}
-                  onChange={onMessage}></textarea>
+                  onChange={onMessage}
+                  required></textarea>
               </form>
-              
             </FooterForm>
-            <FooterInfos><Submit onClick={sendEmail}>
+            <FooterInfos>
+              <Submit onClick={sendEmail}>
                 Envoyer{" "}
                 <svg
                   className="arrow"
@@ -154,7 +171,8 @@ const Footer = () => {
                     fill="#fffdff"
                   />
                 </svg>
-              </Submit></FooterInfos>
+              </Submit>
+            </FooterInfos>
           </FooterInfoContainer>
         </FooterInfoWrapper>
       </FooterWrapper>
