@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 // Import React Router Dom
 import { Link } from "react-router-dom";
 
+// Import Modal
+import Modal2 from "../Components/Modal2";
+
 // Import firestore
 import { fs } from "../firebase/config";
 
@@ -29,6 +32,7 @@ const Hero = () => {
   const [firstImg, setFirstImg] = useState([]);
   const [secondImg, setSecondImg] = useState([]);
   const [firstVid, setFirstVid] = useState([]);
+  const [selected, setSelected] = useState(null);
 
   useEffect(() => {
     // Background Images
@@ -224,26 +228,34 @@ const Hero = () => {
 
           {/* Hero Images */}
           <HeroImages>
+            
             <div className="squared1">
               {serieName.slice(0, 1).map((link) => (
                 <Link key={link.name} to={`/photo/${link.name}`}>
                   <h2>Voir les Photos</h2>
-                  <img src={firstImg} alt="" />
+                  <img
+                    src={firstImg}
+                    alt=""
+                    onClick={() => setSelected(firstImg)}
+                  />
                 </Link>
               ))}
             </div>
+
             <div className="squared2">
               <Link to="/video">
                 <h2>Voir les Vidéos</h2>
                 <video src={firstVid} loop autoPlay muted />
               </Link>
             </div>
+
             <div className="rectangle">
               <Link to="/about">
                 <h2>A Propos de moi</h2>
                 <img src={secondImg} alt="" />
               </Link>
             </div>
+            
           </HeroImages>
           {/* Hero Images */}
         </HeroWrapper>
@@ -279,6 +291,7 @@ const Hero = () => {
         </Arrow>
       </Container>
       {/* Hero Information Container */}
+      {selected && <Modal2 selected={selected} setSelected={setSelected} />}
     </HeroContainer>
   );
 };

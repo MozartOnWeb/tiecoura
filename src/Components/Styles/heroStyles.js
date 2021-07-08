@@ -84,7 +84,7 @@ export const HeroImages = styled.div`
     cursor: pointer;
     position: relative;
     ::after {
-      transition: 1s ease-in-out;
+      transition: 0.7s ease-in-out;
       content: "";
       position: absolute;
       width: 100%;
@@ -105,7 +105,7 @@ export const HeroImages = styled.div`
     }
     h2 {
       z-index: 2;
-      transition: 1s ease-in-out .5s;
+      transition: 0.7s ease-in-out .5s;
       position: absolute;
       color: ${(props) => props.theme.red};
       font-family: ${(props) => props.theme.linkFont};
@@ -139,6 +139,7 @@ export const HeroImages = styled.div`
         object-fit: cover;
       }
     }
+
   }
   .squared2 {
     grid-area: squared2;
@@ -147,7 +148,7 @@ export const HeroImages = styled.div`
     cursor: pointer;
     position: relative;
     ::after {
-      transition: 1s ease-in-out;
+      transition: 0.7s ease-in-out;
       content: "";
       position: absolute;
       width: 100%;
@@ -168,7 +169,7 @@ export const HeroImages = styled.div`
     }
     h2 {
       z-index: 2;
-      transition: 1s ease-in-out .5s;
+      transition: 0.7s ease-in-out .5s;
       position: absolute;
       color: ${(props) => props.theme.red};
       font-family: ${(props) => props.theme.linkFont};
@@ -206,7 +207,7 @@ export const HeroImages = styled.div`
     cursor: pointer;
     position: relative;
     ::after {
-      transition: 1s ease-in-out;
+      transition: 0.7s ease-in-out;
       content: "";
       position: absolute;
       width: 100%;
@@ -227,7 +228,7 @@ export const HeroImages = styled.div`
     }
     h2 {
       z-index: 2;
-      transition: 1s ease-in-out .5s;
+      transition: 0.7s ease-in-out .5s;
       position: absolute;
       color: ${(props) => props.theme.red};
       font-family: ${(props) => props.theme.linkFont};
@@ -274,13 +275,14 @@ export const HeroInfo = styled.div`
     transform: translate(-50%, -50%);
     width: 164%;
     height: 164%;
-    ${only("md")} {
+    ${down("md")} {
       width: 150%;
       height: 150%;
     }
     ${down("xs")} {
-      width: 155%;
-      height: 155%;
+      top: 60%;
+      width: 175%;
+      height: 175%;
     }
   }
   .outline {
@@ -291,8 +293,8 @@ export const HeroInfo = styled.div`
     font-weight: 800;
     margin-bottom: -40px;
     margin-top: -40px;
-    ${only("md")} {
-      margin-bottom: 0px;
+    ${down("md")} {
+      margin-bottom: -20px;
       margin-top: 0px;
       font-size: 35px;
     }

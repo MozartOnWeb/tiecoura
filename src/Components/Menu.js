@@ -3,9 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 // Import firestore
 import { fs } from "../firebase/config";
 
-// import gsap
-import gsap from "gsap";
-
 import { Button } from "../layout";
 import {
   MenuContainer,

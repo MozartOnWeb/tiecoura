@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 // Import firestore
 import { fs } from "../firebase/config";
 
-// Import CountUp
-import CountUp from "react-countup";
+// Import Modal
+import Modal3 from "../Components/Modal3";
 
 import {
   ExperienceBox,
@@ -18,7 +18,7 @@ import {
 // Import Components
 import { Arrow, Button } from "../layout";
 
-const Experience = () => {
+const Experience = ({ selected, setSelected }) => {
   const [serieName, setSerieName] = useState([]);
   const [secondVid, setSecondVid] = useState([]);
   const [thirdImg, setThirdImg] = useState([]);
@@ -89,7 +89,13 @@ const Experience = () => {
       <ExperienceWrapper>
         {/* Experience Big-Image */}
         <ExperienceImage>
-          <video src={secondVid} loop autoPlay muted />
+          <video
+            onClick={() => setSelected(secondVid)}
+            src={secondVid}
+            loop
+            autoPlay
+            muted
+          />
         </ExperienceImage>
         {/* Experience Big-Image */}
 
@@ -260,6 +266,7 @@ const Experience = () => {
         </Arrow>
       </ExperienceWrapper>
       {/* Experience Container */}
+      {selected && <Modal3 selected={selected} setSelected={setSelected} />}
     </div>
   );
 };

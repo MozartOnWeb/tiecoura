@@ -3,13 +3,19 @@ import React, { useState, useEffect } from "react";
 // Import firestore
 import { fs } from "../firebase/config";
 
+//
+import { Link } from "react-router-dom";
+
 // Import Components
 import { Arrow } from "../layout";
+
+// Import Modal
+import Modal2 from "../Components/Modal2";
 
 // Import Styles
 import { IntroduceImage, IntroduceWrapper } from "./Styles/introducingStyles";
 
-const Introducing = () => {
+const Introducing = ({ selected, setSelected }) => {
   const [images, setImages] = useState([]);
   const [fourthImg, setFourthImg] = useState([]);
 
@@ -27,7 +33,7 @@ const Introducing = () => {
       .get()
       .then((doc) => {
         if (doc.exists) {
-          setFourthImg(doc.data().url)
+          setFourthImg(doc.data().url);
         }
       });
   }, []);
@@ -40,7 +46,7 @@ const Introducing = () => {
           Dolorum sequi maiores iste, rem quis fuga repellendus corrupti?
           Dolore?
         </p>
-        <IntroduceImage>
+        <IntroduceImage onClick={() => setSelected(fourthImg)}>
           <img src={fourthImg} alt="fourth_img" />
         </IntroduceImage>
         <Arrow bottom="true" red="true">
@@ -60,6 +66,7 @@ const Introducing = () => {
           </svg>
         </Arrow>
       </IntroduceWrapper>
+      {selected && <Modal2 selected={selected} setSelected={setSelected} />}
     </div>
   );
 };

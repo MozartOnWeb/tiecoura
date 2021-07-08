@@ -9,8 +9,11 @@ import { NavLink, useRouteMatch } from "react-router-dom";
 // Import firestore
 import { fs } from "../firebase/config";
 
-// Import InfiniteScroll
-import InfiniteScroll from "react-infinite-scroll-component";
+// Import LazyLoad
+import LazyLoad from "react-lazyload";
+
+// Import custom arrows 
+import { NextArrow, PrevArrow} from "../Components/CustomArrows";
 
 // Import React Slick
 import Slider from "react-slick";
@@ -25,7 +28,7 @@ import {
   PhotoImageWrapper,
   SerieInfo,
 } from "./Styles/photoStyles";
-import Loader from "../Components/Loader";
+import Modal from "../Components/Modal";
 
 // Masonry Grid Styles
 import Masonry from "react-masonry-css";
@@ -34,35 +37,40 @@ const Photo = () => {
   const [serieName, setSerieName] = useState([]);
   const [images, setImages] = useState([]);
   const [serieDesc, setSerieDesc] = useState("");
+  const [selected, setSelected] = useState(null);
 
   const match = useRouteMatch("/photo/:serie");
   const { serie } = match.params;
 
-  fs.collection("series")
-    .orderBy("timestamp", "desc")
-    .onSnapshot((snapshot) => {
-      const tempNames = [];
-      snapshot.forEach((doc) => {
-        tempNames.push({ ...doc.data(), id: doc.id });
-      });
-      setSerieName(tempNames);
-    });
-
   useEffect(() => {
-    fetchMore();
-  }, []);
+    let mounted = true;
 
-  const fetchMore = () => {
+    fs.collection("series")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        const tempNames = [];
+        snapshot.forEach((doc) => {
+          tempNames.push({ ...doc.data(), id: doc.id });
+        });
+        if (mounted) {
+          setSerieName(tempNames);
+        }
+      });
+
     fs.collection("series")
       .doc(serie)
       .get()
       .then((doc) => {
-        if (doc.exists) {
+        if (doc.exists && mounted) {
           setImages(doc.data().images);
           setSerieDesc(doc.data().desc);
         }
       });
-  };
+
+    return () => {
+      mounted = false;
+    };
+  }, [serie]);
 
   // Slider Settings
   const setting = {
@@ -74,12 +82,14 @@ const Photo = () => {
     autoplay: false,
     fade: false,
     arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   // Masonry BreakPoint Settings
   const breakPointColumnObj = {
-    default: 3,
-    1100: 3,
+    default: 2,
+    1100: 2,
     700: 2,
     500: 1,
   };
@@ -99,34 +109,31 @@ const Photo = () => {
       </SeriesName>
 
       <PhotoWrapper>
-        <InfiniteScroll
-          dataLength={images.length}
-          next={() => fetchMore()}
-          hasMore={true}
-          loader={<Loader />}
-          scrollThreshold={0.9}>
-          <PhotoImageWrapper>
-            <Masonry
-              breakpointCols={breakPointColumnObj}
-              className="my-masonry-grid"
-              columnClassName="my-masonry-grid_column">
-              {images &&
-                images.map((image) => (
-                  <motion.div key={image.name} layout>
-                    <motion.img
-                      src={image.url}
-                      alt="uploded_image"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1.5 }}
-                    />
-                  </motion.div>
-                ))}
-            </Masonry>
-          </PhotoImageWrapper>
-        </InfiniteScroll>
+        <PhotoImageWrapper>
+          <Masonry
+            breakpointCols={breakPointColumnObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column">
+            {images &&
+              images.map((image) => (
+                <LazyLoad height={200} offset={150} key={image.name}>
+                  <motion.img
+                    src={image.url}
+                    alt={image.name}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 }}
+                    onClick={() => setSelected(image.url)}
+                  />
+                </LazyLoad>
+              ))}
+          </Masonry>
+        </PhotoImageWrapper>
       </PhotoWrapper>
       <SerieInfo> {serieDesc} </SerieInfo>
+      {selected && (
+        <Modal selected={selected} setSelected={setSelected} images={images} />
+      )}
     </>
   );
 };

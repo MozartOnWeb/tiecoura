@@ -28,6 +28,7 @@ const GlobalStyles = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
+    scroll-behavior: smooth;
     .toast_conatiner {
       text-transform: uppercase;
     }
@@ -91,6 +92,7 @@ const Theme = {
   red: "#E2293F",
   white: "#FFFDFF",
   black: "#161616",
+  
   breakpoints: {
     s: "320px",
     xs: "375px",
