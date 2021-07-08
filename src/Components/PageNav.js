@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { AnimatePresence } from "framer-motion";
 
@@ -11,15 +11,24 @@ import { PageNavLinks } from "./Styles/pagenavStyles";
 const PageNav = () => {
   const [serieName, setSerieName] = useState([]);
 
-  fs.collection("series")
-    .orderBy("timestamp", "desc")
-    .onSnapshot((snapshot) => {
-      const tempNames = [];
-      snapshot.forEach((doc) => {
-        tempNames.push({ ...doc.data(), id: doc.id });
-      });
-      setSerieName(tempNames);
-    });
+  useEffect(() => {
+    let mounted = true
+    fs.collection("series")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        const tempNames = [];
+        snapshot.forEach((doc) => {
+          tempNames.push({ ...doc.data(), id: doc.id });
+        });
+        if (mounted) {
+          setSerieName(tempNames);
+        }
+      })
+    
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <>
@@ -27,6 +36,7 @@ const PageNav = () => {
         <PageNavLinks>
           {serieName.slice(0, 1).map((link) => (
             <Button
+              key={link}
               activeClassName="active"
               small="true"
               to={`/photo/${link.name}`}>

@@ -12,16 +12,13 @@ const CloseMenu = () => {
     gsap.to(menuContainer, {
       duration: 0.8,
       y: "-100%",
-      ease: "power6.inOut",
+      ease: "Power6.inOut",
       stagger: {
         amount: 0.08,
       },
     });
 
-    setTimeout(() => {
-      history.push("/home");
-    }, 850);
-    
+    history.push("/home");
   };
 
   useEffect(() => {});

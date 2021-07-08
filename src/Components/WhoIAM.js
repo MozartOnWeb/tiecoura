@@ -6,6 +6,9 @@ import { fs } from "../firebase/config";
 // Import Components
 import { Button } from "../layout";
 
+// Import Modal
+import Modal2 from "../Components/Modal2";
+
 // Import Styles
 import {
   WhoHeadline,
@@ -17,7 +20,7 @@ import {
   WhoWrapper,
 } from "./Styles/whoiamStyles";
 
-const WhoIAM = () => {
+const WhoIAM = ({ selected, setSelected }) => {
   const [profile, setProfile] = useState([]);
   const [desc, setDesc] = useState("");
 
@@ -67,7 +70,7 @@ const WhoIAM = () => {
               </svg>
             </Button>
           </WhoInfo>
-          <WhoImage>
+          <WhoImage onClick={() => setSelected(profile)}>
             <img src={profile} alt="profile_image" />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -175,6 +178,7 @@ const WhoIAM = () => {
           </WhoImage>
         </WhoInfoWrapper>
       </WhoWrapper>
+      {selected && <Modal2 selected={selected} setSelected={setSelected} />}
     </div>
   );
 };

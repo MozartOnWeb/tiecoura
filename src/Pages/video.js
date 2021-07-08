@@ -9,14 +9,6 @@ import { fs } from "../firebase/config";
 // Import Framer Motion
 import { motion } from "framer-motion";
 
-// Import InfiniteScroll
-import InfiniteScroll from "react-infinite-scroll-component";
-
-import Loader from "../Components/Loader";
-
-// Masonry Grid Styles
-import Masonry from "react-masonry-css";
-
 const Video = () => {
   const [videos, setVideos] = useState([]);
 
@@ -45,29 +37,22 @@ const Video = () => {
   return (
     <>
       <PhotoWrapper>
-        <InfiniteScroll
-          dataLength={videos.length}
-          next={fetchMore}
-          hasMore="true"
-          loader={<Loader />}
-          scrollThreshold={1}>
-          <PhotoImageWrapper>
-            <div className="video">
-              {videos &&
-                videos.map((video) => (
-                  <motion.div key={video.name} layout>
-                    <motion.iframe
-                      src={video.url}
-                      alt="uploded_image"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1.5 }}
-                    />
-                  </motion.div>
-                ))}
-            </div>
-          </PhotoImageWrapper>
-        </InfiniteScroll>
+        <PhotoImageWrapper>
+          <div className="video">
+            {videos &&
+              videos.map((video) => (
+                <motion.div key={video.timestamp} layout>
+                  <motion.iframe
+                    src={video.url}
+                    alt="uploded_image"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 }}
+                  />
+                </motion.div>
+              ))}
+          </div>
+        </PhotoImageWrapper>
       </PhotoWrapper>
     </>
   );

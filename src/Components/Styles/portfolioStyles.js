@@ -60,8 +60,7 @@ export const PortfolioLinks = styled.div`
     text-transform: uppercase;
     color: ${(props) => props.theme.red};
     border-bottom: 1px solid ${(props) => props.theme.red};
-    font-family: ${props => props.theme.linkFont};
-
+    font-family: ${(props) => props.theme.linkFont};
   }
   ${only("md")} {
     h2 {
@@ -73,6 +72,7 @@ export const PortfolioLinks = styled.div`
     width: 80%;
     h2 {
       font-size: 13px;
+      margin: 10px auto;
     }
   }
   ${down("s")} {
