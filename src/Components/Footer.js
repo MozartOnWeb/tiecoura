@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // import EmailJS
 import emailjs from "emailjs-com";
+
+// Import Link
+import { Link } from "react-router-dom";
 
 // Import SVGS
 import {
@@ -13,7 +16,15 @@ import {
 // Import Toastify
 import { toast } from "react-toastify";
 
-import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
+// Import Firetore
+import { fs } from "../firebase/config";
+
+import {
+  FaFacebookSquare,
+  FaInstagramSquare,
+  FaFlickr,
+  FaYoutubeSquare,
+} from "react-icons/fa";
 
 // Import Styles
 import {
@@ -31,6 +42,10 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
+  const [year, setYear] = useState("");
+  const [locations, setLocations] = useState([]);
+  const [tel, setTel] = useState("");
+  const [mail, setMail] = useState("");
 
   const notifyError = () => toast.error(" 🔥 IMPOSSIBLE D'ENVOYER LE MESSAGE");
 
@@ -77,6 +92,43 @@ const Footer = () => {
     }
   };
 
+  useEffect(() => {
+    fs.collection("Copyright")
+      .doc("01")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setYear(doc.data().year);
+        }
+      });
+
+    fs.collection("Locations").onSnapshot((snap) => {
+      const tempLocation = [];
+      snap.forEach((doc) => {
+        tempLocation.push({ ...doc.data(), id: doc.id });
+      });
+      setLocations(tempLocation);
+    });
+
+    fs.collection("Contact")
+      .doc("01")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setTel(doc.data().number);
+        }
+      });
+
+    fs.collection("Contact")
+      .doc("02")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setMail(doc.data().email);
+        }
+      });
+  }, []);
+
   return (
     <div>
       <FooterWrapper>
@@ -84,8 +136,9 @@ const Footer = () => {
           <FooterInfoContainer>
             <FooterInfos>
               <FooterHeadline>où me trouver ?</FooterHeadline>
-              <p>badalabougou, bamako, mali</p>
-              <p>badalabougou, bamako, mali</p>
+              {locations.map((location) => (
+                <p key={location.id}> {location.location} </p>
+              ))}
             </FooterInfos>
             <FooterInfos>
               <FooterHeadline>Logiciels</FooterHeadline>
@@ -96,21 +149,31 @@ const Footer = () => {
               </SvgContainer>
             </FooterInfos>
             <FooterInfos>
-              <span>&#169; 2021, MOZART.JS, tous droits réservés</span>
+              <span>&#169; {year}, MOZART.JS, tous droits réservés</span>
             </FooterInfos>
           </FooterInfoContainer>
 
           <FooterInfoContainer>
             <FooterInfos>
               <FooterHeadline>Contacts</FooterHeadline>
-              <p>+22378437323</p>
-              <p className="lowercase">mandjoudama@gmail.com</p>
+              <p> {tel} </p>
+              <p className="lowercase"> {mail} </p>
             </FooterInfos>
             <FooterInfos>
               <FooterHeadline>Réseaux</FooterHeadline>
               <SvgContainer className="simple">
-                <FaFacebookSquare className="red" />
-                <FaInstagramSquare className="red" />
+                <Link to="" target="_blank">
+                  <FaFacebookSquare className="red" />
+                </Link>
+                <Link to="" target="_blank">
+                  <FaInstagramSquare className="red" />
+                </Link>
+                <Link to="" target="_blank">
+                  <FaFlickr className="red" />
+                </Link>
+                <Link to="" target="_blank">
+                  <FaYoutubeSquare className="red" />
+                </Link>
               </SvgContainer>
             </FooterInfos>
             <FooterInfos className="dot">
@@ -121,7 +184,7 @@ const Footer = () => {
           <FooterInfoContainer className="form">
             <FooterInfos>
               <FooterHeadline>Vous avez un projet ?</FooterHeadline>
-              <p className="lowercase">Parolons-en !</p>
+              <p className="lowercase">Parlons-en !</p>
             </FooterInfos>
             <FooterForm>
               <form>

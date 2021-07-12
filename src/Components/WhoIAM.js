@@ -52,8 +52,8 @@ const WhoIAM = ({ selected, setSelected }) => {
           <WhoInfo>
             <WhoSubline>Tiècoura n'daou</WhoSubline>
             <WhoParagraphe>{desc}</WhoParagraphe>
-            <Button to="/">
-              Contact
+            <Button to="/about">
+              En savoir plus
               <svg
                 className="arrow"
                 xmlns="http://www.w3.org/2000/svg"

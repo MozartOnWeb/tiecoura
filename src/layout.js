@@ -80,6 +80,9 @@ export const Button = styled(motion(NavLink))`
       top: 50%;
       left: 45%;
       transform: translate(-50%, -50%);
+      ${down("xs")} {
+        left: 35%;
+      }
     `}
 
   ${(props) =>

@@ -3,9 +3,6 @@ import React, { useState, useEffect } from "react";
 // Import firestore
 import { fs } from "../firebase/config";
 
-//
-import { Link } from "react-router-dom";
-
 // Import Components
 import { Arrow } from "../layout";
 
@@ -16,18 +13,9 @@ import Modal2 from "../Components/Modal2";
 import { IntroduceImage, IntroduceWrapper } from "./Styles/introducingStyles";
 
 const Introducing = ({ selected, setSelected }) => {
-  const [images, setImages] = useState([]);
   const [fourthImg, setFourthImg] = useState([]);
 
   useEffect(() => {
-    fs.collection("OtherImages").onSnapshot((snapshot) => {
-      const tempImages = [];
-      snapshot.forEach((doc) => {
-        tempImages.push({ ...doc.data(), id: doc.id });
-      });
-      setImages(tempImages);
-    });
-
     fs.collection("OtherImages")
       .doc("04")
       .get()

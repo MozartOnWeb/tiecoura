@@ -123,7 +123,7 @@ export const SvgContainer = styled.div`
     justify-content: space-around;
   }
   &.simple {
-    width: 30%;
+    width: 70%;
     ${down("md")} {
       width: 40%;
     }

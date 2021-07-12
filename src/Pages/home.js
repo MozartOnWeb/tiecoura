@@ -19,7 +19,6 @@ import LoadingScreen from "../Components/LoadingScreen";
 const Home = () => {
   const [selected, setSelected] = useState(null);
   const [videoSelected, setVideoSelected] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   const [state, setState] = useState({
     initial: false,
