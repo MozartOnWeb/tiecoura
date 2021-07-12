@@ -12,6 +12,13 @@ export const PhotoWrapper = styled(motion.div)`
 
 export const PhotoImageWrapper = styled(motion.div)`
 
+  .youtube {
+    text-align: left;
+    text-transform: uppercase;
+    color: ${props => props.theme.white};
+    display: block;
+    font-size: 18px;
+  }
   
   .video {
     width: 100%;
@@ -27,6 +34,7 @@ export const PhotoImageWrapper = styled(motion.div)`
       border-radius: 15px;
       object-fit: cover;
       margin-bottom: 30px;
+      border: 1px solid blue;
     }
   }
   .my-masonry-grid {
@@ -97,14 +105,20 @@ export const AboutImage = styled.div`
   width: 100%;
   height: 350px;
   margin-bottom: 15px;
+  border: 1px solid ${(props) => props.theme.black};
+  border-radius: 15px;
+
   img,
   video,
   iframe {
     border-radius: 15px;
+    border: 1px solid ${(props) => props.theme.black};
     width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
+    transform-origin: top;
+    object-position: 30% 25%;
   }
 `;
 

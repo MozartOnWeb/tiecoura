@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { down } from "styled-breakpoints";
 
-
 export const WhoWrapper = styled.div`
   width: 80%;
   padding: 50px 10px;
@@ -47,16 +46,16 @@ export const WhoInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   width: 400px;
-
   ${down("md")} {
+    align-items: center;
     width: 100%;
     margin-top: 50px;
   }
   a {
     top: 30px;
-    right: 145px;
+    right: 0px;
     ${down("md")} {
       right: 0px;
     }
@@ -66,9 +65,9 @@ export const WhoInfo = styled.div`
 export const WhoSubline = styled.h3`
   font-family: ${(props) => props.theme.linkFont};
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
-  margin-right: 180px;
+  margin-bottom: 10px;
   ${down("md")} {
     margin: 0px;
   }

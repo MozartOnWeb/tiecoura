@@ -10,29 +10,28 @@ import { fs } from "../firebase/config";
 import { motion } from "framer-motion";
 
 const Video = () => {
+  const [youtube, setYoutube] = useState([]);
   const [videos, setVideos] = useState([]);
 
-  const fetchMore = () => {
+  useEffect(() => {
     fs.collection("YoutubeVideos").onSnapshot((snap) => {
+      const tempYoutube = [];
+      snap.forEach((doc) => {
+        tempYoutube.push({ ...doc.data(), id: doc.id });
+      });
+      setYoutube(tempYoutube);
+    });
+
+    fs.collection("videos").onSnapshot((snap) => {
       const tempVideos = [];
       snap.forEach((doc) => {
         tempVideos.push({ ...doc.data(), id: doc.id });
       });
       setVideos(tempVideos);
     });
-  };
-
-  useEffect(() => {
-    fetchMore();
   }, []);
 
-  // Masonry BreakPoint Settings
-  const breakPointColumnObj = {
-    default: 3,
-    1100: 3,
-    700: 2,
-    500: 1,
-  };
+  
 
   return (
     <>
@@ -41,9 +40,22 @@ const Video = () => {
           <div className="video">
             {videos &&
               videos.map((video) => (
-                <motion.div key={video.timestamp} layout>
-                  <motion.iframe
+                <motion.div key={video.id} layout>
+                  <motion.video
                     src={video.url}
+                    autoPlay={false}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 }}
+                    controls={true}
+                  />
+                </motion.div>
+              ))}
+            {youtube &&
+              youtube.map((tube) => (
+                <motion.div key={tube.id} layout>
+                  <motion.iframe
+                    src={tube.url}
                     alt="uploded_image"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

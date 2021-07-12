@@ -78,6 +78,7 @@ export const ExperienceInfo = styled(motion.div)`
     font-size: 16px;
     line-height: 25px;
     font-weight: 400;
+    word-break: break-all;
     ${only("md")} {
       font-size: 14px;
       text-align: center;
@@ -87,6 +88,13 @@ export const ExperienceInfo = styled(motion.div)`
       font-size: 11px;
       text-align: center;
       margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+    ${down("s")} {
+      font-size: 10px;
+      text-align: left;
+      margin-bottom: 30px;
+      word-break: break-all;
     }
   }
 `;
@@ -180,8 +188,10 @@ export const ExperienceBox = styled(motion.div)`
   }
   .subline {
     font-family: ${(props) => props.theme.mainFont};
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 0px;
+    text-align: center;
+    text-transform: uppercase;
     ${down("xs")} {
       font-size: 12px;
     }
