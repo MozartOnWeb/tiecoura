@@ -8,8 +8,6 @@ import { fs } from "../firebase/config";
 import { Button } from "../layout";
 import { PageNavLinks } from "./Styles/pagenavStyles";
 
-// 
-
 const PageNav = () => {
   const [serieName, setSerieName] = useState([]);
 
