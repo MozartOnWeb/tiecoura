@@ -36,7 +36,7 @@ const Home = () => {
           amount: 0.08,
         },
       });
-    }, 4000);
+    }, 5000);
   }, []);
 
   const handleMenu = () => {

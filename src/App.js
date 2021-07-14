@@ -92,7 +92,7 @@ const Theme = {
   red: "#E2293F",
   white: "#FFFDFF",
   black: "#161616",
-  
+
   breakpoints: {
     s: "320px",
     xs: "375px",
