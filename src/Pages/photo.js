@@ -12,8 +12,8 @@ import { fs } from "../firebase/config";
 // Import LazyLoad
 import LazyLoad from "react-lazyload";
 
-// Import custom arrows 
-import { NextArrow, PrevArrow} from "../Components/CustomArrows";
+// Import custom arrows
+import { NextArrow, PrevArrow } from "../Components/CustomArrows";
 
 // Import React Slick
 import Slider from "react-slick";
@@ -130,7 +130,10 @@ const Photo = () => {
           </Masonry>
         </PhotoImageWrapper>
       </PhotoWrapper>
-      <SerieInfo> {serieDesc} </SerieInfo>
+      <SerieInfo>
+        <hr />
+        {serieDesc}
+      </SerieInfo>
       {selected && (
         <Modal selected={selected} setSelected={setSelected} images={images} />
       )}

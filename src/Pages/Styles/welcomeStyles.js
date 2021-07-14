@@ -22,14 +22,21 @@ export const WelcomeWrapper = styled.div`
     transform: translateX(-50%);
     z-index: 99;
     svg {
-      width: 30px;
-      margin-top: 15px;
+      width: 25px;
+      margin-top: 17px;
       &:hover {
         path {
           fill: none;
           stroke: ${(props) => props.theme.red};
           stroke-width: 2px;
         }
+      }
+    }
+    ${down("sm")} {
+      left: 25%;
+      font-size: 25px;
+      svg {
+        margin-top: 13px;
       }
     }
   }
@@ -80,14 +87,10 @@ export const Logo = styled(motion.h2)`
   font-weight: 400;
   text-transform: uppercase;
   color: ${(props) => props.theme.red};
-  /* ${down("md")} {
-    font-size: 20px;
-    margin-left: 30px;
-  }
   ${down("sm")} {
-    font-size: 20px;
-    margin-left: 20px;
-  } */
+    font-size: 24px;
+    left: 10%;
+  }
 `;
 
 export const WelcomeDesc = styled.div`
@@ -106,5 +109,9 @@ export const WelcomeDesc = styled.div`
     font-family: ${(props) => props.theme.mainFont};
     font-size: 14px;
     line-height: 20px;
+  }
+  ${down("sm")} {
+    left: 10%;
+    width: 300px;
   }
 `;

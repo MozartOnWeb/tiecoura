@@ -16,7 +16,7 @@ import { AiOutlineDownload } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 // Import custom arrows 
-import { NextArrow, PrevArrow} from "./CustomArrows"
+import { NextArrow2, PrevArrow2} from "./CustomArrows"
 
 
 const Modal = ({ selected, setSelected, images }) => {
@@ -33,8 +33,8 @@ const result = images.filter((image) => image.url !== selected);
     autoplay: false,
     fade: false,
     arrows: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow2 />,
+    prevArrow: <PrevArrow2 />,
   };
 
   const clickHandle = (e) => {

@@ -18,7 +18,7 @@ export const Backdrop = styled.div`
 
 export const ImgContainer = styled.div`
   position: relative;
-  width: 70%;
+  width: 80%;
   height: 80%;
   border-top: 2px solid ${(props) => props.theme.red};
   border-radius: 15px;

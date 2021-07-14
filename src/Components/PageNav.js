@@ -8,11 +8,13 @@ import { fs } from "../firebase/config";
 import { Button } from "../layout";
 import { PageNavLinks } from "./Styles/pagenavStyles";
 
+// 
+
 const PageNav = () => {
   const [serieName, setSerieName] = useState([]);
 
   useEffect(() => {
-    let mounted = true
+    let mounted = true;
     fs.collection("series")
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
@@ -23,12 +25,12 @@ const PageNav = () => {
         if (mounted) {
           setSerieName(tempNames);
         }
-      })
-    
+      });
+
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [serieName]);
 
   return (
     <>

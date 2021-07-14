@@ -124,7 +124,7 @@ function App() {
               <PageNav />
               <CloseMenu />
               <Route component={Video} path="/video" />
-              <Route component={Photo} path="/photo/:serie" />
+              <Route component={Photo} path="/photo/:serie" exact/>
               <Route component={About} path="/about" />
             </Pages>
           </Switch>
