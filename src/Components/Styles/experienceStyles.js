@@ -78,7 +78,6 @@ export const ExperienceInfo = styled(motion.div)`
     font-size: 16px;
     line-height: 25px;
     font-weight: 400;
-    word-break: break-all;
     ${only("md")} {
       font-size: 14px;
       text-align: center;
@@ -94,8 +93,11 @@ export const ExperienceInfo = styled(motion.div)`
       font-size: 10px;
       text-align: left;
       margin-bottom: 30px;
-      word-break: break-all;
     }
+  }
+  .experienceDesc {
+    hyphens: auto;
+
   }
 `;
 

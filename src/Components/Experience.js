@@ -101,7 +101,7 @@ const Experience = ({ selected, setSelected }) => {
 
         {/* Experience Informations */}
         <ExperienceInfo>
-          <p>{desc}</p>
+          <p className="experienceDesc">{desc}</p>
 
           {/* Experience Stats */}
           <ExperienceStats>

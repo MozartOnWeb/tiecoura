@@ -10,7 +10,6 @@ const Header = ({ state, handleMenu }) => {
   useEffect(() => {
     const menuContainer = window.document.querySelector(".menu-container");
 
-    console.log(menuContainer);
     if (state.clicked === false) {
       // Close Menu
 

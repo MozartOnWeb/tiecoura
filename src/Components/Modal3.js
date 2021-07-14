@@ -5,10 +5,6 @@ import { Backdrop, ModalVideo, ImgContainer } from "./Styles/modalStyles";
 
 // Import Icons
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { AiOutlineDownload } from "react-icons/ai";
-
-// Import React Link
-import { Link } from "react-router-dom";
 
 const Modal3 = ({ selected, setSelected }) => {
   
@@ -31,9 +27,6 @@ const Modal3 = ({ selected, setSelected }) => {
           autoplay={true}
           muted={false}
         />
-        <Link to={selected} download target="_blank">
-          <AiOutlineDownload className="svg2" />
-        </Link>
       </ImgContainer>
     </Backdrop>
   );

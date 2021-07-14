@@ -11,15 +11,14 @@ export const PhotoWrapper = styled(motion.div)`
 `;
 
 export const PhotoImageWrapper = styled(motion.div)`
-
   .youtube {
     text-align: left;
     text-transform: uppercase;
-    color: ${props => props.theme.white};
+    color: ${(props) => props.theme.white};
     display: block;
     font-size: 18px;
   }
-  
+
   .video {
     width: 100%;
     display: flex;
@@ -34,7 +33,10 @@ export const PhotoImageWrapper = styled(motion.div)`
       border-radius: 15px;
       object-fit: cover;
       margin-bottom: 30px;
-      border: 1px solid blue;
+      ${down("xs")} {
+        height: 200px;
+        width: 350px;
+      }
     }
   }
   .my-masonry-grid {
@@ -86,8 +88,11 @@ export const AboutContent = styled.p`
   margin: 20px auto;
   line-height: 22px;
   ${down("xs")} {
-    width: 250px;
-    font-size: 10px;
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    word-wrap: break-word;
+    hyphens: auto;
   }
 `;
 
@@ -149,12 +154,22 @@ export const SerieInfo = styled.p`
   font-weight: 300;
   width: 60vw;
   text-align: left;
-  word-break: break-all;
+  word-wrap: break-word;
+  hyphens: auto;
   margin: 0 auto;
   line-height: 23px;
   ${down("xs")} {
-    width: 80vw;
+    width: 85vw;
     font-size: 16px;
-    word-break: break-all;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: left;
+  }
+  hr {
+    width: 30px;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    color: ${(props) => props.theme.red};
+    float: left;
   }
 `;
