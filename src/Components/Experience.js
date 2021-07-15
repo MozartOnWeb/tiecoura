@@ -128,7 +128,7 @@ const Experience = ({ selected, setSelected }) => {
                       y2="35.338"
                       transform="translate(1.656)"
                       fill="none"
-                      stroke="#e2293f"
+                      stroke="#fffdff"
                       strokeWidth="3"
                     />
                     <line
@@ -137,7 +137,7 @@ const Experience = ({ selected, setSelected }) => {
                       y2="38.651"
                       transform="translate(38.651 0.552) rotate(90)"
                       fill="none"
-                      stroke="#e2293f"
+                      stroke="#fffdff"
                       strokeWidth="3"
                     />
                   </g>
@@ -151,7 +151,7 @@ const Experience = ({ selected, setSelected }) => {
                       y2="35.338"
                       transform="translate(1.656 0)"
                       fill="none"
-                      stroke="#e2293f"
+                      stroke="#fffdff"
                       strokeWidth="3"
                     />
                     <line
@@ -160,7 +160,7 @@ const Experience = ({ selected, setSelected }) => {
                       y2="38.651"
                       transform="translate(38.651 0.552) rotate(90)"
                       fill="none"
-                      stroke="#e2293f"
+                      stroke="#fffdff"
                       strokeWidth="3"
                     />
                   </g>
@@ -174,7 +174,7 @@ const Experience = ({ selected, setSelected }) => {
                       y2="35.338"
                       transform="translate(1.656 0)"
                       fill="none"
-                      stroke="#e2293f"
+                      stroke="#fffdff"
                       strokeWidth="3"
                     />
                     <line
@@ -183,7 +183,7 @@ const Experience = ({ selected, setSelected }) => {
                       y2="38.651"
                       transform="translate(38.651 0.552) rotate(90)"
                       fill="none"
-                      stroke="#e2293f"
+                      stroke="#fffdff"
                       strokeWidth="3"
                     />
                   </g>
@@ -197,7 +197,7 @@ const Experience = ({ selected, setSelected }) => {
                       y2="35.338"
                       transform="translate(1.656 0)"
                       fill="none"
-                      stroke="#e2293f"
+                      stroke="#fffdff"
                       strokeWidth="3"
                     />
                     <line
@@ -206,7 +206,7 @@ const Experience = ({ selected, setSelected }) => {
                       y2="38.651"
                       transform="translate(38.651 0.552) rotate(90)"
                       fill="none"
-                      stroke="#e2293f"
+                      stroke="#fffdff"
                       strokeWidth="3"
                     />
                   </g>
@@ -227,7 +227,7 @@ const Experience = ({ selected, setSelected }) => {
           {/* Experience Stats */}
 
           {serieName.slice(0, 1).map((link) => (
-            <Button key={link.name} arrow="false" to={`/photo/${link.name}`}>
+            <Button key={link.name} arrow="false" to={`/photo/${link.name}`} white="true" >
               Explorer
               <svg
                 className="arrow"
@@ -248,7 +248,7 @@ const Experience = ({ selected, setSelected }) => {
         </ExperienceInfo>
         {/* Experience Informations */}
 
-        <Arrow top="true" red="true">
+        <Arrow top="true" white="true">
           <svg
             className="arrow"
             xmlns="http://www.w3.org/2000/svg"

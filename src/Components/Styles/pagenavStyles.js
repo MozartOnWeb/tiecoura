@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { down } from "styled-breakpoints";
 import { motion } from "framer-motion";
 
-
 export const PageNavLinks = styled(motion.div)`
   width: 400px;
   margin: 40px auto 0px auto;
@@ -24,6 +23,16 @@ export const PageNavLinks = styled(motion.div)`
   }
 
   a {
+    &::after {
+      border-color: ${(props) => props.theme.white};
+    }
+    &:hover {
+      -webkit-text-stroke: 1px ${(props) => props.theme.white};
+      -webkit-text-fill-color: transparent;
+    }
+    svg path {
+      fill: ${(props) => props.theme.white};
+    }
     ${down("md")} {
       font-size: 18px;
     }
@@ -31,7 +40,7 @@ export const PageNavLinks = styled(motion.div)`
       font-size: 14px;
     }
     &.active {
-      -webkit-text-stroke: 1px ${(props) => props.theme.red};
+      -webkit-text-stroke: 1px ${(props) => props.theme.white};
       -webkit-text-fill-color: transparent;
     }
     .menu-link-arrow {

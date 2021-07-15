@@ -107,7 +107,7 @@ export const HeroImages = styled.div`
       z-index: 2;
       transition: 0.7s ease-in-out .5s;
       position: absolute;
-      color: ${(props) => props.theme.red};
+      color: ${(props) => props.theme.white};
       font-family: ${(props) => props.theme.linkFont};
       font-size: 20px;
       text-transform: uppercase;
@@ -171,7 +171,7 @@ export const HeroImages = styled.div`
       z-index: 2;
       transition: 0.7s ease-in-out .5s;
       position: absolute;
-      color: ${(props) => props.theme.red};
+      color: ${(props) => props.theme.white};
       font-family: ${(props) => props.theme.linkFont};
       font-size: 20px;
       text-transform: uppercase;
@@ -230,7 +230,7 @@ export const HeroImages = styled.div`
       z-index: 2;
       transition: 0.7s ease-in-out .5s;
       position: absolute;
-      color: ${(props) => props.theme.red};
+      color: ${(props) => props.theme.white};
       font-family: ${(props) => props.theme.linkFont};
       font-size: 20px;
       text-transform: uppercase;
@@ -273,8 +273,8 @@ export const HeroInfo = styled.div`
     top: 49%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 164%;
-    height: 164%;
+    width: 170%;
+    height: 170%;
     ${down("md")} {
       width: 150%;
       height: 150%;
@@ -303,11 +303,11 @@ export const HeroInfo = styled.div`
     }
   }
   h1 {
-    font-size: 75px;
-    color: ${(props) => props.theme.red};
+    font-size: 60px;
+    color: ${(props) => props.theme.white};
     text-transform: uppercase;
     font-weight: 800;
-    margin-bottom: -30px;
+    margin: 0px;
     ${only("md")} {
       margin-bottom: 0px;
       font-size: 60px;

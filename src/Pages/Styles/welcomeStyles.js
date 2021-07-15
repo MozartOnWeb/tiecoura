@@ -21,13 +21,23 @@ export const WelcomeWrapper = styled.div`
     left: 20%;
     transform: translateX(-50%);
     z-index: 99;
+    &::after {
+      border-color: ${(props) => props.theme.white};
+    }
+    &:hover {
+      -webkit-text-stroke: 1px ${(props) => props.theme.white};
+      -webkit-text-fill-color: transparent;
+    }
     svg {
       width: 25px;
       margin-top: 17px;
+      path {
+        fill: ${(props) => props.theme.white};
+      }
       &:hover {
         path {
           fill: none;
-          stroke: ${(props) => props.theme.red};
+          stroke: ${(props) => props.theme.white};
           stroke-width: 2px;
         }
       }
@@ -86,7 +96,7 @@ export const Logo = styled(motion.h2)`
   font-size: 30px;
   font-weight: 400;
   text-transform: uppercase;
-  color: ${(props) => props.theme.red};
+  color: ${(props) => props.theme.white};
   ${down("sm")} {
     font-size: 24px;
     left: 10%;

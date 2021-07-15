@@ -97,7 +97,7 @@ export const AboutContent = styled.p`
 `;
 
 export const Line = styled.hr`
-  border-color: ${(props) => props.theme.red};
+  border-color: ${(props) => props.theme.white};
 `;
 
 export const AboutInfo = styled.div`
@@ -139,7 +139,7 @@ export const SingleName = styled.div`
   a {
     text-decoration: none;
     cursor: pointer;
-    color: ${(props) => props.theme.red};
+    color: ${(props) => props.theme.white};
     font-family: ${(props) => props.theme.bodyFont};
     text-transform: uppercase;
   }
@@ -169,7 +169,7 @@ export const SerieInfo = styled.p`
     width: 30px;
     margin-bottom: 30px;
     margin-right: 20px;
-    color: ${(props) => props.theme.red};
+    color: ${(props) => props.theme.white};
     float: left;
   }
 `;

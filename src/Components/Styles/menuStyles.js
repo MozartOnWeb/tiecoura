@@ -99,6 +99,16 @@ export const MenuLinks = styled.div`
   }
 
   a {
+    &::after {
+      border-color: ${(props) => props.theme.white};
+    }
+    &:hover {
+      -webkit-text-stroke: 1px ${(props) => props.theme.white};
+      -webkit-text-fill-color: transparent;
+    }
+    svg path {
+      fill: ${(props) => props.theme.white};
+    }
     ${down("sm")} {
       font-size: 18px;
       margin-top: 40px;
@@ -145,8 +155,8 @@ export const MenuImage = styled.div`
 export const MenuSocials = styled.div`
   position: absolute;
   bottom: 140px;
-  left: 100px;
-  width: 230px;
+  left: 150px;
+  width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;

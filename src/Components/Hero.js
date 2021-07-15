@@ -136,7 +136,7 @@ const Hero = () => {
                     y2="35.338"
                     transform="translate(1.656)"
                     fill="none"
-                    stroke="#e2293f"
+                    stroke="#FFFDFF"
                     strokeWidth="3"
                   />
                   <line
@@ -145,7 +145,7 @@ const Hero = () => {
                     y2="38.651"
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
-                    stroke="#e2293f"
+                    stroke="#FFFDFF"
                     strokeWidth="3"
                   />
                 </g>
@@ -159,7 +159,7 @@ const Hero = () => {
                     y2="35.338"
                     transform="translate(1.656 0)"
                     fill="none"
-                    stroke="#e2293f"
+                    stroke="#FFFDFF"
                     strokeWidth="3"
                   />
                   <line
@@ -168,7 +168,7 @@ const Hero = () => {
                     y2="38.651"
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
-                    stroke="#e2293f"
+                    stroke="#FFFDFF"
                     strokeWidth="3"
                   />
                 </g>
@@ -182,7 +182,7 @@ const Hero = () => {
                     y2="35.338"
                     transform="translate(1.656 0)"
                     fill="none"
-                    stroke="#e2293f"
+                    stroke="#FFFDFF"
                     strokeWidth="3"
                   />
                   <line
@@ -191,7 +191,7 @@ const Hero = () => {
                     y2="38.651"
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
-                    stroke="#e2293f"
+                    stroke="#FFFDFF"
                     strokeWidth="3"
                   />
                 </g>
@@ -205,7 +205,7 @@ const Hero = () => {
                     y2="35.338"
                     transform="translate(1.656 0)"
                     fill="none"
-                    stroke="#e2293f"
+                    stroke="#FFFDFF"
                     strokeWidth="3"
                   />
                   <line
@@ -214,21 +214,20 @@ const Hero = () => {
                     y2="38.651"
                     transform="translate(38.651 0.552) rotate(90)"
                     fill="none"
-                    stroke="#e2293f"
+                    stroke="#FFFDFF"
                     strokeWidth="3"
                   />
                 </g>
               </g>
             </svg>
-            <p className="outline">Tiecoura</p>
-            <h1>African</h1>
-            <h1>Studio.</h1>
+            {/* <p className="outline">Tiecoura</p> */}
+            <h1>Tiècoura </h1>
+            <h1>N'daou.</h1>
           </HeroInfo>
           {/* Hero Informations */}
 
           {/* Hero Images */}
           <HeroImages>
-            
             <div className="squared1">
               {serieName.slice(0, 1).map((link) => (
                 <Link key={link.name} to={`/photo/${link.name}`}>
@@ -255,7 +254,6 @@ const Hero = () => {
                 <img src={secondImg} alt="" />
               </Link>
             </div>
-            
           </HeroImages>
           {/* Hero Images */}
         </HeroWrapper>

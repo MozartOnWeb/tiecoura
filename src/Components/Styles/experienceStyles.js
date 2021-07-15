@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { down, only } from "styled-breakpoints";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export const ExperienceWrapper = styled(motion.div)`
   width: 80%;
@@ -50,6 +50,18 @@ export const ExperienceInfo = styled(motion.div)`
   flex-direction: column;
   width: 400px;
   height: 500px;
+  a {
+    &::after {
+      border-color: ${(props) => props.theme.white};
+    }
+    &:hover {
+      -webkit-text-stroke: 1px ${(props) => props.theme.white};
+      -webkit-text-fill-color: transparent;
+    }
+    svg path {
+      fill: ${(props) => props.theme.white};
+    }
+  }
   ${only("md")} {
     justify-content: space-around;
     height: 250px;
@@ -97,7 +109,6 @@ export const ExperienceInfo = styled(motion.div)`
   }
   .experienceDesc {
     hyphens: auto;
-
   }
 `;
 
@@ -176,7 +187,7 @@ export const ExperienceBox = styled(motion.div)`
     padding: 15px;
   }
   .headline {
-    color: ${(props) => props.theme.red};
+    color: ${(props) => props.theme.black};
     font-family: ${(props) => props.theme.mainFont};
     font-weight: 700;
     font-size: 18px;

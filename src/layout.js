@@ -51,10 +51,18 @@ export const Arrow = styled(motion.div)`
         fill: ${(props) => props.theme.red};
       }
     `}
+
+  ${(props) =>
+    props.white &&
+    css`
+      svg path {
+        fill: ${(props) => props.theme.white};
+      }
+    `}
 `;
 
 export const Button = styled(motion(NavLink))`
-  color: ${(props) => props.theme.red};
+  color: ${(props) => props.theme.black};
   font-family: ${(props) => props.theme.linkFont};
   text-transform: uppercase;
   font-weight: 800;
@@ -70,7 +78,7 @@ export const Button = styled(motion(NavLink))`
     width: 15px;
     transform: rotate(-90deg);
     path {
-      fill: ${(props) => props.theme.red};
+      fill: ${(props) => props.theme.black};
     }
   }
 
@@ -118,6 +126,12 @@ export const Button = styled(motion(NavLink))`
     `}
 
   ${(props) =>
+    props.white &&
+    css`
+      color: ${(props) => props.theme.white};
+    `}
+
+  ${(props) =>
     props.social &&
     css`
       font-size: 11.5px;
@@ -135,11 +149,11 @@ export const Button = styled(motion(NavLink))`
     bottom: 0px;
     border-width: 0 0 1px;
     border-style: solid;
-    border-color: ${(props) => props.theme.red};
+    border-color: ${(props) => props.theme.black};
   }
 
   &:hover {
-    -webkit-text-stroke: 1px ${(props) => props.theme.red};
+    -webkit-text-stroke: 1px ${(props) => props.theme.black};
     -webkit-text-fill-color: transparent;
   }
 `;
@@ -150,7 +164,7 @@ export const Submit = styled.button`
   cursor: pointer;
   padding: 0;
   background: transparent;
-  color: ${(props) => props.theme.red};
+  color: ${(props) => props.theme.black};
   font-family: ${(props) => props.theme.linkFont};
   text-transform: uppercase;
   font-weight: 800;
@@ -165,7 +179,7 @@ export const Submit = styled.button`
     width: 15px;
     transform: rotate(-90deg);
     path {
-      fill: ${(props) => props.theme.red};
+      fill: ${(props) => props.theme.black};
     }
   }
 
@@ -193,7 +207,7 @@ export const Submit = styled.button`
     bottom: 0px;
     border-width: 0 0 1px;
     border-style: solid;
-    border-color: ${(props) => props.theme.red};
+    border-color: ${(props) => props.theme.black};
   }
 `;
 

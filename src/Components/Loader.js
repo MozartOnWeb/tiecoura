@@ -1,7 +1,7 @@
 import React from "react";
 
 import styled from "styled-components";
-import {down} from 'styled-breakpoints'
+import { down } from "styled-breakpoints";
 
 const LoaderWrapper = styled.div`
   text-align: center;
@@ -17,7 +17,7 @@ const LoaderWrapper = styled.div`
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background: ${(props) => props.theme.red};
+    background: ${(props) => props.theme.black};
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
     ${down("md")} {
       width: 8px;

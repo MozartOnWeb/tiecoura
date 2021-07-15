@@ -37,7 +37,7 @@ const Introducing = ({ selected, setSelected }) => {
         <IntroduceImage onClick={() => setSelected(fourthImg)}>
           <img src={fourthImg} alt="fourth_img" />
         </IntroduceImage>
-        <Arrow bottom="true" red="true">
+        <Arrow bottom="true" white="true">
           <svg
             className="arrow"
             xmlns="http://www.w3.org/2000/svg"

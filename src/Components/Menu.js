@@ -64,7 +64,7 @@ const Menu = ({ state, setState, handleMenu }) => {
         <MenuWrapper>
           <MenuLinks>
             {serieName.slice(0, 1).map((link) => (
-              <Button key={link.name} big="true" to={`/photo/${link.name}`}>
+              <Button white="true" key={link.name} big="true" to={`/photo/${link.name}`}>
                 Photos
                 <svg
                   className="arrow menu-link-arrow"
@@ -82,7 +82,7 @@ const Menu = ({ state, setState, handleMenu }) => {
                 </svg>
               </Button>
             ))}
-            <Button big="true" to="/video">
+            <Button white="true" big="true" to="/video">
               vidéos
               <svg
                 className="arrow menu-link-arrow"
@@ -99,7 +99,7 @@ const Menu = ({ state, setState, handleMenu }) => {
                 />
               </svg>
             </Button>
-            <Button big="true" to="/about">
+            <Button white="true" big="true" to="/about">
               à Propos
               <svg
                 className="arrow menu-link-arrow"
@@ -132,6 +132,12 @@ const Menu = ({ state, setState, handleMenu }) => {
           </Button>
           <Button social="true" to="/">
             facebook
+          </Button>
+          <Button social="true" to="/">
+            flickr
+          </Button>
+          <Button social="true" to="/">
+            youtube
           </Button>
         </MenuSocials>
       </MenuContainer>

@@ -41,7 +41,7 @@ const Welcome = () => {
   return (
     <WelcomeWrapper>
       <Logo>Follio</Logo>
-      <Button welcome="true" to="/home">
+      <Button white="true" welcome="true" to="/home">
         Entrez
         <svg
           className="arrow"

@@ -35,7 +35,7 @@ const PageNav = () => {
       <AnimatePresence>
         <PageNavLinks>
           {serieName.slice(0, 1).map((link) => (
-            <Button
+            <Button white="true"
               key={link}
               activeClassName="active"
               small="true"
@@ -57,7 +57,7 @@ const PageNav = () => {
               </svg>
             </Button>
           ))}
-          <Button small="true" to="/video" activeClassName="active">
+          <Button white="true" small="true" to="/video" activeClassName="active">
             vidéos{" "}
             <svg
               className="arrow menu-link-arrow"
@@ -74,7 +74,7 @@ const PageNav = () => {
               />
             </svg>
           </Button>
-          <Button small="true" to="/about" activeClassName="active">
+          <Button white="true" small="true" to="/about" activeClassName="active">
             à Propos{" "}
             <svg
               className="arrow menu-link-arrow"
