@@ -68,3 +68,39 @@ export const PrevArrow2 = (props) => {
     />
   );
 };
+
+export const NextArrow3 = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <BiRightArrowCircle
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        color: "#161616",
+        width: "35px",
+        height: "35px",
+        marginRight: "-35px",
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
+export const PrevArrow3 = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <BiLeftArrowCircle
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        color: "#161616",
+        width: "35px",
+        height: "35px",
+        marginLeft: "-35px"
+      }}
+      onClick={onClick}
+    />
+  );
+};

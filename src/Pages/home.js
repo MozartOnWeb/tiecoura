@@ -11,6 +11,7 @@ import {
   WhoIAM,
   Menu,
   Header,
+  Events
 } from "../Components";
 
 //
@@ -69,6 +70,7 @@ const Home = () => {
       <Portfolio selected={selected} setSelected={setSelected} />
       <Introducing selected={selected} setSelected={setSelected} />
       <WhoIAM selected={selected} setSelected={setSelected} />
+      <Events />
       <Footer selected={selected} setSelected={setSelected} />
     </div>
   );

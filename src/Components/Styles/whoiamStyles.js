@@ -11,7 +11,7 @@ export const WhoWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 0px;
   margin-top: 70px;
 `;
 
