@@ -33,7 +33,7 @@ const Events = () => {
       .onSnapshot((snapshot) => {
         const tempTitle = [];
         snapshot.forEach((doc) => {
-          tempTitle.push({ ...doc.data() });
+          tempTitle.push({ ...doc.data(), id: doc.id });
         });
         if (mounted) {
           setEvents(tempTitle);
@@ -64,8 +64,8 @@ const Events = () => {
       <EventHeadline>Events</EventHeadline>
       <EventContainer>
         <Slider {...setting}>
-          {events.map(({ title, desc, date, hour, image, location }) => (
-            <SingleEvent>
+          {events.map(({ title, id, date, hour, image, location }) => (
+            <SingleEvent key={title}>
               <ImageContainer>
                 <img src={image} alt="event_image" />
               </ImageContainer>
@@ -78,7 +78,7 @@ const Events = () => {
                 <p className="location">{location}.</p>
               </EventInfos>
               <div className="link">
-                <Link to="">En savoir plus</Link>
+                <Link to={`/events/${id}`}>En savoir plus</Link>
               </div>
             </SingleEvent>
           ))}
