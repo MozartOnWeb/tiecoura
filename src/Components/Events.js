@@ -57,34 +57,39 @@ const Events = () => {
     arrows: true,
     nextArrow: <NextArrow3 />,
     prevArrow: <PrevArrow3 />,
+    adaptiveHeight: true,
   };
 
   return (
-    <EventWrapper>
-      <EventHeadline>Events</EventHeadline>
-      <EventContainer>
-        <Slider {...setting}>
-          {events.map(({ title, id, date, hour, image, location }) => (
-            <SingleEvent key={title}>
-              <ImageContainer>
-                <img src={image} alt="event_image" />
-              </ImageContainer>
-              <EventInfos>
-                <h2>{title}.</h2>
-                <div>
-                  <p>{date}.</p>
-                  <p>{hour}.</p>
-                </div>
-                <p className="location">{location}.</p>
-              </EventInfos>
-              <div className="link">
-                <Link to={`/events/${id}`}>En savoir plus</Link>
-              </div>
-            </SingleEvent>
-          ))}
-        </Slider>
-      </EventContainer>
-    </EventWrapper>
+    <div>
+      {events.length > 0 && (
+        <EventWrapper>
+          <EventHeadline>Events</EventHeadline>
+          <EventContainer>
+            <Slider {...setting}>
+              {events.map(({ name, id, date, hour, image, location }) => (
+                <SingleEvent key={name}>
+                  <ImageContainer>
+                    <img src={image} alt="event_image" />
+                  </ImageContainer>
+                  <EventInfos>
+                    <h2>{name}.</h2>
+                    <div>
+                      <p>{date}.</p>
+                      <p>{hour}.</p>
+                    </div>
+                    <p className="location">{location}.</p>
+                  </EventInfos>
+                  <div className="link">
+                    <Link to={`/events/${id}`}>En savoir plus</Link>
+                  </div>
+                </SingleEvent>
+              ))}
+            </Slider>
+          </EventContainer>
+        </EventWrapper>
+      )}
+    </div>
   );
 };
 
