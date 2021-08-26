@@ -15,7 +15,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Import Pages
-import { Home, Video, Photo, About, Welcome } from "./Pages";
+import { Home, Video, Photo, About, Welcome, EventPages } from "./Pages";
 import { CloseMenu, PageNav } from "./Components";
 import { Pages } from "./layout";
 
@@ -92,7 +92,7 @@ const Theme = {
   red: "#E2293F",
   white: "#FFFDFF",
   black: "#161616",
-  
+
   breakpoints: {
     s: "320px",
     xs: "375px",
@@ -124,8 +124,9 @@ function App() {
               <PageNav />
               <CloseMenu />
               <Route component={Video} path="/video" />
-              <Route component={Photo} path="/photo/:serie" exact/>
+              <Route component={Photo} path="/photo/:serie" exact />
               <Route component={About} path="/about" />
+              <Route component={EventPages} path="/events/:event" />
             </Pages>
           </Switch>
         </AnimatePresence>

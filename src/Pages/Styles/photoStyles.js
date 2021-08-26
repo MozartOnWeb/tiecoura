@@ -169,7 +169,7 @@ export const SerieInfo = styled.p`
     width: 30px;
     margin-bottom: 30px;
     margin-right: 20px;
-    color: ${(props) => props.theme.red};
+    border-color: ${(props) => props.theme.red};
     float: left;
   }
 `;

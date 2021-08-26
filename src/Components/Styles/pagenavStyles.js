@@ -2,9 +2,8 @@ import styled from "styled-components";
 import { down } from "styled-breakpoints";
 import { motion } from "framer-motion";
 
-
 export const PageNavLinks = styled(motion.div)`
-  width: 400px;
+  width: 450px;
   margin: 40px auto 0px auto;
   display: flex;
   align-items: center;

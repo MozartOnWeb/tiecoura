@@ -44,12 +44,12 @@ export const EventContainer = styled.div`
 export const SingleEvent = styled.div`
   display: flex;
   flex-direction: column;
-  border-top: 1px dashed black;
+  border-top: 2px dashed black;
   background-color: #161616;
 
-  /* border-radius: 15px 15px 0px 0px; */
+  border-radius: 15px;
   .link {
-      padding-bottom: 15px;
+    padding-bottom: 15px;
     a {
       margin: 0px 60px;
       font-size: 13px;
@@ -66,7 +66,7 @@ export const ImageContainer = styled.div`
   width: 100%;
   height: 150px;
   img {
-    /* border-radius: 15px 15px 0px 0px; */
+    border-radius: 15px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -83,14 +83,12 @@ export const EventInfos = styled.div`
   p {
     text-transform: uppercase;
     margin: 5px 0;
+    opacity: 0.7;
   }
 
   div {
     display: flex;
     justify-content: space-between;
     margin: 0;
-  }
-
-  .location {
   }
 `;
