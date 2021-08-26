@@ -58,6 +58,34 @@ const Events = () => {
     nextArrow: <NextArrow3 />,
     prevArrow: <PrevArrow3 />,
     adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          dots: false,
+          arrows: true,
+          infinite: true,
+          slidesToScroll: 2,
+          slidesToShow: 2,
+          swipeToSlide: true,
+        },
+      },
+      {
+        breakpoint: 414,
+        settings: {
+          dots: false,
+          arrows: true,
+          infinite: true,
+          slidesToScroll: 1,
+          slidesToShow: 1,
+          swipeToSlide: true,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: "unslick",
+      },
+    ],
   };
 
   return (

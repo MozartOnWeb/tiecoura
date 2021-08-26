@@ -72,6 +72,9 @@ export const EventInfos = styled.div`
       letter-spacing: 1px;
     }
   }
+  ${down("sm")} {
+    flex-direction: column;
+  }
 `;
 
 export const EventDesc = styled.div`

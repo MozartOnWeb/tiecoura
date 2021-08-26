@@ -17,6 +17,9 @@ import {
   SingleName,
 } from "./Styles/eventPagesStyles";
 
+// Import custom arrows
+import { NextArrow, PrevArrow } from "../Components/CustomArrows";
+
 // Import React Slick
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -76,7 +79,37 @@ const EventPages = () => {
     autoplay: false,
     fade: false,
     arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          dots: false,
+          arrows: true,
+          infinite: true,
+          slidesToScroll: 3,
+          slidesToShow: 3,
+          swipeToSlide: true,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          dots: false,
+          arrows: true,
+          infinite: true,
+          slidesToScroll: 2,
+          slidesToShow: 2,
+          swipeToSlide: true,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: "unslick",
+      },
+    ],
   };
 
   return (

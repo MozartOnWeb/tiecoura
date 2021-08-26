@@ -191,6 +191,9 @@ export const HeroImages = styled.div`
       width: 100%;
       height: 250px;
       display: none;
+      img, video {
+        display: none;
+      }
     }
     img,
     video {
@@ -248,6 +251,9 @@ export const HeroImages = styled.div`
     }
     ${down("xs")} {
       display: none;
+      video, img {
+        display: none;
+      }
     }
     img,
     video {
