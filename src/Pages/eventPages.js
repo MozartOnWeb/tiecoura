@@ -76,16 +76,17 @@ const EventPages = () => {
     autoplay: false,
     fade: false,
     arrows: true,
+    adaptiveHeight: true,
   };
 
   return (
     <>
       <EventNames>
         <Slider {...setting}>
-          {eventNames.map(({ title, id }) => (
-            <SingleName key={title}>
+          {eventNames.map(({ name, id }) => (
+            <SingleName key={name}>
               <NavLink activeClassName="active" to={`/events/${id}`}>
-                {title}
+                {name}
               </NavLink>
             </SingleName>
           ))}
