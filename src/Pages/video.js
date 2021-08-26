@@ -31,8 +31,6 @@ const Video = () => {
     });
   }, []);
 
-  
-
   return (
     <>
       <PhotoWrapper>
@@ -40,7 +38,7 @@ const Video = () => {
           <div className="video">
             {videos &&
               videos.map((video) => (
-                <motion.div key={video.id} layout>
+                <motion.div key={video.id} layout className="single-video">
                   <motion.video
                     src={video.url}
                     autoPlay={false}
@@ -53,7 +51,7 @@ const Video = () => {
               ))}
             {youtube &&
               youtube.map((tube) => (
-                <motion.div key={tube.id} layout>
+                <motion.div key={tube.id} layout className="single-video">
                   <motion.iframe
                     src={tube.url}
                     alt="uploded_image"

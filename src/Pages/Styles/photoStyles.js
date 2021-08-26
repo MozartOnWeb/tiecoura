@@ -24,18 +24,22 @@ export const PhotoImageWrapper = styled(motion.div)`
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    iframe,
-    video {
+    .single-video {
       height: 250px;
       width: 500px;
-      cursor: pointer;
-      overflow: hidden;
-      border-radius: 15px;
-      object-fit: cover;
       margin-bottom: 30px;
+      iframe,
+      video {
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 15px;
+        object-fit: cover;
+      }
       ${down("xs")} {
-        height: 200px;
-        width: 350px;
+        height: 300px;
+        width: 250px;
       }
     }
   }

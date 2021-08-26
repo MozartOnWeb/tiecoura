@@ -39,12 +39,20 @@ export const EventHeadline = styled.h1`
 export const EventContainer = styled.div`
   margin-bottom: 70px;
   box-sizing: border-box;
+  ${down("md")} {
+    width: 80%;
+    margin: 0 auto;
+  }
+  ${down("s")} {
+    width: 78%;
+    margin: 0 auto;
+  }
 `;
 
 export const SingleEvent = styled.div`
   display: flex;
   flex-direction: column;
-  border-top: 2px dashed black;
+  border-top: 1px dashed black;
   background-color: #161616;
 
   border-radius: 15px;
@@ -56,8 +64,12 @@ export const SingleEvent = styled.div`
       text-transform: uppercase;
       color: ${(props) => props.theme.white};
       word-spacing: 2.5px;
-      font-weight: bold;
+      font-weight: normal;
       position: relative;
+      ${down("s")} {
+        font-size: 12px;
+        margin: 0px 50px;
+      }
     }
   }
 `;
@@ -81,9 +93,11 @@ export const EventInfos = styled.div`
     margin: 5px 0;
   }
   p {
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin: 5px 0;
     opacity: 0.7;
+    font-weight: lighter;
+    font-size: 14px;
   }
 
   div {

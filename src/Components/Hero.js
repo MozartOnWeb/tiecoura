@@ -95,7 +95,24 @@ const Hero = () => {
     fade: true,
     arrows: false,
     autoplaySpeed: 10000,
-    swipeToSlide: true,
+    swipeToSlide: false,
+    responsive: [
+      {
+        breakpoint: 414,
+        settings: {
+          arrows: true,
+          infinite: true,
+          slidesToScroll: 1,
+          slidesToShow: 1,
+          swipeToSlide: false,
+          autoplaySpeed: 15000,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: "unslick",
+      },
+    ],
   };
 
   return (
@@ -121,15 +138,18 @@ const Hero = () => {
               xmlns="http://www.w3.org/2000/svg"
               width="791.246"
               height="524.948"
-              viewBox="0 0 791.246 524.948">
+              viewBox="0 0 791.246 524.948"
+            >
               <g
                 id="Groupe_5"
                 data-name="Groupe 5"
-                transform="translate(-190 -344.052)">
+                transform="translate(-190 -344.052)"
+              >
                 <g
                   id="Groupe_1"
                   data-name="Groupe 1"
-                  transform="translate(190 345)">
+                  transform="translate(190 345)"
+                >
                   <line
                     id="Ligne_2"
                     data-name="Ligne 2"
@@ -152,7 +172,8 @@ const Hero = () => {
                 <g
                   id="Groupe_3"
                   data-name="Groupe 3"
-                  transform="translate(191.656 869) rotate(-90)">
+                  transform="translate(191.656 869) rotate(-90)"
+                >
                   <line
                     id="Ligne_2-2"
                     data-name="Ligne 2"
@@ -175,7 +196,8 @@ const Hero = () => {
                 <g
                   id="Groupe_4"
                   data-name="Groupe 4"
-                  transform="translate(981.246 867.344) rotate(180)">
+                  transform="translate(981.246 867.344) rotate(180)"
+                >
                   <line
                     id="Ligne_2-3"
                     data-name="Ligne 2"
@@ -198,7 +220,8 @@ const Hero = () => {
                 <g
                   id="Groupe_2"
                   data-name="Groupe 2"
-                  transform="translate(977.38 345) rotate(90)">
+                  transform="translate(977.38 345) rotate(90)"
+                >
                   <line
                     id="Ligne_2-4"
                     data-name="Ligne 2"
@@ -228,7 +251,6 @@ const Hero = () => {
 
           {/* Hero Images */}
           <HeroImages>
-            
             <div className="squared1">
               {serieName.slice(0, 1).map((link) => (
                 <Link key={link.name} to={`/photo/${link.name}`}>
@@ -255,7 +277,6 @@ const Hero = () => {
                 <img src={secondImg} alt="" />
               </Link>
             </div>
-            
           </HeroImages>
           {/* Hero Images */}
         </HeroWrapper>
@@ -279,7 +300,8 @@ const Hero = () => {
               yoyo: Infinity,
               type: "spring",
               stiffness: 80,
-            }}>
+            }}
+          >
             <path
               id="FontAwsome_arrow-down_"
               data-name="FontAwsome (arrow-down)"

@@ -85,6 +85,34 @@ const Photo = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          dots: false,
+          arrows: true,
+          infinite: true,
+          slidesToScroll: 3,
+          slidesToShow: 3,
+          swipeToSlide: true,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          dots: false,
+          arrows: true,
+          infinite: true,
+          slidesToScroll: 2,
+          slidesToShow: 2,
+          swipeToSlide: true,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: "unslick",
+      },
+    ],
   };
 
   // Masonry BreakPoint Settings
