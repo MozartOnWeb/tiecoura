@@ -84,6 +84,7 @@ const Photo = () => {
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    adaptiveHeight: true,
   };
 
   // Masonry BreakPoint Settings
@@ -113,7 +114,8 @@ const Photo = () => {
           <Masonry
             breakpointCols={breakPointColumnObj}
             className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column">
+            columnClassName="my-masonry-grid_column"
+          >
             {images &&
               images.map((image) => (
                 <LazyLoad height={200} offset={150} key={image.name}>
