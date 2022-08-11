@@ -108,6 +108,8 @@ const Theme = {
 function App() {
   const location = useLocation();
 
+  const AllPages = React.memo(Pages);
+
   return (
     <>
       <ThemeProvider theme={Theme}>
@@ -122,14 +124,14 @@ function App() {
           <Switch location={location} key={location.key}>
             <Route component={Home} path="/home" exact />
             <Route component={Welcome} path="/" exact />
-            <Pages className="pages">
+            <AllPages className="pages">
               <PageNav />
               <CloseMenu />
               <Route component={Video} path="/videos" />
               <Route component={Photo} path="/photos/:serie" exact />
               <Route component={About} path="/about" />
               <Route component={EventPages} path="/events/:event" />
-            </Pages>
+            </AllPages>
           </Switch>
         </AnimatePresence>
       </ThemeProvider>

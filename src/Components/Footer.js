@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 // Import SVGS
 import {
-  SiAdobepremiere,
+  SiAdobepremierepro,
   SiAdobephotoshop,
   SiAdobelightroomclassic,
 } from "react-icons/si";
@@ -73,10 +73,10 @@ const Footer = () => {
     } else {
       emailjs
         .send(
-          "service_vtmcx0w",
-          "template_795uobf",
+          "service_e9nelyh",
+          "template_ns42o9g",
           tempParams,
-          "user_IIuS4KGyfguClJ5SOMIMs"
+          "1ZczXAU7NFvkellMx"
         )
         .then(
           (response) => {
@@ -87,6 +87,9 @@ const Footer = () => {
           },
           (err) => {
             notifyError();
+            setEmail((e.target.value = ""));
+            setName((e.target.value = ""));
+            setMessage((e.target.value = ""));
           }
         );
     }
@@ -143,13 +146,13 @@ const Footer = () => {
             <FooterInfos>
               <FooterHeadline>Logiciels</FooterHeadline>
               <SvgContainer>
-                <SiAdobepremiere />
+                <SiAdobepremierepro />
                 <SiAdobelightroomclassic />
                 <SiAdobephotoshop />
               </SvgContainer>
             </FooterInfos>
             <FooterInfos>
-              <span>&#169; {year}, MOZART.JS, tous droits réservés</span>
+              <span>&#169; {year}, Tiecoura N'Daou, tous droits réservés</span>
             </FooterInfos>
           </FooterInfoContainer>
 
