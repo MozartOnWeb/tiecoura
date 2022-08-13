@@ -52,9 +52,14 @@ const Portfolio = ({ selected, setSelected }) => {
             {serieName.slice(0, 6).map((image) => (
               <PortfolioImage
                 key={image.name}
-                onClick={() => setSelected(image.images[0].url)}
+                onClick={() =>
+                  setSelected(image.images ? image.images[0].url : "")
+                }
               >
-                <img src={image.images[0].url} alt={image.name} />
+                <img
+                  src={image.images ? image.images[0].url : []}
+                  alt={image.name}
+                />
                 <Link to={`/photos/${image.name}`}>{image.name}</Link>
               </PortfolioImage>
             ))}

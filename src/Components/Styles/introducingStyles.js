@@ -3,7 +3,7 @@ import { only, down } from "styled-breakpoints";
 
 export const IntroduceWrapper = styled.div`
   width: 80%;
-  height: 90vh;
+  height: 85vh;
   padding: 20px 10px;
   margin: 0 auto;
   position: relative;
@@ -32,6 +32,7 @@ export const IntroduceWrapper = styled.div`
     font-size: 14px;
     line-height: 25px;
     font-weight: 400;
+    margin-top: 30px;
     ${only("md")} {
       font-size: 13px;
     }
@@ -52,7 +53,7 @@ export const IntroduceWrapper = styled.div`
 
 export const IntroduceImage = styled.div`
   width: 800px;
-  height: 350px;
+  height: 400px;
   cursor: pointer;
   ${only("md")} {
     width: 600px;

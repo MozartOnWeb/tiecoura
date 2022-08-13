@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "tiecoura-01"
+    "default": "tiecoura-58f91"
   },
   "targets": {
-    "tiecoura-01": {
+    "tiecoura-58f91": {
       "hosting": {
         "front": [
-          "tiecoura"
+          "tiecoura-58f91"
         ]
       }
     }

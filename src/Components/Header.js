@@ -108,11 +108,7 @@ const Header = () => {
 
             <div style={{ zIndex: "99", marginTop: "5px" }}>
               {size.width <= "375" ? (
-                <Dropdown
-                  overlay={menu}
-                  trigger={["click"]}
-                  placement="bottomCenter"
-                >
+                <Dropdown overlay={menu} trigger={["click"]} placement="bottom">
                   <Link
                     to=""
                     className="ant-dropdown-link"
@@ -139,7 +135,7 @@ const Header = () => {
                 <Dropdown
                   overlay={menu}
                   trigger={["click", "hover"]}
-                  placement="bottomCenter"
+                  placement="bottom"
                 >
                   <Link
                     to=""

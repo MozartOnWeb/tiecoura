@@ -146,7 +146,7 @@ const Photo = () => {
           >
             {images &&
               images.map((image) => (
-                <LazyLoad height={200} offset={150} key={image.name}>
+                <LazyLoad height={200} offset={100} key={image.name}>
                   <motion.img
                     src={image.url}
                     alt={image.name}

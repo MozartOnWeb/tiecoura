@@ -14,6 +14,7 @@ import { IntroduceImage, IntroduceWrapper } from "./Styles/introducingStyles";
 
 const Introducing = ({ selected, setSelected }) => {
   const [fourthImg, setFourthImg] = useState([]);
+  const [desc, setDesc] = useState("");
 
   useEffect(() => {
     fs.collection("OtherImages")
@@ -24,16 +25,21 @@ const Introducing = ({ selected, setSelected }) => {
           setFourthImg(doc.data().url);
         }
       });
-  }, []);
+
+    fs.collection("Descriptions")
+      .doc("Single-Image")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setDesc(doc.data().desc);
+        }
+      });
+  }, [setDesc, setFourthImg]);
 
   return (
     <div>
       <IntroduceWrapper>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, nulla.
-          Dolorum sequi maiores iste, rem quis fuga repellendus corrupti?
-          Dolore?
-        </p>
+        <p>{desc}</p>
         <IntroduceImage onClick={() => setSelected(fourthImg)}>
           <img src={fourthImg} alt="fourth_img" />
         </IntroduceImage>

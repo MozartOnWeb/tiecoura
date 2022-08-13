@@ -274,7 +274,7 @@ const Hero = () => {
             </div>
 
             <div className="squared2">
-              <Link to="/video">
+              <Link to="/videos">
                 <h2>Voir les Vidéos</h2>
                 {size.width <= "375" ? (
                   <video src={firstVid} loop muted />
