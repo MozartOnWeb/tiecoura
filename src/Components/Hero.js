@@ -15,7 +15,6 @@ import { useWindowSize } from "../hooks/useWindow";
 // Import Styled Components
 import {
   BackgroundImage,
-  HeroInfo,
   HeroWrapper,
   HeroImages,
   HeroContainer,

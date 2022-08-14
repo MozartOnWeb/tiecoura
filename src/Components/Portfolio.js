@@ -66,7 +66,7 @@ const Portfolio = ({ selected, setSelected }) => {
           </PortfolioImages>
         </PortfolioWrapper>
         {serieName.slice(0, 1).map((link) => (
-          <Button key={link.name} center="true" to={`/photos/${link.name}`}>
+          <Button key={link.name} portfolio="true" to={`/photos/${link.name}`}>
             VOIR PLUS
             <svg
               className="arrow"

@@ -20,6 +20,7 @@ import { CloseMenu, PageNav } from "./Components";
 import { Pages } from "./layout";
 
 import { down } from "styled-breakpoints";
+import { Helmet } from "react-helmet";
 
 // Create Global Styles
 const GlobalStyles = createGlobalStyle`
@@ -84,6 +85,20 @@ const GlobalStyles = createGlobalStyle`
     .home-wrapper {
       height: 100%;
     }
+    .dropdown-link {
+      display: flex;
+      align-items: center;
+      margin-top: 5px;
+      padding: 5px 0px 5px 0px;
+      color: ${(props) => props.theme.black};
+      span {
+        margin-left: 10px;
+      }
+      &:hover {
+        color: ${(props) => props.theme.white};
+        background-color: ${(props) => props.theme.black};
+      }
+    }
   }
 `;
 
@@ -112,6 +127,14 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <title>TIECOURA N'DAOU.</title>
+        <meta name="description" content="Site portfolio de Tiecoura N'Daou." />
+        <meta
+          name="keywords"
+          content="tiecoura, n'daou, portfolio, tiecoura n'daou, tiecoura photographe, tiecoura photo, tiecoura"
+        />
+      </Helmet>
       <ThemeProvider theme={Theme}>
         <GlobalStyles />
         <ToastContainer

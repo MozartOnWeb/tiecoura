@@ -10,7 +10,8 @@ import Header from "./Header";
 import CloseMenu from "./CloseMenu";
 import PageNav from "./PageNav";
 import Preloader from "./Preloader";
-import Events from "./Events"
+import Events from "./Events";
+import Clients from "./Clients";
 
 export {
   Experience,
@@ -24,5 +25,6 @@ export {
   CloseMenu,
   PageNav,
   Preloader,
-  Events
+  Events,
+  Clients,
 };

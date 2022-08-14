@@ -116,6 +116,10 @@ const Experience = ({ selected, setSelected }) => {
 
         {/* Experience Informations */}
         <ExperienceInfo>
+          <p className="first-paragraph">
+            Plus de <span>{years} ans</span> d'expérience dans le domaine de
+            l'audio-visuel.{" "}
+          </p>
           <p className="experienceDesc">{desc}</p>
 
           {/* Experience Stats */}
@@ -248,7 +252,7 @@ const Experience = ({ selected, setSelected }) => {
           {/* Experience Stats */}
 
           {serieName.slice(0, 1).map((link) => (
-            <Button key={link.name} arrow="false" to={`/photos/${link.name}`}>
+            <Button key={link.name} to={`/photos/${link.name}`}>
               Explorer
               <svg
                 className="arrow"

@@ -8,6 +8,7 @@ import { fs } from "../firebase/config";
 
 // Import Framer Motion
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const Video = () => {
   const [youtube, setYoutube] = useState([]);
@@ -33,6 +34,10 @@ const Video = () => {
 
   return (
     <>
+      <Helmet>
+        <title>VIDEOS.</title>
+        <meta name="description" content="Les vidéos de Tiecoura N'Daou." />
+      </Helmet>
       <PhotoWrapper>
         <PhotoImageWrapper>
           <div className="video">

@@ -6,26 +6,14 @@ import { fs } from "../firebase/config";
 // Import Components
 import { Arrow } from "../layout";
 
-// Import Modal
-import Modal2 from "../Components/Modal2";
-
 // Import Styles
 import { IntroduceImage, IntroduceWrapper } from "./Styles/introducingStyles";
 
-const Introducing = ({ selected, setSelected }) => {
-  const [fourthImg, setFourthImg] = useState([]);
+const Introducing = () => {
   const [desc, setDesc] = useState("");
+  const [video, setVideo] = useState("");
 
   useEffect(() => {
-    fs.collection("OtherImages")
-      .doc("04")
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          setFourthImg(doc.data().url);
-        }
-      });
-
     fs.collection("Descriptions")
       .doc("Single-Image")
       .get()
@@ -34,14 +22,23 @@ const Introducing = ({ selected, setSelected }) => {
           setDesc(doc.data().desc);
         }
       });
-  }, [setDesc, setFourthImg]);
+
+    fs.collection("OtherVideos")
+      .doc("02")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setVideo(doc.data().url);
+        }
+      });
+  }, [setVideo, setDesc]);
 
   return (
     <div>
       <IntroduceWrapper>
         <p>{desc}</p>
-        <IntroduceImage onClick={() => setSelected(fourthImg)}>
-          <img src={fourthImg} alt="fourth_img" />
+        <IntroduceImage>
+          <video src={video} controls></video>
         </IntroduceImage>
         <Arrow bottom2="true" red="true">
           <svg
@@ -61,7 +58,6 @@ const Introducing = ({ selected, setSelected }) => {
           </svg>
         </Arrow>
       </IntroduceWrapper>
-      {selected && <Modal2 selected={selected} setSelected={setSelected} />}
     </div>
   );
 };

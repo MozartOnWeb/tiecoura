@@ -88,6 +88,48 @@ export const Button = styled(NavLink)`
   }
 
   ${(props) =>
+    props.portfolio &&
+    css`
+      top: 50%;
+      left: 45%;
+      color: ${(props) => props.theme.black};
+      transform: translate(-50%, -50%);
+      svg {
+        top: -40%;
+        path {
+          fill: ${(props) => props.theme.black};
+        }
+      }
+      ${down("xs")} {
+        left: 35%;
+      }
+    `}
+
+  ${(props) =>
+    props.whoiam &&
+    css`
+      position: relative;
+      color: ${(props) => props.theme.black};
+      svg {
+        top: -35%;
+        path {
+          fill: ${(props) => props.theme.black};
+        }
+      }
+      //after
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: 0px;
+        border-width: 0 0 1px;
+        border-style: solid;
+        border-color: red;
+      }
+    `}
+
+  ${(props) =>
     props.center &&
     css`
       top: 50%;
@@ -104,6 +146,9 @@ export const Button = styled(NavLink)`
       font-size: 16px;
       letter-spacing: 1.5px;
       font-weight: bold;
+      &:hover {
+        color: ${(props) => props.theme.white};
+      }
     `}
     
   ${(props) =>
@@ -132,6 +177,16 @@ export const Button = styled(NavLink)`
     `}
 
   ${(props) =>
+    props.explor &&
+    css`
+      font-size: 30px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      cursor: pointer;
+      display: block;
+    `}
+
+  ${(props) =>
     props.social &&
     css`
       font-size: 11.5px;
@@ -149,12 +204,8 @@ export const Button = styled(NavLink)`
     bottom: 0px;
     border-width: 0 0 1px;
     border-style: solid;
-    border-color: ${(props) => props.theme.white};
-  }
-
-  &:hover {
-    -webkit-text-stroke: 1px ${(props) => props.theme.white};
-    -webkit-text-fill-color: transparent;
+    border-color: ${(props) =>
+      props.whoiam || props.portfolio ? props.theme.black : props.theme.white};
   }
 `;
 export const Button2 = styled(NavLink)`

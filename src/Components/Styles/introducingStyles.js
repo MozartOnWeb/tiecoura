@@ -3,7 +3,7 @@ import { only, down } from "styled-breakpoints";
 
 export const IntroduceWrapper = styled.div`
   width: 80%;
-  height: 85vh;
+  height: 75vh;
   padding: 20px 10px;
   margin: 0 auto;
   position: relative;

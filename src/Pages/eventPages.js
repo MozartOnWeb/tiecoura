@@ -30,6 +30,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Import Modal
 import Modal2 from "../Components/Modal2";
+import { Helmet } from "react-helmet";
 
 const EventPages = () => {
   const [eventNames, setEventNames] = useState([]);
@@ -121,6 +122,13 @@ const EventPages = () => {
 
   return (
     <>
+      <Helmet>
+        <title>EVENTS.</title>
+        <meta
+          name="description"
+          content="En savoir plus sur les events de Tiecoura N'Daou."
+        />
+      </Helmet>
       <EventNames>
         <Slider {...setting}>
           {eventNames.map(({ name, id }) => (

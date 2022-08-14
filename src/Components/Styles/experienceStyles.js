@@ -3,7 +3,8 @@ import { down, only } from "styled-breakpoints";
 import { motion } from "framer-motion";
 
 export const ExperienceWrapper = styled(motion.div)`
-  width: 80%;
+  width: 100%;
+  height: 85vh;
   padding: 50px 10px;
   margin: 0 auto;
   position: relative;
@@ -13,7 +14,6 @@ export const ExperienceWrapper = styled(motion.div)`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 15px;
   margin-bottom: 50px;
   ${down("md")} {
     padding: 30px;
@@ -52,9 +52,9 @@ export const ExperienceImage = styled(motion.div)`
 export const ExperienceInfo = styled(motion.div)`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  width: 400px;
+  width: 50%;
   height: 500px;
   ${down("md")} {
     justify-content: space-between;
@@ -84,10 +84,13 @@ export const ExperienceInfo = styled(motion.div)`
 
   p {
     font-family: ${(props) => props.theme.mainFont};
-    margin-top: 40px;
+    margin-top: 10px;
     font-size: 16px;
     line-height: 25px;
     font-weight: 400;
+    span {
+      font-weight: 600;
+    }
     ${only("md")} {
       font-size: 14px;
       text-align: center;
@@ -104,6 +107,10 @@ export const ExperienceInfo = styled(motion.div)`
       font-size: 10px;
       text-align: left;
       margin-bottom: 0px;
+    }
+    .first-paragraph {
+      margin-top: 0px;
+      margin-bottom: 20px;
     }
   }
   .experienceDesc {

@@ -72,10 +72,50 @@ const Header = () => {
           </Link>
         ))}
       </Menu.Item>
-      <Menu.Divider />
       <Menu.Item icon={<UserOutlined />} key="3">
         <Link to="/about">A PROPOS</Link>
       </Menu.Item>
+    </Menu>
+  );
+
+  const menu2 = (
+    <Menu style={{ marginTop: "25px", width: "130px" }}>
+      <div>
+        {serieName.slice(0, 1).map((link) => (
+          <Link
+            className="dropdown-link"
+            key={link.name}
+            to={`/photos/${link.name}`}
+          >
+            <PictureOutlined />
+            <span>PHOTOS</span>
+          </Link>
+        ))}
+      </div>
+      <div>
+        <Link className="dropdown-link" to="/videos">
+          <VideoCameraOutlined />
+          <span>VIDEOS</span>
+        </Link>
+      </div>
+      <div>
+        {eventName.slice(0, 1).map((link) => (
+          <Link
+            className="dropdown-link"
+            key={link.name}
+            to={`/events/${link.name}`}
+          >
+            <CalendarOutlined />
+            <span>EVENTS</span>
+          </Link>
+        ))}
+      </div>
+      <div>
+        <Link className="dropdown-link" to="/about">
+          <UserOutlined />
+          <span>A PROPOS</span>
+        </Link>
+      </div>
     </Menu>
   );
 
@@ -108,7 +148,11 @@ const Header = () => {
 
             <div style={{ zIndex: "99", marginTop: "5px" }}>
               {size.width <= "375" ? (
-                <Dropdown overlay={menu} trigger={["click"]} placement="bottom">
+                <Dropdown
+                  overlay={menu2}
+                  trigger={["click"]}
+                  placement="bottom"
+                >
                   <Link
                     to=""
                     className="ant-dropdown-link"
@@ -133,8 +177,8 @@ const Header = () => {
                 </Dropdown>
               ) : (
                 <Dropdown
-                  overlay={menu}
-                  trigger={["click", "hover"]}
+                  overlay={menu2}
+                  trigger={["click"]}
                   placement="bottom"
                 >
                   <Link

@@ -15,6 +15,7 @@ import {
   AboutInfo,
   AboutImage,
 } from "./Styles/photoStyles";
+import { Helmet } from "react-helmet";
 
 const About = () => {
   const [profile, setProfile] = useState([]);
@@ -49,6 +50,13 @@ const About = () => {
 
   return (
     <>
+      <Helmet>
+        <title>A PROPOS DE MOI.</title>
+        <meta
+          name="description"
+          content="Tout ce qu'il faut savoir sur Tiecoura N'Daou."
+        />
+      </Helmet>
       <PhotoWrapper>
         <PhotoImageWrapper>
           <AboutHeader

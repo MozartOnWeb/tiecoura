@@ -3,14 +3,13 @@ import gsap from "gsap";
 
 // Import Components
 import {
-  Experience,
   Footer,
   Hero,
   Introducing,
   Portfolio,
   WhoIAM,
   Header,
-  Events,
+  Clients,
 } from "../Components";
 
 //
@@ -18,7 +17,6 @@ import LoadingScreen from "../Components/LoadingScreen";
 
 const Home = () => {
   const [selected, setSelected] = useState(null);
-  const [videoSelected, setVideoSelected] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -30,7 +28,7 @@ const Home = () => {
           amount: 0.08,
         },
       });
-    }, 4000);
+    }, 1500);
   }, []);
 
   return (
@@ -38,11 +36,10 @@ const Home = () => {
       <LoadingScreen />
       <Header />
       <Hero selected={selected} setSelected={setSelected} />
-      <Experience selected={videoSelected} setSelected={setVideoSelected} />
       <Portfolio selected={selected} setSelected={setSelected} />
-      <Introducing selected={selected} setSelected={setSelected} />
+      <Introducing />
       <WhoIAM selected={selected} setSelected={setSelected} />
-      <Events />
+      <Clients />
       <Footer selected={selected} setSelected={setSelected} />
     </div>
   );

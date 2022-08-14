@@ -32,6 +32,7 @@ import Modal from "../Components/Modal";
 
 // Masonry Grid Styles
 import Masonry from "react-masonry-css";
+import { Helmet } from "react-helmet";
 
 const Photo = () => {
   const [serieName, setSerieName] = useState([]);
@@ -125,6 +126,14 @@ const Photo = () => {
 
   return (
     <>
+      <Helmet>
+        <title>PHOTOS.</title>
+        <meta
+          name="description"
+          content="Les séries de photos de Tiecoura N'Daou."
+        />
+      </Helmet>
+
       <SeriesName>
         <Slider {...setting}>
           {serieName.map((serie) => (
